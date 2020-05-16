@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>black</key>
+	<string>SFProRounded-Black</string>
+	<key>bold</key>
+	<string>SFProRounded-Bold</string>
+	<key>heavy</key>
+	<string>SFProRounded-Heavy</string>
+	<key>light</key>
+	<string>SFProRounded-Light</string>
+	<key>medium</key>
+	<string>SFProRounded-Medium</string>
+	<key>regular</key>
+	<string>SFProRounded-Regular</string>
+	<key>semibold</key>
+	<string>SFProRounded-Semibold</string>
+	<key>thin</key>
+	<string>SFProRounded-Thin</string>
+	<key>ultralight</key>
+	<string>SFProRounded-Ultralight</string>
+</dict>
+</plist>

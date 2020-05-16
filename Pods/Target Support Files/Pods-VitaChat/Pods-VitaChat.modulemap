@@ -1,0 +1,6 @@
+framework module Pods_VitaChat {
+  umbrella header "Pods-VitaChat-umbrella.h"
+
+  export *
+  module * { export * }
+}
