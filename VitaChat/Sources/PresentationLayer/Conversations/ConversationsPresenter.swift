@@ -14,6 +14,8 @@ final class ConversationsPresenter {
     weak var view: ConversationsViewInput?
     private var interactor: ConversationsInteractorInput
     private let router: ConversationsRouterInput
+    let activeChats = Bundle.main.decode([ConversationModelCell].self, from: "activeChats.json")
+    let waitingChats = Bundle.main.decode([ConversationModelCell].self, from: "waitingChats.json")
 
     // MARK: - Properties
 
@@ -23,11 +25,28 @@ final class ConversationsPresenter {
         self.router = router
     }
 
+    private func makeViewModels() -> NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel> {
+        let waitingChatsViewModel = activeChats.map { ConversationCellViewModel(with: $0) }
+        let activeChatsViewModel = waitingChats.map { ConversationCellViewModel(with: $0) }
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>()
+
+        snapshot.appendSections([.activeChats, .waitingChats])
+
+        snapshot.appendItems(waitingChatsViewModel, toSection: .waitingChats)
+        snapshot.appendItems(activeChatsViewModel, toSection: .activeChats)
+
+        return snapshot
+    }
+
 }
 
 // MARK: - ConversationsViewOutput
 extension ConversationsPresenter: ConversationsViewOutput {
-    func viewDidLoad() {}
+
+    func viewDidLoad() {
+        view?.showDataSource(data: makeViewModels())
+    }
 }
 
 // MARK: - ConversationsInteractorOutput

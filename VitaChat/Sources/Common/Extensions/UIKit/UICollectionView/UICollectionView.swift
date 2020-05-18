@@ -13,17 +13,20 @@ extension UICollectionView {
     /**
      Метод для регистрации ячеки
      - Parameter cellType: Класс ячейки
-     - Authors: Bogdan Kostyuchenko.
      */
     func register<T: UICollectionViewCell>(cellType: T.Type) {
         let reuseIdentifier = String(describing: cellType)
         register(cellType, forCellWithReuseIdentifier: reuseIdentifier)
     }
 
+    func registerView<T: UICollectionReusableView>(viewType: T.Type, elementKind: String) {
+        let reuseIdentifier = String(describing: viewType)
+        register(viewType, forSupplementaryViewOfKind: elementKind, withReuseIdentifier: reuseIdentifier)
+    }
+
     /**
      Метод для регистрации ячеек
      - Parameter cellTypes: Массив классов ячеек
-     - Authors: Bogdan Kostyuchenko.
      */
     func register<T: UICollectionViewCell>(cellTypes: [T.Type]) {
         cellTypes.forEach { register(cellType: $0) }
@@ -34,11 +37,22 @@ extension UICollectionView {
      - Parameter cellType: Класс ячейки
      - Parameter indexPath: IndexPath для которого надо получить ячейку
      - Returns: Ячейка
-     - Authors: Bogdan Kostyuchenko.
      */
     func dequeueReusableCell<T: UICollectionViewCell>(with cellType: T.Type, for indexPath: IndexPath) -> T {
         let reuseIdentifier = String(describing: cellType)
         guard let cell = dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? T else {
+            fatalError("You aren't register cell: \(cellType)")
+        }
+        return cell
+    }
+
+    func dequeueReusableSupplementaryView<T: UICollectionReusableView>(with cellType: T.Type,
+                                                                    elementKind: String,
+                                                                    for indexPath: IndexPath) -> T {
+        let reuseIdentifier = String(describing: cellType)
+        guard let cell = dequeueReusableSupplementaryView(ofKind: elementKind,
+                                                          withReuseIdentifier: reuseIdentifier,
+                                                          for: indexPath) as? T else {
             fatalError("You aren't register cell: \(cellType)")
         }
         return cell
@@ -57,6 +71,18 @@ extension UICollectionView {
             return cell
         }
         fatalError("Couldn't find \(cellClass)")
+    }
+
+    func createSectionHeader(width: NSCollectionLayoutDimension,
+                                     height: NSCollectionLayoutDimension,
+                                     alignment: NSRectAlignment = .top) -> NSCollectionLayoutBoundarySupplementaryItem {
+        let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: width,
+                                                       heightDimension: height)
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: alignment)
+
+        return sectionHeader
     }
 
 }

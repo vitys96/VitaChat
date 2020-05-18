@@ -13,14 +13,11 @@ class ActiveChatsCollectionCell: UICollectionViewCell {
 
     // MARK: - Subviews
     private let imageView = UIImageView()
-//        $0.contentMode = .scaleAspectFit
-//    }
-    private let userNameLabel = UILabel().with {
-        $0.textColor = .black
-    }
-    private let lastMessageLabel = UILabel().with {
-        $0.textColor = .black
-    }
+
+    private let userNameLabel = UILabel()
+
+    private let lastMessageLabel = UILabel()
+
     private let gradientView = GradientView().with {
         $0.setupGradient(from: .topTrailing, to: .bottomLeading)
     }
@@ -30,7 +27,6 @@ class ActiveChatsCollectionCell: UICollectionViewCell {
 
     // MARK: - Properties
     var reuseBag = DisposeBag()
-    private let moreButtonLength: CGFloat = 32
 
     // MARK: - Computed properties
 
@@ -93,11 +89,11 @@ class ActiveChatsCollectionCell: UICollectionViewCell {
     }
 
     // MARK: - Public methods
-    func setup(with model: ConversationModelCell) {
+    func setup(with model: ConversationCellViewModel) {
 
         imageView.image = UIImage.withName(model.userImageString)
-        userNameLabel.text = model.username
-        lastMessageLabel.text = model.lastMessage
+        userNameLabel.attributedText = model.username
+        lastMessageLabel.attributedText = model.lastMessage
 
         setNeedsLayout()
     }

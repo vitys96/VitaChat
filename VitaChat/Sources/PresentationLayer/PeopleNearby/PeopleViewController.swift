@@ -1,26 +1,24 @@
 //
-//  ConversationsViewController.swift
+//  PeopleViewController.swift
 //  VitaChat
 //
-//  Created Okhrimenko Vitaliy on 11.05.2020.
+//  Created Okhrimenko Vitaliy on 17.05.2020.
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
 import UIKit
 
-enum Section: Int, CaseIterable {
-    case waitingChats, activeChats
-    func description() -> String {
+enum UsersSection: Int, CaseIterable {
+    case users
+    func desr(usersCount: Int) -> String {
         switch self {
-        case .waitingChats:
-            return "В ожидании"
-        case .activeChats:
-            return "Активные чаты"
+        case .users:
+            return "Рядом с вами \(usersCount) человек"
         }
     }
 }
 
-final class ConversationsViewController: BaseViewController {
+final class PeopleViewController: BaseViewController {
 
     // MARK: - Subviews
     private let searchController = UISearchController(searchResultsController: nil).with {
@@ -33,21 +31,20 @@ final class ConversationsViewController: BaseViewController {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(cellType: ActiveChatsCollectionCell.self)
+        collectionView.register(cellType: PeopleCollectionCell.self)
         collectionView.registerView(viewType: SectionHeader.self, elementKind: UICollectionView.elementKindSectionHeader)
-        collectionView.register(cellType: WaitingChatsCollectionCell.self)
         return collectionView
     }()
 
     // MARK: - Protocol properties
-    private let output: ConversationsViewOutput
-    var dataSource: UICollectionViewDiffableDataSource<Section, ConversationCellViewModel>?
+    private let output: PeopleViewOutput
 
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
+    var dataSource: UICollectionViewDiffableDataSource<UsersSection, PeopleViewModel>?
 
     // MARK: - Init
-    init(output: ConversationsViewOutput) {
+    init(output: PeopleViewOutput) {
         self.output = output
         super.init(nibName: nil, bundle: nil)
     }
@@ -84,12 +81,10 @@ final class ConversationsViewController: BaseViewController {
     }
 
     private func layout() {
-
         collectionView.pin
             .top(view.pin.safeArea.top)
             .horizontally()
             .bottom(view.pin.safeArea.bottom)
-
     }
 
     // MARK: - Private methods
@@ -113,16 +108,16 @@ final class ConversationsViewController: BaseViewController {
 
 }
 
-// MARK: - ConversationsViewInput
-extension ConversationsViewController: ConversationsViewInput {
+// MARK: - PeopleViewInput
+extension PeopleViewController: PeopleViewInput {
 
-    func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>) {
+    func showDataSource(data: NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>) {
         dataSource?.apply(data, animatingDifferences: true)
     }
 }
 
 // MARK: - UISearchBarDelegate
-extension ConversationsViewController: UISearchBarDelegate {
+extension PeopleViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
@@ -130,24 +125,20 @@ extension ConversationsViewController: UISearchBarDelegate {
 }
 
 // MARK: - Data Source
-extension ConversationsViewController {
+extension PeopleViewController {
 
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, ConversationCellViewModel>(collectionView: collectionView,
-                                                                                        cellProvider: { (collectionView, indexPath, chat) -> UICollectionViewCell? in
-            guard let section = Section(rawValue: indexPath.section) else {
+        dataSource = UICollectionViewDiffableDataSource<UsersSection, PeopleViewModel>(collectionView: collectionView,
+                                                                                        cellProvider: { (collectionView, indexPath, user) -> UICollectionViewCell? in
+            guard let section = UsersSection(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
 
             switch section {
-            case .activeChats:
-                let cell = collectionView.cell(at: indexPath, for: ActiveChatsCollectionCell.self)
-                cell.setup(with: chat)
+            case .users:
+                let cell = collectionView.cell(at: indexPath, for: PeopleCollectionCell.self)
+                cell.setup(with: user)
                 cell.backgroundColor = self.colorManager.n11
-                return cell
-            case .waitingChats:
-                let cell = collectionView.cell(at: indexPath, for: WaitingChatsCollectionCell.self)
-                cell.setup(with: chat)
                 return cell
             }
         })
@@ -157,9 +148,11 @@ extension ConversationsViewController {
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(with: SectionHeader.self,
                                                                                        elementKind: kind,
                                                                                        for: indexPath)
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            sectionHeader.setup(title: section.description())
-            
+            guard let section = UsersSection(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            if let lal = self.dataSource?.snapshot().itemIdentifiers(inSection: .users) {
+                sectionHeader.setup(title: section.desr(usersCount: lal.count))
+            }
+
             return sectionHeader
         }
     }
@@ -167,20 +160,18 @@ extension ConversationsViewController {
 }
 
 // MARK: - Setup layout
-extension ConversationsViewController {
+extension PeopleViewController {
 
     private func createCompositionalLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
 
-            guard let section = Section(rawValue: senctionIndex) else {
+            guard let section = UsersSection(rawValue: senctionIndex) else {
                 fatalError("Unknown section kind")
             }
 
             switch section {
-            case .activeChats:
-                return self.createActiveChats()
-            case .waitingChats:
-                return self.createWaitingChats()
+            case .users:
+                return self.createUsersSection()
             }
         }
         let config = UICollectionViewCompositionalLayoutConfiguration()
@@ -189,41 +180,24 @@ extension ConversationsViewController {
         return layout
     }
 
-    private func createWaitingChats() -> NSCollectionLayoutSection {
+    private func createUsersSection() -> NSCollectionLayoutSection {
 
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                              heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(88),
-                                               heightDimension: .absolute(88))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 20
-
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
-        let sectionHeader = collectionView.createSectionHeader(width: .fractionalWidth(1), height: .estimated(1))
-        section.boundarySupplementaryItems = [sectionHeader]
-        section.orthogonalScrollingBehavior = .continuous
-
-        return section
-    }
-
-    private func createActiveChats() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
                                               heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .absolute(78))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+                                               heightDimension: .fractionalWidth(0.6))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+        let spacing = CGFloat(15)
+        group.interItemSpacing = .fixed(spacing)
 
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 8
+        section.interGroupSpacing = spacing
 
-        let sectionHeader = collectionView.createSectionHeader(width: .fractionalWidth(1), height: .estimated(1))
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
+        let sectionHeader = collectionView.createSectionHeader(width: .fractionalWidth(1), height: .estimated(1))
+
         section.boundarySupplementaryItems = [sectionHeader]
 
         return section

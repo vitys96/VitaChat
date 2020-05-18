@@ -40,6 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        } else {
         let mainTabBar = TabBarController()
         mainTabBar.configure(screens: [
+            (.people, PeopleBuilder.build()),
             (.conversations, ConversationsBuilder.build())
         ])
         window?.rootViewController = mainTabBar

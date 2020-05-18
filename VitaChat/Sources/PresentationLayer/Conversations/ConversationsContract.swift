@@ -14,7 +14,11 @@ protocol ConversationsBuilderProtocol: class {
 }
 
 // MARK: - View
-protocol ConversationsViewInput: class {}
+protocol ConversationsViewInput: class {
+
+    func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>)
+
+}
 
 protocol ConversationsViewOutput {
    /**

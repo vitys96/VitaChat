@@ -40,14 +40,15 @@ extension UIView {
 
     func roundWithShadow(cornerRadius: CGFloat, shadowRadius: CGFloat, offset: CGSize = .zero,
                          shadowColor: CGColor = UIColor.black.cgColor) {
+        clipsToBounds = true
+//        layer.masksToBounds = false
+//        layer.shouldRasterize = true
         layer.cornerRadius = cornerRadius
-        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+//        layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         layer.shadowColor = shadowColor
         layer.shadowOffset = offset
         layer.shadowRadius = shadowRadius
         layer.shadowOpacity = 0.4
-        layer.masksToBounds = false
-        layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
     }
 
