@@ -38,7 +38,7 @@ extension UIView {
         layer.cornerRadius = bounds.height / 2.0
     }
 
-    func roundWithShadow(cornerRadius: CGFloat, shadowRadius: CGFloat, offset: CGSize = .zero,
+    func roundWithShadow(cornerRadius: CGFloat, shadowRadius: CGFloat = .zero, offset: CGSize = .zero,
                          shadowColor: CGColor = UIColor.black.cgColor) {
         clipsToBounds = true
 //        layer.masksToBounds = false

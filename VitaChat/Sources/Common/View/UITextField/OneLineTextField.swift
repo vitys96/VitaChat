@@ -57,9 +57,9 @@ class OneLineTextField: UITextField {
     private func layout() {
 
         bottomView.pin
-        .horizontally()
-        .height(1)
-        .bottom()
+            .horizontally()
+            .height(1)
+            .bottom()
     }
 
     // MARK: - Private methods

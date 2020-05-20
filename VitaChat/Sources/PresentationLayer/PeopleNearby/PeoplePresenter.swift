@@ -14,7 +14,6 @@ final class PeoplePresenter {
     weak var view: PeopleViewInput?
     private var interactor: PeopleInteractorInput
     private let router: PeopleRouterInput
-    let activeChats = Bundle.main.decode([PeopleModelCell].self, from: "users.json")
 
     // MARK: - Properties
 
@@ -24,17 +23,17 @@ final class PeoplePresenter {
         self.router = router
     }
 
-    private func makeViewModels() -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
-        let usersViewModel = activeChats.map { PeopleViewModel(with: $0) }
-
-        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
-
-        snapshot.appendSections([.users])
-
-        snapshot.appendItems(usersViewModel, toSection: .users)
-
-        return snapshot
-    }
+//    private func makeViewModels() -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
+//        let usersViewModel = activeChats.map { PeopleViewModel(with: $0) }
+//
+//        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
+//
+//        snapshot.appendSections([.users])
+//
+//        snapshot.appendItems(usersViewModel, toSection: .users)
+//
+//        return snapshot
+//    }
 
 }
 
@@ -42,7 +41,7 @@ final class PeoplePresenter {
 extension PeoplePresenter: PeopleViewOutput {
 
     func viewDidLoad() {
-        view?.showDataSource(data: makeViewModels())
+        view?.reloadData(with: nil)
     }
 
 }

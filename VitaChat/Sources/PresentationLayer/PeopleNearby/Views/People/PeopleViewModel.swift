@@ -27,4 +27,13 @@ struct PeopleViewModel: Hashable {
         hasher.combine(id)
     }
 
+    func containsText(filterText: String?) -> Bool {
+        guard let filter = filterText else { return true }
+        if filter.isEmpty {
+            return true
+        }
+        let lowercasedFilter = filter.lowercased()
+        return username.string.lowercased().contains(lowercasedFilter)
+    }
+
 }

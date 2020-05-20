@@ -42,6 +42,7 @@ final class PeopleViewController: BaseViewController {
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
     var dataSource: UICollectionViewDiffableDataSource<UsersSection, PeopleViewModel>?
+    let users = Bundle.main.decode([PeopleModelCell].self, from: "users.json")
 
     // MARK: - Init
     init(output: PeopleViewOutput) {
@@ -111,8 +112,17 @@ final class PeopleViewController: BaseViewController {
 // MARK: - PeopleViewInput
 extension PeopleViewController: PeopleViewInput {
 
-    func showDataSource(data: NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>) {
-        dataSource?.apply(data, animatingDifferences: true)
+    func reloadData(with searchText: String?) {
+        let peopleViewModel = users.map { PeopleViewModel(with: $0) }
+        let filtered = peopleViewModel.filter { user in
+            return user.containsText(filterText: searchText)
+        }
+        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
+
+        snapshot.appendSections([.users])
+
+        snapshot.appendItems(filtered, toSection: .users)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -120,7 +130,7 @@ extension PeopleViewController: PeopleViewInput {
 extension PeopleViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
+        reloadData(with: searchText)
     }
 }
 
@@ -149,8 +159,8 @@ extension PeopleViewController {
                                                                                        elementKind: kind,
                                                                                        for: indexPath)
             guard let section = UsersSection(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            if let lal = self.dataSource?.snapshot().itemIdentifiers(inSection: .users) {
-                sectionHeader.setup(title: section.desr(usersCount: lal.count))
+            if let peopleViewModels = self.dataSource?.snapshot().itemIdentifiers(inSection: .users) {
+                sectionHeader.setup(title: section.desr(usersCount: peopleViewModels.count))
             }
 
             return sectionHeader

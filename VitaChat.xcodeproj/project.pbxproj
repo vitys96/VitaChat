@@ -36,6 +36,15 @@
 		716F077C246888B900C859B4 /* SFProRounded-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 716F0773246888B900C859B4 /* SFProRounded-Black.otf */; };
 		716F077D246888B900C859B4 /* SFProRounded-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 716F0774246888B900C859B4 /* SFProRounded-Semibold.otf */; };
 		716F077E246888B900C859B4 /* SFProRounded-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 716F0775246888B900C859B4 /* SFProRounded-Regular.otf */; };
+		716F4A092475440800496FC5 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A082475440800496FC5 /* InsertableTextField.swift */; };
+		716F4A1324759E4B00496FC5 /* ChatRequestContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A0C24759E4B00496FC5 /* ChatRequestContract.swift */; };
+		716F4A1424759E4B00496FC5 /* ChatRequestPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A0D24759E4B00496FC5 /* ChatRequestPresenter.swift */; };
+		716F4A1524759E4B00496FC5 /* ChatRequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A0E24759E4B00496FC5 /* ChatRequestRouter.swift */; };
+		716F4A1624759E4B00496FC5 /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A0F24759E4B00496FC5 /* ChatRequestViewController.swift */; };
+		716F4A1724759E4B00496FC5 /* ChatRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1024759E4B00496FC5 /* ChatRequestBuilder.swift */; };
+		716F4A1824759E4B00496FC5 /* ChatRequestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1124759E4B00496FC5 /* ChatRequestInteractor.swift */; };
+		716F4A1B2475A29600496FC5 /* StackView + Entension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1A2475A29600496FC5 /* StackView + Entension.swift */; };
+		716F4A1E2475BF9300496FC5 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1D2475BF9300496FC5 /* GradientButton.swift */; };
 		71763776245CB97900307C51 /* AuthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176376F245CB97900307C51 /* AuthContract.swift */; };
 		71763777245CB97900307C51 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763770245CB97900307C51 /* AuthPresenter.swift */; };
 		71763778245CB97900307C51 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763771245CB97900307C51 /* AuthRouter.swift */; };
@@ -76,6 +85,12 @@
 		71B1F619246188EF0017D83E /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F618246188EF0017D83E /* FirestoreService.swift */; };
 		71B1F61C246188FD0017D83E /* FirestoreServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F61B246188FD0017D83E /* FirestoreServiceProtocol.swift */; };
 		71B1F61F24618EAC0017D83E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F61E24618EAC0017D83E /* Alertable.swift */; };
+		71B43A3724746B4100F18449 /* HumanProfileContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3024746B4100F18449 /* HumanProfileContract.swift */; };
+		71B43A3824746B4100F18449 /* HumanProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */; };
+		71B43A3924746B4100F18449 /* HumanProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3224746B4100F18449 /* HumanProfileRouter.swift */; };
+		71B43A3A24746B4100F18449 /* HumanProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3324746B4100F18449 /* HumanProfileViewController.swift */; };
+		71B43A3B24746B4100F18449 /* HumanProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3424746B4100F18449 /* HumanProfileBuilder.swift */; };
+		71B43A3C24746B4100F18449 /* HumanProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3524746B4100F18449 /* HumanProfileInteractor.swift */; };
 		71BA9CBE246063E300F704F5 /* ProfileContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CB7246063E300F704F5 /* ProfileContract.swift */; };
 		71BA9CBF246063E300F704F5 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CB8246063E300F704F5 /* ProfilePresenter.swift */; };
 		71BA9CC0246063E300F704F5 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CB9246063E300F704F5 /* ProfileRouter.swift */; };
@@ -138,6 +153,15 @@
 		716F0773246888B900C859B4 /* SFProRounded-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProRounded-Black.otf"; sourceTree = "<group>"; };
 		716F0774246888B900C859B4 /* SFProRounded-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProRounded-Semibold.otf"; sourceTree = "<group>"; };
 		716F0775246888B900C859B4 /* SFProRounded-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProRounded-Regular.otf"; sourceTree = "<group>"; };
+		716F4A082475440800496FC5 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		716F4A0C24759E4B00496FC5 /* ChatRequestContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestContract.swift; sourceTree = "<group>"; };
+		716F4A0D24759E4B00496FC5 /* ChatRequestPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestPresenter.swift; sourceTree = "<group>"; };
+		716F4A0E24759E4B00496FC5 /* ChatRequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestRouter.swift; sourceTree = "<group>"; };
+		716F4A0F24759E4B00496FC5 /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
+		716F4A1024759E4B00496FC5 /* ChatRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestBuilder.swift; sourceTree = "<group>"; };
+		716F4A1124759E4B00496FC5 /* ChatRequestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestInteractor.swift; sourceTree = "<group>"; };
+		716F4A1A2475A29600496FC5 /* StackView + Entension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView + Entension.swift"; sourceTree = "<group>"; };
+		716F4A1D2475BF9300496FC5 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		7176376F245CB97900307C51 /* AuthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContract.swift; sourceTree = "<group>"; };
 		71763770245CB97900307C51 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		71763771245CB97900307C51 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -180,6 +204,12 @@
 		71B1F618246188EF0017D83E /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		71B1F61B246188FD0017D83E /* FirestoreServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceProtocol.swift; sourceTree = "<group>"; };
 		71B1F61E24618EAC0017D83E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		71B43A3024746B4100F18449 /* HumanProfileContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileContract.swift; sourceTree = "<group>"; };
+		71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfilePresenter.swift; sourceTree = "<group>"; };
+		71B43A3224746B4100F18449 /* HumanProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileRouter.swift; sourceTree = "<group>"; };
+		71B43A3324746B4100F18449 /* HumanProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileViewController.swift; sourceTree = "<group>"; };
+		71B43A3424746B4100F18449 /* HumanProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileBuilder.swift; sourceTree = "<group>"; };
+		71B43A3524746B4100F18449 /* HumanProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileInteractor.swift; sourceTree = "<group>"; };
 		71BA9CB7246063E300F704F5 /* ProfileContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContract.swift; sourceTree = "<group>"; };
 		71BA9CB8246063E300F704F5 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		71BA9CB9246063E300F704F5 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
@@ -363,6 +393,7 @@
 		713BBB12245C3150008BF210 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				716F4A192475A28400496FC5 /* UIStackView */,
 				71F1562924695B8000444D06 /* UICollectionView */,
 				716F07662467F7FD00C859B4 /* UIEdgeInset */,
 				71FE9C9C2460BB7C008D7E4A /* UIApplication */,
@@ -497,6 +528,35 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		716F4A0A24759E3A00496FC5 /* ChatRequest */ = {
+			isa = PBXGroup;
+			children = (
+				716F4A0C24759E4B00496FC5 /* ChatRequestContract.swift */,
+				716F4A1024759E4B00496FC5 /* ChatRequestBuilder.swift */,
+				716F4A0F24759E4B00496FC5 /* ChatRequestViewController.swift */,
+				716F4A0D24759E4B00496FC5 /* ChatRequestPresenter.swift */,
+				716F4A1124759E4B00496FC5 /* ChatRequestInteractor.swift */,
+				716F4A0E24759E4B00496FC5 /* ChatRequestRouter.swift */,
+			);
+			path = ChatRequest;
+			sourceTree = "<group>";
+		};
+		716F4A192475A28400496FC5 /* UIStackView */ = {
+			isa = PBXGroup;
+			children = (
+				716F4A1A2475A29600496FC5 /* StackView + Entension.swift */,
+			);
+			path = UIStackView;
+			sourceTree = "<group>";
+		};
+		716F4A1C2475BF8900496FC5 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				716F4A1D2475BF9300496FC5 /* GradientButton.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		71766D4F2461F4AB00F41BC5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +607,8 @@
 		719D8AA0244F711000319E42 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				716F4A0A24759E3A00496FC5 /* ChatRequest */,
+				71B43A2E24746AFB00F18449 /* HumanProfile */,
 				71A53AAE2471CEB200E2923C /* PeopleNearby */,
 				71F1561724693E2600444D06 /* Conversations */,
 				71BA9CB5246063D600F704F5 /* Profile */,
@@ -709,6 +771,19 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		71B43A2E24746AFB00F18449 /* HumanProfile */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3024746B4100F18449 /* HumanProfileContract.swift */,
+				71B43A3424746B4100F18449 /* HumanProfileBuilder.swift */,
+				71B43A3324746B4100F18449 /* HumanProfileViewController.swift */,
+				71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */,
+				71B43A3524746B4100F18449 /* HumanProfileInteractor.swift */,
+				71B43A3224746B4100F18449 /* HumanProfileRouter.swift */,
+			);
+			path = HumanProfile;
+			sourceTree = "<group>";
+		};
 		71BA9CB5246063D600F704F5 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +810,7 @@
 		71EAA5DE245F54EA00CF1449 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				716F4A1C2475BF8900496FC5 /* UIButton */,
 				71F1563A2469E4EF00444D06 /* UIView */,
 				71FE9C932460A77D008D7E4A /* AddPhotoView */,
 				71EAA5DF245F550E00CF1449 /* UITextField */,
@@ -746,6 +822,7 @@
 			isa = PBXGroup;
 			children = (
 				71EAA5E0245F552500CF1449 /* OneLineTextField.swift */,
+				716F4A082475440800496FC5 /* InsertableTextField.swift */,
 			);
 			path = UITextField;
 			sourceTree = "<group>";
@@ -1043,13 +1120,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				716F4A1624759E4B00496FC5 /* ChatRequestViewController.swift in Sources */,
 				71A71740245EDC9E0008A738 /* UIButton + PressAnimation.swift in Sources */,
 				71FE9C982460B652008D7E4A /* AppUser.swift in Sources */,
 				71A7173C245EDC4F0008A738 /* SignUpInteractor.swift in Sources */,
 				71F1562224693E4300444D06 /* ConversationsRouter.swift in Sources */,
+				716F4A092475440800496FC5 /* InsertableTextField.swift in Sources */,
 				71A53AC52471D32400E2923C /* PeopleCollectionCell.swift in Sources */,
 				713BBB15245C3172008BF210 /* UIcolor+Hex.swift in Sources */,
 				71BA9CBE246063E300F704F5 /* ProfileContract.swift in Sources */,
+				716F4A1724759E4B00496FC5 /* ChatRequestBuilder.swift in Sources */,
 				713BBB18245C3197008BF210 /* String+Substring.swift in Sources */,
 				71B1F60924615EDF0017D83E /* StorageSeviceProtocol.swift in Sources */,
 				71A71739245EDC4F0008A738 /* SignUpRouter.swift in Sources */,
@@ -1058,8 +1138,10 @@
 				71B1F60B24615EE90017D83E /* StorageService.swift in Sources */,
 				719D8A8C244F682E00319E42 /* AppDelegate.swift in Sources */,
 				713BBB1B245C3B87008BF210 /* DependencyContainer.swift in Sources */,
+				71B43A3C24746B4100F18449 /* HumanProfileInteractor.swift in Sources */,
 				71766D512461F7E900F41BC5 /* ContactInfo.swift in Sources */,
 				71B054262470944300981AF2 /* ConversationsHeaderView.swift in Sources */,
+				71B43A3B24746B4100F18449 /* HumanProfileBuilder.swift in Sources */,
 				71B1F61F24618EAC0017D83E /* Alertable.swift in Sources */,
 				71F1562024693E4300444D06 /* ConversationsContract.swift in Sources */,
 				713BBB1E245C40EC008BF210 /* UIImage+BundledImage.swift in Sources */,
@@ -1072,6 +1154,7 @@
 				716F07682467F80700C859B4 /* UIEdgeInsets.swift in Sources */,
 				71A53AC72471D33800E2923C /* PeopleViewModel.swift in Sources */,
 				71A53ABA2471CEC800E2923C /* PeopleViewController.swift in Sources */,
+				71B43A3724746B4100F18449 /* HumanProfileContract.swift in Sources */,
 				7109EF64246023F8000AB219 /* AuthServiceProtocol.swift in Sources */,
 				71F1562124693E4300444D06 /* ConversationsPresenter.swift in Sources */,
 				71F1562524693E4300444D06 /* ConversationsInteractor.swift in Sources */,
@@ -1094,25 +1177,34 @@
 				71BA9CC0246063E300F704F5 /* ProfileRouter.swift in Sources */,
 				71F1563524699A1E00444D06 /* Bundle+Decodable.swift in Sources */,
 				71104780245D954000D37620 /* FontManager.swift in Sources */,
+				71B43A3924746B4100F18449 /* HumanProfileRouter.swift in Sources */,
+				716F4A1824759E4B00496FC5 /* ChatRequestInteractor.swift in Sources */,
 				7176377B245CB97900307C51 /* AuthInteractor.swift in Sources */,
 				71A53ABF2471CFE300E2923C /* PeopleModelCell.swift in Sources */,
 				71BA9CC1246063E300F704F5 /* ProfileViewController.swift in Sources */,
 				71BA9CC6246065AE00F704F5 /* ProfileViewModel.swift in Sources */,
 				71FE9CA12460C445008D7E4A /* SceneDelegate.swift in Sources */,
+				716F4A1B2475A29600496FC5 /* StackView + Entension.swift in Sources */,
 				71104774245D780300D37620 /* UIView+Subviews.swift in Sources */,
 				71A53AB72471CEC800E2923C /* PeopleContract.swift in Sources */,
+				71B43A3A24746B4100F18449 /* HumanProfileViewController.swift in Sources */,
+				71B43A3824746B4100F18449 /* HumanProfilePresenter.swift in Sources */,
 				71A53AAA24714E3800E2923C /* SectionHeader.swift in Sources */,
 				71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */,
 				71A7173A245EDC4F0008A738 /* SignUpViewController.swift in Sources */,
 				71FE9C952460A78B008D7E4A /* AddPhotoView.swift in Sources */,
 				71AED7CF245FFD450026D271 /* TabBarController.swift in Sources */,
 				71BA9CBF246063E300F704F5 /* ProfilePresenter.swift in Sources */,
+				716F4A1E2475BF9300496FC5 /* GradientButton.swift in Sources */,
 				71B1F61124616DDB0017D83E /* ValidationServiceProtocol.swift in Sources */,
 				71B1F60D24615FD40017D83E /* UIImage+Scaled.swift in Sources */,
 				71F1562424693E4300444D06 /* ConversationsBuilder.swift in Sources */,
 				71B1F619246188EF0017D83E /* FirestoreService.swift in Sources */,
 				7176377A245CB97900307C51 /* AuthBuilder.swift in Sources */,
+				716F4A1524759E4B00496FC5 /* ChatRequestRouter.swift in Sources */,
 				71763778245CB97900307C51 /* AuthRouter.swift in Sources */,
+				716F4A1324759E4B00496FC5 /* ChatRequestContract.swift in Sources */,
+				716F4A1424759E4B00496FC5 /* ChatRequestPresenter.swift in Sources */,
 				716D1E562470881B000B8648 /* WaitingChatsCollectionCell.swift in Sources */,
 				7110477D245D94C200D37620 /* String+NSAttributedString.swift in Sources */,
 				71A71738245EDC4F0008A738 /* SignUpPresenter.swift in Sources */,

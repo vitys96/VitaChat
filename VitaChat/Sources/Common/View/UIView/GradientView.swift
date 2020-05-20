@@ -10,8 +10,6 @@ import UIKit
 
 final class GradientView: UIView {
 
-//    private let gradientLayer = CAGradientLayer()
-
     public override class var layerClass: AnyClass {
         return CAGradientLayer.classForCoder()
     }
@@ -51,7 +49,7 @@ final class GradientView: UIView {
         }
     }
 
-    func setupGradient(from: Point, to: Point,
+    func setupGradient(from: Point = .topTrailing, to: Point = .bottomLeading,
                        startColor: UIColor? = UIColor.init(hex: "C9A1F0"), endColor: UIColor? = UIColor.init(hex: "7AB2EB")) {
         guard let gradientLayer = layer as? CAGradientLayer else {
             return
@@ -64,8 +62,9 @@ final class GradientView: UIView {
         gradientLayer.locations = [0.1, 1]
     }
 
-    private func setupGradientColors(startColor: UIColor?, endColor: UIColor?) {
-
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        return view == self ? nil : view
     }
 
 }

@@ -16,7 +16,7 @@ protocol PeopleBuilderProtocol: class {
 // MARK: - View
 protocol PeopleViewInput: class {
 
-     func showDataSource(data: NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>)
+     func reloadData(with searchText: String?)
 
 }
 
