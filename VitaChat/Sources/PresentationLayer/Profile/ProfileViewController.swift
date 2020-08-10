@@ -37,7 +37,6 @@ final class ProfileViewController: BaseViewController {
     private lazy var goToChatsButton = UIButton().with {
         $0.backgroundColor = colorManager.tabBar
         $0.setTitleColor(colorManager.staticWhite, for: .normal)
-        $0.roundWithShadow(cornerRadius: 10, shadowRadius: 10)
     }
 
     // MARK: - Protocol properties
@@ -109,7 +108,6 @@ final class ProfileViewController: BaseViewController {
         fullNameLabel.pin
             .below(of: avatarButton)
             .sizeToFit()
-//            .vCenter(-100)
             .horizontally(30)
             .marginTop(20)
 

@@ -18,6 +18,16 @@ public extension String {
             .kern: kern == 0 ? String.kern(for: fontStyle) : kern,
         ]
     }
+    func attributesForPrefferFont(fontStyle: UIFont.TextStyle, color: UIColor) -> [NSAttributedString.Key: Any] {
+        return [
+            .font: UIFont.preferredFont(forTextStyle: fontStyle),
+            .foregroundColor: color
+        ]
+    }
+
+    func addAttributesForPreffereddFont(fontStyle: UIFont.TextStyle, color: UIColor) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: attributesForPrefferFont(fontStyle: fontStyle, color: color))
+    }
 
     func addAttributes(fontStyle: FontStyle, size: CGFloat, color: UIColor, kern: Double = 0) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes(fontStyle: fontStyle,

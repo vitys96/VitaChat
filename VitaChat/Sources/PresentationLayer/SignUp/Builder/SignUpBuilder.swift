@@ -17,12 +17,12 @@ final class SignUpBuilder {
 }
 
 // MARK: - SignUpBuilderProtocol
-extension SignUpBuilder:SignUpBuilderProtocol {
+extension SignUpBuilder: SignUpBuilderProtocol {
 
-    static func build() -> SignUpViewController {
+    static func build(with context: SignUpContext) -> SignUpViewController {
         let interactor = SignUpInteractor()
         let router = SignUpRouter()
-        let presenter = SignUpPresenter(interactor: interactor, router: router)
+        let presenter = SignUpPresenter(interactor: interactor, router: router, context: context)
         let viewController = SignUpViewController(output: presenter)
 
         presenter.view = viewController
@@ -31,5 +31,11 @@ extension SignUpBuilder:SignUpBuilderProtocol {
 
         return viewController
     }
+
+}
+
+struct SignUpContext {
+
+    let authModule: AuthModuleInput
 
 }

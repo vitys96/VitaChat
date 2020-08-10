@@ -22,6 +22,8 @@ protocol AuthViewInput: class {
 
     func stopLoadingAnimation()
 
+    func showData()
+
 }
 
 protocol AuthViewOutput {
@@ -31,6 +33,10 @@ protocol AuthViewOutput {
     func viewDidLoad()
 
     func didSigned(user: GIDGoogleUser, withError error: Error?)
+
+    func didTapLoginButton()
+
+    func didTapSignUpButton()
 
 }
 
@@ -52,4 +58,16 @@ protocol AuthRouterInput {
     func navigateToMainTabBar(with user: AppUser)
 
     func navigateToProfile(with user: User)
+
+    func navigateToLoginScreen()
+
+    func navigateToSignUpScreen(with context: SignUpContext)
+
+}
+
+// MARK: - Input
+protocol AuthModuleInput: class {
+
+    func didTapHasExistingAccount()
+
 }

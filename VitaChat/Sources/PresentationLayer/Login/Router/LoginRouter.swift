@@ -1,18 +1,18 @@
 //
-//  SignUpRouter.swift
+//  LoginRouter.swift
 //  VitaChat
 //
-//  Created Okhrimenko Vitaliy on 03.05.2020.
+//  Created Okhrimenko Vitaliy on 09.08.2020.
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
 import UIKit
 
-final class SignUpRouter {
+final class LoginRouter {
 
     // MARK: - Properties
     weak var view: UIViewController?
 
 }
 
-extension SignUpRouter: SignUpRouterInput {}
+extension LoginRouter: LoginRouterInput {}

@@ -30,13 +30,13 @@ final class ChatRequestViewController: BaseViewController {
     private let acceptButton = GradientButton().with {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .white
-        $0.roundWithShadow(cornerRadius: 10)
+//        $0.roundWithShadow(cornerRadius: 10)
         $0.setTitle("ACCEPT", for: .normal)
     }
     private let denyButton = UIButton().with {
         $0.setTitleColor(.red, for: .normal)
         $0.backgroundColor = .white
-        $0.roundWithShadow(cornerRadius: 10)
+//        $0.roundWithShadow(cornerRadius: 10)
         $0.setupBorder(withColor: UIColor.red.withAlphaComponent(0.4), andWidth: 1)
         $0.setTitle("DENY", for: .normal)
     }
@@ -143,7 +143,7 @@ final class ChatRequestViewController: BaseViewController {
     }
 
     private func configure() {
-        containerView.roundWithShadow(cornerRadius: 30, shadowRadius: 5)
+//        containerView.roundWithShadow(cornerRadius: 30, shadowRadius: 5)
     }
 
 }

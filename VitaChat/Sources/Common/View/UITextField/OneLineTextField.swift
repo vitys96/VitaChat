@@ -59,7 +59,7 @@ class OneLineTextField: UITextField {
         bottomView.pin
             .horizontally()
             .height(1)
-            .bottom()
+            .bottom(-5)
     }
 
     // MARK: - Private methods

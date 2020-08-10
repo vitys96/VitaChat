@@ -123,7 +123,7 @@ final class HumanProfileViewController: BaseViewController {
     }
 
     private func configure() {
-        containerView.roundWithShadow(cornerRadius: 30, shadowRadius: 5)
+//        containerView.roundWithShadow(cornerRadius: 30, shadowRadius: 5)
     }
 
 }

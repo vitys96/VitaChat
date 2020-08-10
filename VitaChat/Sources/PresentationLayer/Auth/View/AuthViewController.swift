@@ -15,34 +15,24 @@ final class AuthViewController: BaseViewController {
 
     // MARK: - Subviews
     private let googleLabel = UILabel().with {
-        $0.text = "Get Started with"
+        $0.text = "Продолжить через"
         $0.textAlignment = .center
     }
     private let emailLabel = UILabel().with {
-        $0.text = "Or Sing Up with"
+        $0.text = "Или зарегистрируйтесь через"
     }
     private let alreadyOnBoardLabel = UILabel().with {
-        $0.text = "Already Onboard?"
+        $0.text = "Уже есть учетная запись?"
     }
-    private lazy var googlelButton = UIButton().with {
-        $0.setTitle("Google", for: .normal)
-        $0.backgroundColor = colorManager.n11
+    private lazy var googlelButton = StandardButton(title: "Google", backgroundColor: colorManager.n11).with {
         $0.setTitleColor(colorManager.n1, for: .normal)
-        $0.roundWithShadow(cornerRadius: 10, shadowRadius: 10)
     }
-    private lazy var emailButton = UIButton().with {
-        $0.backgroundColor = colorManager.n1
-        $0.setTitle("Email", for: .normal)
+    private lazy var emailButton = StandardButton(title: "Email").with {
         $0.setTitleColor(colorManager.n11, for: .normal)
-        $0.roundWithShadow(cornerRadius: 10, shadowRadius: 10)
     }
-    private lazy var loginButton = UIButton().with {
-        $0.setTitle("Login", for: .normal)
-        $0.backgroundColor = colorManager.n11
+    private lazy var loginButton = StandardButton(title: "Войти", backgroundColor: colorManager.n11).with {
         $0.setTitleColor(colorManager.n8, for: .normal)
-        $0.roundWithShadow(cornerRadius: 10, shadowRadius: 10)
     }
-
 
     // MARK: - Protocol properties
     private let output: AuthViewOutput
@@ -70,6 +60,14 @@ final class AuthViewController: BaseViewController {
                 GIDSignIn.sharedInstance().signIn()
         })
             .disposed(by: disposeBag)
+
+        loginButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in self.output.didTapLoginButton() })
+            .disposed(by: disposeBag)
+
+        emailButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in self.output.didTapSignUpButton() })
+            .disposed(by: disposeBag)
     }
 
     // MARK: Life cycle
@@ -95,13 +93,10 @@ final class AuthViewController: BaseViewController {
     }
 
     private func layout() {
-        let salesClosedImageWidth: CGFloat = 130
-        let buttonHeight: CGFloat = 60
-
 
         loginButton.pin
-            .height(buttonHeight)
             .horizontally(30)
+            .sizeToFit(.width)
             .bottom(view.pin.safeArea.bottom)
             .marginBottom(30)
 
@@ -112,8 +107,8 @@ final class AuthViewController: BaseViewController {
             .marginBottom(18)
 
         emailButton.pin
-            .height(buttonHeight)
             .horizontally(30)
+            .sizeToFit(.width)
             .above(of: alreadyOnBoardLabel)
             .marginBottom(30)
 
@@ -124,8 +119,8 @@ final class AuthViewController: BaseViewController {
             .marginBottom(18)
 
         googlelButton.pin
-            .height(buttonHeight)
             .horizontally(30)
+            .sizeToFit(.width)
             .above(of: emailLabel)
             .marginBottom(30)
 
@@ -159,8 +154,15 @@ final class AuthViewController: BaseViewController {
 }
 
 // MARK: - AuthViewInput
-extension AuthViewController: AuthViewInput {}
+extension AuthViewController: AuthViewInput {
 
+    func showData() {
+    }
+
+}
+
+
+// MARK: - GIDSignInDelegate
 extension AuthViewController: GIDSignInDelegate {
 
     func sign(_ signIn: GIDSignIn, didSignInFor user: GIDGoogleUser!, withError error: Error?) {

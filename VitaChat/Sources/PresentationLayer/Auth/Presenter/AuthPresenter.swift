@@ -33,6 +33,15 @@ final class AuthPresenter {
 // MARK: - AuthViewOutput
 extension AuthPresenter: AuthViewOutput {
 
+    func didTapSignUpButton() {
+        let context = SignUpContext(authModule: self)
+        router.navigateToSignUpScreen(with: context)
+    }
+
+    func didTapLoginButton() {
+        router.navigateToLoginScreen()
+    }
+
     func didSigned(user: GIDGoogleUser, withError error: Error?) {
         guard let _ = error else {
             view?.startLoadingAnimation()
@@ -57,5 +66,14 @@ extension AuthPresenter: AuthInteractorOutput {
         router.navigateToProfile(with: user)
     }
     
+}
+
+// MARK: - AuthModuleInput
+extension AuthPresenter: AuthModuleInput {
+
+    func didTapHasExistingAccount() {
+        router.navigateToLoginScreen()
+    }
+
 }
 

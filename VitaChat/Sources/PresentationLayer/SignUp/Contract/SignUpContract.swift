@@ -10,17 +10,25 @@ import UIKit
 
 // MARK: - Builder
 protocol SignUpBuilderProtocol: class {
-    static func build() -> SignUpViewController
+    static func build(with context: SignUpContext) -> SignUpViewController
 }
 
 // MARK: - View
-protocol SignUpViewInput: class {}
+protocol SignUpViewInput: class {
+
+    func setupScreen(with model: SignUpViewModel)
+    
+}
 
 protocol SignUpViewOutput {
    /**
      Метод сообщающий, что view была загружена
    */
     func viewDidLoad()
+
+    func didTapLoginButton()
+
+    func didTapRegisterButton()
 }
 
 // MARK: - Interactor
@@ -28,4 +36,10 @@ protocol SignUpInteractorInput {}
 protocol SignUpInteractorOutput: class {}
 
 // MARK: - Router
-protocol SignUpRouterInput {}
+protocol SignUpRouterInput {
+
+    func dismiss(with authModule: AuthModuleInput)
+
+    func navigateToMainTabBarController()
+
+}

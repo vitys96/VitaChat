@@ -18,6 +18,16 @@ final class AuthRouter {
 
 extension AuthRouter: AuthRouterInput {
 
+    func navigateToSignUpScreen(with context: SignUpContext) {
+        let loginVC = SignUpBuilder.build(with: context)
+        view?.present(loginVC, animated: true)
+    }
+
+    func navigateToLoginScreen() {
+        let loginVC = LoginBuilder.build()
+        view?.present(loginVC, animated: true)
+    }
+
     func navigateToProfile(with user: User) {
         let profileVC = ProfileBuilder.build(with: user)
         UIApplication.getTopViewController()?.present(profileVC, animated: true)

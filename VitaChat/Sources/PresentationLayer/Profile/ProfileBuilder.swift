@@ -19,7 +19,7 @@ final class ProfileBuilder {
 }
 
 // MARK: - ProfileBuilderProtocol
-extension ProfileBuilder :ProfileBuilderProtocol {
+extension ProfileBuilder: ProfileBuilderProtocol {
 
     static func build(with user: User) -> ProfileViewController {
         let interactor = ProfileInteractor(firestoreService: DIContainer.firestoreService,

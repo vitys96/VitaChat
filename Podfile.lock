@@ -293,6 +293,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - IQKeyboardManagerSwift (6.5.5)
   - JGProgressHUD (2.1)
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
@@ -320,6 +321,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - GoogleSignIn
+  - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher
   - PanModal
@@ -352,6 +354,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMAppAuth
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - JGProgressHUD
     - Kingfisher
     - leveldb-library
@@ -387,6 +390,7 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
@@ -398,6 +402,6 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 71a710b3b09dde5542f63e9262b59418ce0fded3
+PODFILE CHECKSUM: e8ef101a7d91439a206a4bf274f877a98decae75
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

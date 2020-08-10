@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            (.people, PeopleBuilder.build()),
 //            (.conversations, ConversationsBuilder.build())
 //        ])
-        self.window?.rootViewController = ChatRequestBuilder.build()
+        self.window?.rootViewController = AuthBuilder.build()
 //        window?.rootViewController = mainTabBar
         window?.makeKeyAndVisible()
     }
