@@ -20,10 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         FirebaseApp.configure()
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 
         DIContainer.colorManager.setup(
             n1: UIColor(named: "n1"),
@@ -44,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             staticBlack: UIColor(named: "staticBlack"),
             tabBar: UIColor(named: "tabBar")
         )
+        setupMainWindow()
+
         DIContainer.appDelegates.forEach {
             _ = $0.application?(application, didFinishLaunchingWithOptions: launchOptions)
         }
@@ -58,6 +61,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private methods
     private func setupMainWindow() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let userService = DIContainer.userService
+
+        if let user = userService.getUser() {
+            let tabBarController = TabBarController(currentUser: user)
+            tabBarController.configure(screens: [
+                (.conversations, ConversationsBuilder.build()),
+                (.people, PeopleBuilder.build())
+            ])
+            window?.rootViewController = tabBarController
+        } else {
+            let viewController = AuthBuilder.build()
+            window?.rootViewController = viewController
+        }
+        window?.makeKeyAndVisible()
     }
 
 }

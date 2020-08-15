@@ -44,6 +44,9 @@ final class DIContainer {
         container.register {
             FirestoreService() as FirestoreServiceProtocol
         }
+        container.register {
+            UserService() as UserServiceProtocol
+        }
 
     }
 
@@ -92,6 +95,13 @@ final class DIContainer {
             fatalError()
         }
         return firestoreService
+    }
+
+    static var userService: UserServiceProtocol {
+        guard let userService = try? instance.resolve() as UserServiceProtocol else {
+            fatalError()
+        }
+        return userService
     }
 
 }

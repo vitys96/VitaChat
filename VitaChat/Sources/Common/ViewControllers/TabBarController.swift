@@ -12,17 +12,17 @@ final class TabBarController: UITabBarController {
 
     // MARK: - Properties
     let colorManager = DIContainer.colorManager
-//    private let currentUser: AppUser
+    private let currentUser: AppUser
 
     // MARK: - Init
-//    init() {
-//        self.currentUser = currentUser
-//        super.init(nibName: nil, bundle: nil)
-//    }
+    init(currentUser: AppUser) {
+        self.currentUser = currentUser
+        super.init(nibName: nil, bundle: nil)
+    }
 
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Life cycle
     override func viewDidLoad() {

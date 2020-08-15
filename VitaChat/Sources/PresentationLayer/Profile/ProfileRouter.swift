@@ -15,4 +15,19 @@ final class ProfileRouter {
 
 }
 
-extension ProfileRouter: ProfileRouterInput {}
+extension ProfileRouter: ProfileRouterInput {
+
+    func showErrorAlert(title: String) {
+        view?.showErrorAlert(labelText: "Ошибка", detailText: title)
+    }
+
+    func navigateToMainScreen(with user: AppUser) {
+        let tabBarControoler = TabBarController(currentUser: user)
+        tabBarControoler.configure(screens: [
+            (.conversations, ConversationsBuilder.build())
+        ])
+        tabBarControoler.modalPresentationStyle = .fullScreen
+        view?.present(tabBarControoler, animated: true)
+
+    }
+}

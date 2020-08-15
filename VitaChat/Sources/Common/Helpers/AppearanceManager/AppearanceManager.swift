@@ -25,8 +25,6 @@ final class AppearanceManager: NSObject, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = colorManager.n1
         UINavigationBar.appearance().barTintColor = colorManager.n13
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: colorManager.n1]
-//        UINavigationBar.appearance().backIndicatorImage = UIImage.withName("BackNavigationImage")
-//        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage.withName("BackNavigationImage")
     }
 
     private func configureTableView() {

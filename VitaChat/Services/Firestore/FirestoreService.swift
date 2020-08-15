@@ -8,6 +8,7 @@
 
 import Firebase
 import FirebaseFirestore
+import RxSwift
 
 
 final class FirestoreService {
@@ -19,17 +20,29 @@ final class FirestoreService {
         return db.collection("users")
     }
 
-    // MARK: - Init
-    init() {}
+    private func saveUser(uid: String, userData: AppUser) -> Observable<AppUser> {
+        return Single<AppUser>.create { single in
+            self.usersRef.document(uid).setData(userData.representation) { error in
+                if let err = error {
+                    return single(.error(err))
+                } else {
+                    single(.success(userData))
+                }
+            }
+            return Disposables.create()
+        }.asObservable()
+    }
 
 }
 
 extension FirestoreService: FirestoreServiceProtocol {
 
     func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?, description: String?,
-                         sex: String, completion: @escaping (Result<AppUser, Error>) -> Void) {
+                         sex: String) -> Single<AppUser> {
 
-        guard let name = username, let descr = description else { return }
+        guard let name = username, let descr = description else {
+            return .error(AuthUserError.notFilled)
+        }
 
         let user = AppUser(username: name,
                            email: email,
@@ -37,13 +50,8 @@ extension FirestoreService: FirestoreServiceProtocol {
                            description: descr,
                            sex: sex,
                            id: id)
-        usersRef.document(id).setData(user.representation) { error in
-            if let err = error {
-                completion(.failure(err))
-            } else {
-                completion(.success(user))
-            }
-        }
+
+        return saveUser(uid: id, userData: user).asSingle()
 
     }
 

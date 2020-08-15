@@ -16,6 +16,10 @@
 		71104780245D954000D37620 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110477F245D954000D37620 /* FontManager.swift */; };
 		71104782245D955B00D37620 /* FontManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71104781245D955B00D37620 /* FontManagerProtocol.swift */; };
 		71104785245D95AF00D37620 /* VitaFonts.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71104784245D95AF00D37620 /* VitaFonts.plist */; };
+		711A9F2224E3298F00400D1E /* UIAlertVC + RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A9F2124E3298F00400D1E /* UIAlertVC + RxSwift.swift */; };
+		71268D1924E48DEF00FE4857 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71268D1824E48DEF00FE4857 /* UserService.swift */; };
+		71268D1C24E48E0000FE4857 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71268D1B24E48E0000FE4857 /* UserServiceProtocol.swift */; };
+		71268D1F24E48E6400FE4857 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71268D1E24E48E6400FE4857 /* UserDefaultsKeys.swift */; };
 		713BBB0D245C30F3008BF210 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB0C245C30F3008BF210 /* ColorManager.swift */; };
 		713BBB10245C3120008BF210 /* ColorManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB0F245C3120008BF210 /* ColorManagerProtocol.swift */; };
 		713BBB15245C3172008BF210 /* UIcolor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB14245C3172008BF210 /* UIcolor+Hex.swift */; };
@@ -23,6 +27,7 @@
 		713BBB1B245C3B87008BF210 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB1A245C3B87008BF210 /* DependencyContainer.swift */; };
 		713BBB1E245C40EC008BF210 /* UIImage+BundledImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB1D245C40EC008BF210 /* UIImage+BundledImage.swift */; };
 		713BBB22245C4183008BF210 /* NSObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713BBB21245C4183008BF210 /* NSObjectProtocol.swift */; };
+		713CA0E824E48FB900019D99 /* UserDefaults+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713CA0E724E48FB900019D99 /* UserDefaults+Codable.swift */; };
 		716D1E5424702BAA000B8648 /* ConversationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D1E5324702BAA000B8648 /* ConversationCellViewModel.swift */; };
 		716D1E562470881B000B8648 /* WaitingChatsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716D1E552470881B000B8648 /* WaitingChatsCollectionCell.swift */; };
 		716F07652467007400C859B4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F07642467007400C859B4 /* BaseViewController.swift */; };
@@ -106,6 +111,8 @@
 		71BA9CC2246063E300F704F5 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CBB246063E300F704F5 /* ProfileBuilder.swift */; };
 		71BA9CC3246063E300F704F5 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CBC246063E300F704F5 /* ProfileInteractor.swift */; };
 		71BA9CC6246065AE00F704F5 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BA9CC5246065AE00F704F5 /* ProfileViewModel.swift */; };
+		71C946A924E2922600CFF378 /* SignUpContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C946A824E2922600CFF378 /* SignUpContact.swift */; };
+		71C946AC24E2955800CFF378 /* SignUpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C946AB24E2955800CFF378 /* SignUpError.swift */; };
 		71D9490324DF40B300476CD6 /* NotificationCenter+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D9490224DF40B300476CD6 /* NotificationCenter+Rx.swift */; };
 		71EAA5E1245F552500CF1449 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EAA5E0245F552500CF1449 /* OneLineTextField.swift */; };
 		71F1562024693E4300444D06 /* ConversationsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1561924693E4300444D06 /* ConversationsContract.swift */; };
@@ -122,13 +129,11 @@
 		71F1563824699A5100444D06 /* waitingChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F1563624699A5000444D06 /* waitingChats.json */; };
 		71F1563924699A5100444D06 /* activeChats.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F1563724699A5100444D06 /* activeChats.json */; };
 		71F1563D2469E50F00444D06 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1563C2469E50F00444D06 /* GradientView.swift */; };
-		71FCB22924E14FA2002793BE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FCB22824E14FA2002793BE /* AuthViewModel.swift */; };
 		71FD36D024DDDC170057CA06 /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD36CF24DDDC170057CA06 /* StandardButton.swift */; };
 		71FE9C952460A78B008D7E4A /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C942460A78B008D7E4A /* AddPhotoView.swift */; };
 		71FE9C982460B652008D7E4A /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C972460B652008D7E4A /* AppUser.swift */; };
 		71FE9C9B2460B6B8008D7E4A /* AuthUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */; };
 		71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */; };
-		71FE9CA12460C445008D7E4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9CA02460C445008D7E4A /* SceneDelegate.swift */; };
 		A17A495D8259E5E51F29E5AD /* Pods_VitaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C19D9A6676F1302964976B /* Pods_VitaChat.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +149,10 @@
 		7110477F245D954000D37620 /* FontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		71104781245D955B00D37620 /* FontManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontManagerProtocol.swift; sourceTree = "<group>"; };
 		71104784245D95AF00D37620 /* VitaFonts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VitaFonts.plist; sourceTree = "<group>"; };
+		711A9F2124E3298F00400D1E /* UIAlertVC + RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertVC + RxSwift.swift"; sourceTree = "<group>"; };
+		71268D1824E48DEF00FE4857 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		71268D1B24E48E0000FE4857 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		71268D1E24E48E6400FE4857 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		713BBB0C245C30F3008BF210 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		713BBB0F245C3120008BF210 /* ColorManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManagerProtocol.swift; sourceTree = "<group>"; };
 		713BBB14245C3172008BF210 /* UIcolor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIcolor+Hex.swift"; sourceTree = "<group>"; };
@@ -151,6 +160,7 @@
 		713BBB1A245C3B87008BF210 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		713BBB1D245C40EC008BF210 /* UIImage+BundledImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BundledImage.swift"; sourceTree = "<group>"; };
 		713BBB21245C4183008BF210 /* NSObjectProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.swift; sourceTree = "<group>"; };
+		713CA0E724E48FB900019D99 /* UserDefaults+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Codable.swift"; sourceTree = "<group>"; };
 		716D1E5324702BAA000B8648 /* ConversationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellViewModel.swift; sourceTree = "<group>"; };
 		716D1E552470881B000B8648 /* WaitingChatsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingChatsCollectionCell.swift; sourceTree = "<group>"; };
 		716F07642467007400C859B4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +246,8 @@
 		71BA9CBB246063E300F704F5 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
 		71BA9CBC246063E300F704F5 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		71BA9CC5246065AE00F704F5 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		71C946A824E2922600CFF378 /* SignUpContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpContact.swift; sourceTree = "<group>"; };
+		71C946AB24E2955800CFF378 /* SignUpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpError.swift; sourceTree = "<group>"; };
 		71D9490224DF40B300476CD6 /* NotificationCenter+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Rx.swift"; sourceTree = "<group>"; };
 		71EAA5E0245F552500CF1449 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
 		71F1561924693E4300444D06 /* ConversationsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsContract.swift; sourceTree = "<group>"; };
@@ -252,13 +264,11 @@
 		71F1563624699A5000444D06 /* waitingChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waitingChats.json; sourceTree = "<group>"; };
 		71F1563724699A5100444D06 /* activeChats.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activeChats.json; sourceTree = "<group>"; };
 		71F1563C2469E50F00444D06 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		71FCB22824E14FA2002793BE /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		71FD36CF24DDDC170057CA06 /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
 		71FE9C942460A78B008D7E4A /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
 		71FE9C972460B652008D7E4A /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserError.swift; sourceTree = "<group>"; };
 		71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
-		71FE9CA02460C445008D7E4A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92C19D9A6676F1302964976B /* Pods_VitaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -286,6 +296,7 @@
 		7109EF5E246023BB000AB219 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				71268D1724E48DDD00FE4857 /* User */,
 				71B1F617246188DD0017D83E /* Firestore */,
 				71B1F60E24616DC70017D83E /* Validate */,
 				71B1F60624615EBC0017D83E /* Storage */,
@@ -348,6 +359,14 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		711A9F2024E3296C00400D1E /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				711A9F2124E3298F00400D1E /* UIAlertVC + RxSwift.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 		711C7DD5245C21A300EB6254 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,9 +380,35 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		71268D1724E48DDD00FE4857 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				71268D1A24E48DF300FE4857 /* Protocol */,
+				71268D1824E48DEF00FE4857 /* UserService.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		71268D1A24E48DF300FE4857 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				71268D1B24E48E0000FE4857 /* UserServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		71268D1D24E48E4800FE4857 /* UtilityTypes */ = {
+			isa = PBXGroup;
+			children = (
+				71268D1E24E48E6400FE4857 /* UserDefaultsKeys.swift */,
+			);
+			path = UtilityTypes;
+			sourceTree = "<group>";
+		};
 		713BBB09245C2F97008BF210 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				71268D1D24E48E4800FE4857 /* UtilityTypes */,
 				71A53AAB2471AE6000E2923C /* Constants */,
 				71B1F61D24618E770017D83E /* Protocols */,
 				71AED7CD245FFD380026D271 /* ViewControllers */,
@@ -416,6 +461,7 @@
 		713BBB12245C3150008BF210 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				711A9F2024E3296C00400D1E /* UIViewController */,
 				716F4A192475A28400496FC5 /* UIStackView */,
 				71F1562924695B8000444D06 /* UICollectionView */,
 				716F07662467F7FD00C859B4 /* UIEdgeInset */,
@@ -439,6 +485,7 @@
 		713BBB16245C3187008BF210 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				713CA0E624E48FB100019D99 /* UserDefaults */,
 				71F15633246999ED00444D06 /* Bundle */,
 				713BBB1F245C4169008BF210 /* NSObjectProtocol */,
 				713BBB20245C417A008BF210 /* String */,
@@ -480,11 +527,66 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		713CA0E624E48FB100019D99 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				713CA0E724E48FB900019D99 /* UserDefaults+Codable.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		7157A03024E46D93005B1868 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CB7246063E300F704F5 /* ProfileContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		7157A03124E46D99005B1868 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CBB246063E300F704F5 /* ProfileBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		7157A03224E46D9F005B1868 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CBA246063E300F704F5 /* ProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7157A03324E46DA4005B1868 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CB8246063E300F704F5 /* ProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7157A03424E46DAA005B1868 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CBC246063E300F704F5 /* ProfileInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		7157A03524E46DAF005B1868 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				71BA9CB9246063E300F704F5 /* ProfileRouter.swift */,
+			);
+			name = Router;
+			sourceTree = "<group>";
+		};
 		715889AB244F7A7300178F19 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				719D8A8B244F682E00319E42 /* AppDelegate.swift */,
-				71FE9CA02460C445008D7E4A /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -701,9 +803,7 @@
 		719D8AA0244F711000319E42 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				711C7DD5245C21A300EB6254 /* Auth */,
-				71A7173D245EDC520008A738 /* SignUp */,
-				719C423224E08A7300485113 /* Login */,
+				71F6A79E24E8687500C74BC3 /* AuthStory */,
 				716F4A0A24759E3A00496FC5 /* ChatRequest */,
 				71B43A2E24746AFB00F18449 /* HumanProfile */,
 				71A53AAE2471CEB200E2923C /* PeopleNearby */,
@@ -734,12 +834,12 @@
 			children = (
 				71A53ABD2471CFCA00E2923C /* Model */,
 				71A53AC22471D2EC00E2923C /* Views */,
-				71A53AB02471CEC800E2923C /* PeopleContract.swift */,
-				71A53AB42471CEC800E2923C /* PeopleBuilder.swift */,
-				71A53AB32471CEC800E2923C /* PeopleViewController.swift */,
-				71A53AB12471CEC800E2923C /* PeoplePresenter.swift */,
-				71A53AB52471CEC800E2923C /* PeopleInteractor.swift */,
-				71A53AB22471CEC800E2923C /* PeopleRouter.swift */,
+				71F6A79F24E8688800C74BC3 /* Contract */,
+				71F6A7A024E8688F00C74BC3 /* Builder */,
+				71F6A7A124E8689600C74BC3 /* View */,
+				71F6A7A224E8689C00C74BC3 /* Presenter */,
+				71F6A7A324E868A500C74BC3 /* Interactor */,
+				71F6A7A424E868AB00C74BC3 /* Router */,
 			);
 			path = PeopleNearby;
 			sourceTree = "<group>";
@@ -772,6 +872,7 @@
 		71A7173D245EDC520008A738 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				71C946A724E2921300CFF378 /* Model */,
 				71FD36D224DDF12F0057CA06 /* Contract */,
 				71FD36D324DDF1370057CA06 /* Builder */,
 				71FD36D124DDF11A0057CA06 /* View */,
@@ -884,12 +985,12 @@
 			children = (
 				71766D4F2461F4AB00F41BC5 /* Model */,
 				71BA9CC42460659C00F704F5 /* ViewModel */,
-				71BA9CB7246063E300F704F5 /* ProfileContract.swift */,
-				71BA9CBB246063E300F704F5 /* ProfileBuilder.swift */,
-				71BA9CBA246063E300F704F5 /* ProfileViewController.swift */,
-				71BA9CB8246063E300F704F5 /* ProfilePresenter.swift */,
-				71BA9CBC246063E300F704F5 /* ProfileInteractor.swift */,
-				71BA9CB9246063E300F704F5 /* ProfileRouter.swift */,
+				7157A03024E46D93005B1868 /* Contract */,
+				7157A03124E46D99005B1868 /* Builder */,
+				7157A03224E46D9F005B1868 /* View */,
+				7157A03324E46DA4005B1868 /* Presenter */,
+				7157A03424E46DAA005B1868 /* Interactor */,
+				7157A03524E46DAF005B1868 /* Router */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -900,6 +1001,14 @@
 				71BA9CC5246065AE00F704F5 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		71C946A724E2921300CFF378 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				71C946A824E2922600CFF378 /* SignUpContact.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		71D9490124DF409E00476CD6 /* Reactive */ = {
@@ -968,6 +1077,7 @@
 			isa = PBXGroup;
 			children = (
 				71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */,
+				71C946AB24E2955800CFF378 /* SignUpError.swift */,
 			);
 			path = AuthErrors;
 			sourceTree = "<group>";
@@ -1005,6 +1115,64 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		71F6A79E24E8687500C74BC3 /* AuthStory */ = {
+			isa = PBXGroup;
+			children = (
+				711C7DD5245C21A300EB6254 /* Auth */,
+				71A7173D245EDC520008A738 /* SignUp */,
+				719C423224E08A7300485113 /* Login */,
+			);
+			path = AuthStory;
+			sourceTree = "<group>";
+		};
+		71F6A79F24E8688800C74BC3 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB02471CEC800E2923C /* PeopleContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		71F6A7A024E8688F00C74BC3 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB42471CEC800E2923C /* PeopleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		71F6A7A124E8689600C74BC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB32471CEC800E2923C /* PeopleViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		71F6A7A224E8689C00C74BC3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB12471CEC800E2923C /* PeoplePresenter.swift */,
+			);
+			name = Presenter;
+			sourceTree = "<group>";
+		};
+		71F6A7A324E868A500C74BC3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB52471CEC800E2923C /* PeopleInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		71F6A7A424E868AB00C74BC3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				71A53AB22471CEC800E2923C /* PeopleRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		71FCB22124E14EA1002793BE /* Contract */ = {
 			isa = PBXGroup;
 			children = (
@@ -1024,7 +1192,6 @@
 		71FCB22324E14F21002793BE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				71FCB22724E14F94002793BE /* View */,
 				71763772245CB97900307C51 /* AuthViewController.swift */,
 			);
 			path = View;
@@ -1052,14 +1219,6 @@
 				71763771245CB97900307C51 /* AuthRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		71FCB22724E14F94002793BE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				71FCB22824E14FA2002793BE /* AuthViewModel.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		71FD36D124DDF11A0057CA06 /* View */ = {
@@ -1374,10 +1533,12 @@
 				7109EF62246023E9000AB219 /* AuthService.swift in Sources */,
 				71763779245CB97900307C51 /* AuthViewController.swift in Sources */,
 				719C423F24E08AE300485113 /* LoginBuilder.swift in Sources */,
+				71C946AC24E2955800CFF378 /* SignUpError.swift in Sources */,
 				716F07682467F80700C859B4 /* UIEdgeInsets.swift in Sources */,
 				71A53AC72471D33800E2923C /* PeopleViewModel.swift in Sources */,
 				71A53ABA2471CEC800E2923C /* PeopleViewController.swift in Sources */,
 				71B43A3724746B4100F18449 /* HumanProfileContract.swift in Sources */,
+				71268D1C24E48E0000FE4857 /* UserServiceProtocol.swift in Sources */,
 				7109EF64246023F8000AB219 /* AuthServiceProtocol.swift in Sources */,
 				71F1562124693E4300444D06 /* ConversationsPresenter.swift in Sources */,
 				71F1562524693E4300444D06 /* ConversationsInteractor.swift in Sources */,
@@ -1386,6 +1547,7 @@
 				71A53AB92471CEC800E2923C /* PeopleRouter.swift in Sources */,
 				71EAA5E1245F552500CF1449 /* OneLineTextField.swift in Sources */,
 				71A71737245EDC4F0008A738 /* SignUpContract.swift in Sources */,
+				71268D1F24E48E6400FE4857 /* UserDefaultsKeys.swift in Sources */,
 				71F1562F2469670C00444D06 /* AppearanceManager.swift in Sources */,
 				71A7173B245EDC4F0008A738 /* SignUpBuilder.swift in Sources */,
 				71A53ABC2471CEC800E2923C /* PeopleInteractor.swift in Sources */,
@@ -1401,6 +1563,7 @@
 				71104782245D955B00D37620 /* FontManagerProtocol.swift in Sources */,
 				719C424924E08CBC00485113 /* LoginViewModel.swift in Sources */,
 				71BA9CC0246063E300F704F5 /* ProfileRouter.swift in Sources */,
+				713CA0E824E48FB900019D99 /* UserDefaults+Codable.swift in Sources */,
 				71F1563524699A1E00444D06 /* Bundle+Decodable.swift in Sources */,
 				71104780245D954000D37620 /* FontManager.swift in Sources */,
 				71B43A3924746B4100F18449 /* HumanProfileRouter.swift in Sources */,
@@ -1410,7 +1573,6 @@
 				71BA9CC1246063E300F704F5 /* ProfileViewController.swift in Sources */,
 				719E12912479671000477F58 /* SignUpViewModel.swift in Sources */,
 				71BA9CC6246065AE00F704F5 /* ProfileViewModel.swift in Sources */,
-				71FE9CA12460C445008D7E4A /* SceneDelegate.swift in Sources */,
 				716F4A1B2475A29600496FC5 /* StackView + Entension.swift in Sources */,
 				71104774245D780300D37620 /* UIView+Subviews.swift in Sources */,
 				71A53AB72471CEC800E2923C /* PeopleContract.swift in Sources */,
@@ -1419,10 +1581,11 @@
 				71A53AAA24714E3800E2923C /* SectionHeader.swift in Sources */,
 				71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */,
 				71A7173A245EDC4F0008A738 /* SignUpViewController.swift in Sources */,
-				71FCB22924E14FA2002793BE /* AuthViewModel.swift in Sources */,
+				711A9F2224E3298F00400D1E /* UIAlertVC + RxSwift.swift in Sources */,
 				71FE9C952460A78B008D7E4A /* AddPhotoView.swift in Sources */,
 				71AED7CF245FFD450026D271 /* TabBarController.swift in Sources */,
 				719C423D24E08AE300485113 /* LoginRouter.swift in Sources */,
+				71C946A924E2922600CFF378 /* SignUpContact.swift in Sources */,
 				71BA9CBF246063E300F704F5 /* ProfilePresenter.swift in Sources */,
 				716F4A1E2475BF9300496FC5 /* GradientButton.swift in Sources */,
 				71B1F61124616DDB0017D83E /* ValidationServiceProtocol.swift in Sources */,
@@ -1430,6 +1593,7 @@
 				71F1562424693E4300444D06 /* ConversationsBuilder.swift in Sources */,
 				71B1F619246188EF0017D83E /* FirestoreService.swift in Sources */,
 				7176377A245CB97900307C51 /* AuthBuilder.swift in Sources */,
+				71268D1924E48DEF00FE4857 /* UserService.swift in Sources */,
 				716F4A1524759E4B00496FC5 /* ChatRequestRouter.swift in Sources */,
 				71763778245CB97900307C51 /* AuthRouter.swift in Sources */,
 				716F4A1324759E4B00496FC5 /* ChatRequestContract.swift in Sources */,

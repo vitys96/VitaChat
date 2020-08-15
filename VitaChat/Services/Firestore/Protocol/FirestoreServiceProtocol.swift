@@ -8,10 +8,11 @@
 
 import Firebase
 import FirebaseFirestore
+import RxSwift
 
 protocol FirestoreServiceProtocol {
 
     func getUserData(user: User, completion: @escaping (Result<AppUser, Error>) -> Void)
     func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?,
-                         description: String?, sex: String, completion: @escaping (Result<AppUser, Error>) -> Void)
+                         description: String?, sex: String) -> Single<AppUser>
 }

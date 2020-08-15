@@ -18,6 +18,8 @@ struct ProfileViewModel {
     let aboutMeTextFieldPlaceholder: String
     let sex: NSAttributedString
     let actionButtonTitle: NSAttributedString
+    let segmentedControlNormalAttributes: [NSAttributedString.Key : Any]
+    let segmentedControlSelectedAttributes: [NSAttributedString.Key : Any]
 
     // MARK: - Init
     init() {
@@ -31,6 +33,8 @@ struct ProfileViewModel {
         aboutMeTextFieldPlaceholder = "Люблю читать русскую классику"
         sex = "Выберите Пол".addAttributes(fontStyle: .regular, size: 20, color: standardColor)
         actionButtonTitle = "Начать переписку".addAttributes(fontStyle: .bold, size: 20, color: whiteColor)
+        segmentedControlNormalAttributes = [.foregroundColor: DIContainer.colorManager.n1]
+        segmentedControlSelectedAttributes = [.foregroundColor: whiteColor]
     }
 
 }

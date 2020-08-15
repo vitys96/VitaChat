@@ -12,11 +12,11 @@ public protocol ColorManagerProtocol {
 
     /** Цветовая палитра приложения */
     var n1: UIColor { get }
-    var n2: UIColor { get }     // Кастомный цвет для WL
+    var n2: UIColor { get }
     var n3: UIColor { get }
     var n4: UIColor { get }
-    var n5: UIColor { get }     // Кастомный цвет для WL
-    var n6: UIColor { get }     // Кастомный цвет для WL
+    var n5: UIColor { get }
+    var n6: UIColor { get }
     var n7: UIColor { get }
     var n8: UIColor { get }
     var n9: UIColor { get }
