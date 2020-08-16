@@ -18,5 +18,13 @@ protocol UserServiceProtocol {
     Возвращает текущего авторизованного пользователя
     */
     func getUser() -> AppUser?
+    /**
+     Возвращает флаг "Пользователь авторизован"
+    */
+    func isUserAuthorized() -> Bool
+    /**
+     Удаление всех данных аккаунта пользователя из хранилища
+    */
+    func deleteUserAccount()
 
 }

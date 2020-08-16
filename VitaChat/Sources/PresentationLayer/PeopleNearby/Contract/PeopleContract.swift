@@ -10,13 +10,17 @@ import UIKit
 
 // MARK: - Builder
 protocol PeopleBuilderProtocol: class {
-    static func build() -> PeopleViewController
+    static func build(with currentUser: AppUser) -> PeopleViewController
 }
 
 // MARK: - View
 protocol PeopleViewInput: class {
 
-     func reloadData(with searchText: String?)
+    func startLoadingAnimation()
+
+    func stopLoadingAnimation()
+
+    func reloadData(with searchText: String?)
 
 }
 
@@ -25,11 +29,25 @@ protocol PeopleViewOutput {
      Метод сообщающий, что view была загружена
    */
     func viewDidLoad()
+
+    func didTapLogOutButton()
 }
 
 // MARK: - Interactor
-protocol PeopleInteractorInput {}
-protocol PeopleInteractorOutput: class {}
+protocol PeopleInteractorInput {
+
+    func logOutUser()
+
+}
+protocol PeopleInteractorOutput: class {
+
+    func userDidLogOut()
+}
 
 // MARK: - Router
-protocol PeopleRouterInput {}
+protocol PeopleRouterInput {
+
+    func showLogOutAlert(destructiveHandler: @escaping (Bool) -> Void)
+
+    func navigateToAuth()
+}

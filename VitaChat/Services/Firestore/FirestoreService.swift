@@ -33,6 +33,22 @@ final class FirestoreService {
         }.asObservable()
     }
 
+    private func getDocument(docRef: DocumentReference) -> Observable<AppUser> {
+        return Single<AppUser>.create { single in
+            docRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    guard let appUser = AppUser(document: document) else {
+                        return single(.error(AuthUserError.cannotUnwrapToUser))
+                    }
+                    single(.success(appUser))
+                } else {
+                    return single(.error(AuthUserError.cannotGetUserInfo))
+                }
+            }
+            return Disposables.create()
+        }.asObservable()
+    }
+
 }
 
 extension FirestoreService: FirestoreServiceProtocol {
@@ -55,18 +71,8 @@ extension FirestoreService: FirestoreServiceProtocol {
 
     }
 
-    func getUserData(user: User, completion: @escaping (Result<AppUser, Error>) -> Void) {
+    func getUserData(user: User) -> Single<AppUser> {
         let docRef = usersRef.document(user.uid)
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                guard let muser = AppUser(document: document) else {
-                    completion(.failure(AuthUserError.cannotUnwrapToUser))
-                    return
-                }
-                completion(.success(muser))
-            } else {
-                completion(.failure(AuthUserError.cannotGetUserInfo))
-            }
-        }
+        return getDocument(docRef: docRef).asSingle()
     }
 }

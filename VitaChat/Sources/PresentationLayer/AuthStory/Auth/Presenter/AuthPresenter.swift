@@ -56,6 +56,11 @@ extension AuthPresenter: AuthViewOutput {
 // MARK: - AuthInteractorOutput
 extension AuthPresenter: AuthInteractorOutput {
 
+    func userFetchedWithError(error: Error) {
+        view?.stopLoadingAnimation()
+        router.showErrorAlert(title: error.localizedDescription)
+    }
+
     func userDidExistInDB(user: AppUser) {
         view?.stopLoadingAnimation()
         router.navigateToMainTabBar(with: user)

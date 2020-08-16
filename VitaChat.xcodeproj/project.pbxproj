@@ -808,7 +808,6 @@
 				71B43A2E24746AFB00F18449 /* HumanProfile */,
 				71A53AAE2471CEB200E2923C /* PeopleNearby */,
 				71F1561724693E2600444D06 /* Conversations */,
-				71BA9CB5246063D600F704F5 /* Profile */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -1044,12 +1043,12 @@
 			children = (
 				71F15630246999A100444D06 /* Model */,
 				71F156262469582E00444D06 /* Views */,
-				71F1561924693E4300444D06 /* ConversationsContract.swift */,
-				71F1561D24693E4300444D06 /* ConversationsBuilder.swift */,
-				71F1561C24693E4300444D06 /* ConversationsViewController.swift */,
-				71F1561A24693E4300444D06 /* ConversationsPresenter.swift */,
-				71F1561E24693E4300444D06 /* ConversationsInteractor.swift */,
-				71F1561B24693E4300444D06 /* ConversationsRouter.swift */,
+				71F6A7A524E88B9A00C74BC3 /* Contract */,
+				71F6A7A624E88BA000C74BC3 /* Builder */,
+				71F6A7A724E88BA700C74BC3 /* View */,
+				71F6A7A824E88BAC00C74BC3 /* Presenter */,
+				71F6A7A924E88BB300C74BC3 /* Interactor */,
+				71F6A7AA24E88BB900C74BC3 /* Router */,
 			);
 			path = Conversations;
 			sourceTree = "<group>";
@@ -1121,6 +1120,7 @@
 				711C7DD5245C21A300EB6254 /* Auth */,
 				71A7173D245EDC520008A738 /* SignUp */,
 				719C423224E08A7300485113 /* Login */,
+				71BA9CB5246063D600F704F5 /* Profile */,
 			);
 			path = AuthStory;
 			sourceTree = "<group>";
@@ -1169,6 +1169,54 @@
 			isa = PBXGroup;
 			children = (
 				71A53AB22471CEC800E2923C /* PeopleRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		71F6A7A524E88B9A00C74BC3 /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561924693E4300444D06 /* ConversationsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		71F6A7A624E88BA000C74BC3 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561D24693E4300444D06 /* ConversationsBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		71F6A7A724E88BA700C74BC3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561C24693E4300444D06 /* ConversationsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		71F6A7A824E88BAC00C74BC3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561A24693E4300444D06 /* ConversationsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		71F6A7A924E88BB300C74BC3 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561E24693E4300444D06 /* ConversationsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		71F6A7AA24E88BB900C74BC3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				71F1561B24693E4300444D06 /* ConversationsRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";

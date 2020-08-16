@@ -12,11 +12,9 @@ final class TabBarController: UITabBarController {
 
     // MARK: - Properties
     let colorManager = DIContainer.colorManager
-    private let currentUser: AppUser
 
     // MARK: - Init
-    init(currentUser: AppUser) {
-        self.currentUser = currentUser
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 

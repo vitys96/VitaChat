@@ -34,21 +34,19 @@ final class AuthInteractor {
 extension AuthInteractor: AuthInteractorInput {
 
     func userAuthByGoogle(user: GIDGoogleUser, withError error: Error?) {
-        authService.googleLogin(user: user, error: error) { result in
-            switch result {
-            case .success(let user):
-                self.firestoreService.getUserData(user: user) { result in
-                    switch result {
-                    case .success(let appUser):
-                        self.output?.userDidExistInDB(user: appUser)
-                    case .failure:
-                        self.output?.userDidNotExistInDB(user: user)
-                    }
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        authService.googleLogin(user: user, error: error)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] fetchedUser in
+                self.firestoreService.getUserData(user: fetchedUser)
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onSuccess: { [unowned self] in self.output?.userDidExistInDB(user: $0)},
+                               onError: { [unowned self] _ in self.output?.userDidNotExistInDB(user: fetchedUser)} )
+                    .disposed(by: self.disposeBag)
+                },
+                       onError: { [unowned self] in
+                        self.output?.userFetchedWithError(error: $0)
+            })
+            .disposed(by: disposeBag)
     }
 
 }

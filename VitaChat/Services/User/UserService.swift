@@ -21,4 +21,12 @@ final class UserService: UserServiceProtocol {
         return userDefaults.object(for: UserDefaultsKeys.user)
     }
 
+    func isUserAuthorized() -> Bool {
+        return getUser() != nil
+    }
+
+    func deleteUserAccount() {
+        userDefaults.removeObject(forKey: UserDefaultsKeys.user)
+    }
+
 }

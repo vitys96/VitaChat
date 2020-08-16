@@ -12,5 +12,5 @@ import RxSwift
 
 protocol AuthServiceProtocol {
 
-    func googleLogin(user: GIDGoogleUser, error: Error?, completion: @escaping (Result<User, Error>) -> Void)
+    func googleLogin(user: GIDGoogleUser, error: Error?) -> Single<User>
 }

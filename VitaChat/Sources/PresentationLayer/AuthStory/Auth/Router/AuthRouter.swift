@@ -18,6 +18,10 @@ final class AuthRouter {
 
 extension AuthRouter: AuthRouterInput {
 
+    func showErrorAlert(title: String) {
+        view?.showErrorAlert(labelText: "Ошибка", detailText: title)
+    }
+
     func navigateToSignUpScreen(with context: SignUpContext) {
         let loginVC = SignUpBuilder.build(with: context)
         view?.present(loginVC, animated: true)
@@ -35,9 +39,13 @@ extension AuthRouter: AuthRouterInput {
 
 
     func navigateToMainTabBar(with user: AppUser) {
-//        let tabBar = TabBarController()
-//        tabBar.modalPresentationStyle = .fullScreen
-//        UIApplication.getTopViewController()?.present(tabBar, animated: true)
+        let tabBarControoler = TabBarController()
+        tabBarControoler.configure(screens: [
+            (.conversations, ConversationsBuilder.build(with: user)),
+            (.people, PeopleBuilder.build(with: user))
+        ])
+        tabBarControoler.modalPresentationStyle = .fullScreen
+        view?.present(tabBarControoler, animated: true)
     }
 
 }

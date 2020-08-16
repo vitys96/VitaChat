@@ -22,9 +22,10 @@ extension ProfileRouter: ProfileRouterInput {
     }
 
     func navigateToMainScreen(with user: AppUser) {
-        let tabBarControoler = TabBarController(currentUser: user)
+        let tabBarControoler = TabBarController()
         tabBarControoler.configure(screens: [
-            (.conversations, ConversationsBuilder.build())
+            (.conversations, ConversationsBuilder.build(with: user)),
+            (.people, PeopleBuilder.build(with: user))
         ])
         tabBarControoler.modalPresentationStyle = .fullScreen
         view?.present(tabBarControoler, animated: true)

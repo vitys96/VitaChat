@@ -6,6 +6,7 @@
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
+import RxSwift
 import UIKit
 
 enum UsersSection: Int, CaseIterable {
@@ -36,11 +37,16 @@ final class PeopleViewController: BaseViewController {
         return collectionView
     }()
 
+    private lazy var logOutButton = UIButton().with {
+        $0.setImage(UIImage.withName("logOut"), for: .normal)
+    }
+
     // MARK: - Protocol properties
     private let output: PeopleViewOutput
 
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
+    private let disposeBag = DisposeBag()
     var dataSource: UICollectionViewDiffableDataSource<UsersSection, PeopleViewModel>?
     let users = Bundle.main.decode([PeopleModelCell].self, from: "users.json")
 
@@ -56,7 +62,11 @@ final class PeopleViewController: BaseViewController {
     }
 
     // MARK: - Binding
-    private func bindObservable() {}
+    private func bindObservable() {
+        logOutButton.rx.tap
+            .subscribe(onNext: { [unowned self] _ in self.output.didTapLogOutButton() })
+            .disposed(by: disposeBag)
+    }
 
     // MARK: Life cycle
     override func loadView() {
@@ -104,6 +114,9 @@ final class PeopleViewController: BaseViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
 
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logOutButton)
+        navigationController?.navigationBar.shadowImage = UIImage()
+
         collectionView.backgroundColor = backgroundColor
     }
 
@@ -111,6 +124,11 @@ final class PeopleViewController: BaseViewController {
 
 // MARK: - PeopleViewInput
 extension PeopleViewController: PeopleViewInput {
+
+    func didTapLogOutButton() {
+        
+    }
+
 
     func reloadData(with searchText: String?) {
         let peopleViewModel = users.map { PeopleViewModel(with: $0) }

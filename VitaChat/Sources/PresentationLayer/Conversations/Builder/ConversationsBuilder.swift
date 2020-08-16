@@ -19,10 +19,10 @@ final class ConversationsBuilder {
 // MARK: - ConversationsBuilderProtocol
 extension ConversationsBuilder: ConversationsBuilderProtocol {
 
-    static func build() -> ConversationsViewController {
+    static func build(with user: AppUser) -> ConversationsViewController {
         let interactor = ConversationsInteractor()
         let router = ConversationsRouter()
-        let presenter = ConversationsPresenter(interactor: interactor, router: router)
+        let presenter = ConversationsPresenter(interactor: interactor, router: router, currentUser: user)
         let viewController = ConversationsViewController(output: presenter)
 
         presenter.view = viewController

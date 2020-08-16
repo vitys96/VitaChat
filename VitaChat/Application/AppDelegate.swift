@@ -65,10 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userService = DIContainer.userService
 
         if let user = userService.getUser() {
-            let tabBarController = TabBarController(currentUser: user)
+            let tabBarController = TabBarController()
             tabBarController.configure(screens: [
-                (.conversations, ConversationsBuilder.build()),
-                (.people, PeopleBuilder.build())
+                (.conversations, ConversationsBuilder.build(with: user)),
+                (.people, PeopleBuilder.build(with: user))
             ])
             window?.rootViewController = tabBarController
         } else {

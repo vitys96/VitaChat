@@ -7,12 +7,35 @@
 //
 
 import UIKit
+import RxSwift
 
 final class PeopleRouter {
 
     // MARK: - Properties
     weak var view: UIViewController?
+    private let disposeBag = DisposeBag()
 
 }
 
-extension PeopleRouter: PeopleRouterInput {}
+extension PeopleRouter: PeopleRouterInput {
+
+    func navigateToAuth() {
+        let authViewControoler = AuthBuilder.build()
+        authViewControoler.modalPresentationStyle = .fullScreen
+        view?.present(authViewControoler, animated: true)
+    }
+
+    func showLogOutAlert(destructiveHandler: @escaping (Bool) -> Void) {
+        view?.showAlert(title: "Вы точно хотите выйти?", message: nil, style: .alert, actions: [
+            AlertAction.action(title: "Нет", style: .cancel),
+            AlertAction.action(title: "Да", style: .destructive)
+        ])
+            .subscribe(onNext: { selectedIndex in
+                if selectedIndex == 1 {
+                    destructiveHandler(true)
+                }
+        })
+        .disposed(by: disposeBag)
+    }
+
+}

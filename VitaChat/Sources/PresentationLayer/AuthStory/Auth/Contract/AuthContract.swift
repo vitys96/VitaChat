@@ -49,7 +49,10 @@ protocol AuthInteractorInput {
 protocol AuthInteractorOutput: class {
 
     func userDidExistInDB(user: AppUser)
+
     func userDidNotExistInDB(user: User)
+
+    func userFetchedWithError(error: Error)
 }
 
 // MARK: - Router
@@ -62,6 +65,8 @@ protocol AuthRouterInput {
     func navigateToLoginScreen()
 
     func navigateToSignUpScreen(with context: SignUpContext)
+
+    func showErrorAlert(title: String)
 
 }
 

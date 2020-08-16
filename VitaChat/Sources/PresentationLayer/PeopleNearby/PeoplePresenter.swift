@@ -14,13 +14,15 @@ final class PeoplePresenter {
     weak var view: PeopleViewInput?
     private var interactor: PeopleInteractorInput
     private let router: PeopleRouterInput
+    private let currentUser: AppUser
 
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: PeopleInteractorInput, router: PeopleRouterInput) {
+    init(interactor: PeopleInteractorInput, router: PeopleRouterInput, currentUser: AppUser) {
         self.interactor = interactor
         self.router = router
+        self.currentUser = currentUser
     }
 
 //    private func makeViewModels() -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
@@ -40,6 +42,15 @@ final class PeoplePresenter {
 // MARK: - PeopleViewOutput
 extension PeoplePresenter: PeopleViewOutput {
 
+    func didTapLogOutButton() {
+        router.showLogOutAlert { [unowned self] isNeedtoLogOut in
+            if isNeedtoLogOut {
+                self.view?.startLoadingAnimation()
+                self.interactor.logOutUser()
+            }
+        }
+    }
+
     func viewDidLoad() {
         view?.reloadData(with: nil)
     }
@@ -48,6 +59,11 @@ extension PeoplePresenter: PeopleViewOutput {
 
 // MARK: - PeopleInteractorOutput
 extension PeoplePresenter: PeopleInteractorOutput {
-    
+
+    func userDidLogOut() {
+        view?.stopLoadingAnimation()
+        router.navigateToAuth()
+    }
+
 }
 

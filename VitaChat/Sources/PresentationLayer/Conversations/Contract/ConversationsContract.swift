@@ -10,13 +10,14 @@ import UIKit
 
 // MARK: - Builder
 protocol ConversationsBuilderProtocol: class {
-    static func build() -> ConversationsViewController
+    static func build(with user: AppUser) -> ConversationsViewController
 }
 
 // MARK: - View
 protocol ConversationsViewInput: class {
 
     func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>)
+    func configureView(navigationTitle: String)
 
 }
 

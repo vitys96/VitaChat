@@ -19,10 +19,10 @@ final class PeopleBuilder {
 // MARK: - PeopleBuilderProtocol
 extension PeopleBuilder: PeopleBuilderProtocol {
 
-    static func build() -> PeopleViewController {
-        let interactor = PeopleInteractor()
+    static func build(with currentUser: AppUser) -> PeopleViewController {
+        let interactor = PeopleInteractor(userService: DIContainer.userService)
         let router = PeopleRouter()
-        let presenter = PeoplePresenter(interactor: interactor, router: router)
+        let presenter = PeoplePresenter(interactor: interactor, router: router, currentUser: currentUser)
         let viewController = PeopleViewController(output: presenter)
 
         presenter.view = viewController

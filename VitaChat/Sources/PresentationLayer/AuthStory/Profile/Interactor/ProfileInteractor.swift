@@ -45,7 +45,7 @@ extension ProfileInteractor: ProfileInteractorInput {
                                          avatarImage: nil,
                                          description: contactInfo.description,
                                          sex: contactInfo.sex)
-        .observeOn(MainScheduler.instance)
+            .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [unowned self] in self.userFetched(user: $0)},
                        onError: { [unowned self] in self.output?.errorFetched(error: $0)
         })

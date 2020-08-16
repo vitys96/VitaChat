@@ -116,6 +116,10 @@ final class ConversationsViewController: BaseViewController {
 // MARK: - ConversationsViewInput
 extension ConversationsViewController: ConversationsViewInput {
 
+    func configureView(navigationTitle: String) {
+        title = navigationTitle
+    }
+
     func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>) {
         dataSource?.apply(data, animatingDifferences: true)
     }

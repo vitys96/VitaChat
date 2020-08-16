@@ -16,13 +16,15 @@ final class ConversationsPresenter {
     private let router: ConversationsRouterInput
     let activeChats = Bundle.main.decode([ConversationModelCell].self, from: "activeChats.json")
     let waitingChats = Bundle.main.decode([ConversationModelCell].self, from: "waitingChats.json")
+    private let currentUser: AppUser
 
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: ConversationsInteractorInput, router: ConversationsRouterInput) {
+    init(interactor: ConversationsInteractorInput, router: ConversationsRouterInput, currentUser: AppUser) {
         self.interactor = interactor
         self.router = router
+        self.currentUser = currentUser
     }
 
     private func makeViewModels() -> NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel> {
@@ -46,6 +48,7 @@ extension ConversationsPresenter: ConversationsViewOutput {
 
     func viewDidLoad() {
         view?.showDataSource(data: makeViewModels())
+        view?.configureView(navigationTitle: currentUser.username)
     }
 }
 
