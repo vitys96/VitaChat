@@ -57,6 +57,8 @@
 		7176377A245CB97900307C51 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763773245CB97900307C51 /* AuthBuilder.swift */; };
 		7176377B245CB97900307C51 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763774245CB97900307C51 /* AuthInteractor.swift */; };
 		71766D512461F7E900F41BC5 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71766D502461F7E900F41BC5 /* ContactInfo.swift */; };
+		7189EEC924EC36B300197F2A /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7189EEC824EC36B300197F2A /* CameraManager.swift */; };
+		7189EECB24EC36BF00197F2A /* CameraManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */; };
 		719C423B24E08AE300485113 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C423424E08AE300485113 /* LoginContract.swift */; };
 		719C423C24E08AE300485113 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C423524E08AE300485113 /* LoginPresenter.swift */; };
 		719C423D24E08AE300485113 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C423624E08AE300485113 /* LoginRouter.swift */; };
@@ -190,6 +192,8 @@
 		71763773245CB97900307C51 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
 		71763774245CB97900307C51 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		71766D502461F7E900F41BC5 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
+		7189EEC824EC36B300197F2A /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerProtocol.swift; sourceTree = "<group>"; };
 		719C423424E08AE300485113 /* LoginContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
 		719C423524E08AE300485113 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		719C423624E08AE300485113 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 		713BBB0A245C30A1008BF210 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7189EEC724EC369B00197F2A /* CameraManager */,
 				71F1562D2469670700444D06 /* AppearanceManager */,
 				71F1562C246966F600444D06 /* AuthErrors */,
 				7110477E245D952900D37620 /* FontManager */,
@@ -691,6 +696,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7189EEC724EC369B00197F2A /* CameraManager */ = {
+			isa = PBXGroup;
+			children = (
+				7189EEC824EC36B300197F2A /* CameraManager.swift */,
+				7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */,
+			);
+			path = CameraManager;
+			sourceTree = "<group>";
+		};
 		719C423224E08A7300485113 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -832,7 +846,6 @@
 			isa = PBXGroup;
 			children = (
 				71A53ABD2471CFCA00E2923C /* Model */,
-				71A53AC22471D2EC00E2923C /* Views */,
 				71F6A79F24E8688800C74BC3 /* Contract */,
 				71F6A7A024E8688F00C74BC3 /* Builder */,
 				71F6A7A124E8689600C74BC3 /* View */,
@@ -1144,6 +1157,7 @@
 		71F6A7A124E8689600C74BC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				71A53AC22471D2EC00E2923C /* Views */,
 				71A53AB32471CEC800E2923C /* PeopleViewController.swift */,
 			);
 			path = View;
@@ -1487,6 +1501,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -1510,6 +1525,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -1553,6 +1569,7 @@
 				71F1562224693E4300444D06 /* ConversationsRouter.swift in Sources */,
 				716F4A092475440800496FC5 /* InsertableTextField.swift in Sources */,
 				71A53AC52471D32400E2923C /* PeopleCollectionCell.swift in Sources */,
+				7189EEC924EC36B300197F2A /* CameraManager.swift in Sources */,
 				713BBB15245C3172008BF210 /* UIcolor+Hex.swift in Sources */,
 				71BA9CBE246063E300F704F5 /* ProfileContract.swift in Sources */,
 				716F4A1724759E4B00496FC5 /* ChatRequestBuilder.swift in Sources */,
@@ -1621,6 +1638,7 @@
 				71BA9CC1246063E300F704F5 /* ProfileViewController.swift in Sources */,
 				719E12912479671000477F58 /* SignUpViewModel.swift in Sources */,
 				71BA9CC6246065AE00F704F5 /* ProfileViewModel.swift in Sources */,
+				7189EECB24EC36BF00197F2A /* CameraManagerProtocol.swift in Sources */,
 				716F4A1B2475A29600496FC5 /* StackView + Entension.swift in Sources */,
 				71104774245D780300D37620 /* UIView+Subviews.swift in Sources */,
 				71A53AB72471CEC800E2923C /* PeopleContract.swift in Sources */,

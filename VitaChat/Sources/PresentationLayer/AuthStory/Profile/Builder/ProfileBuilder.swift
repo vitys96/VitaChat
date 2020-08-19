@@ -26,7 +26,9 @@ extension ProfileBuilder: ProfileBuilderProtocol {
                                            validationService: DIContainer.validationService,
                                            userService: DIContainer.userService)
         let router = ProfileRouter()
-        let presenter = ProfilePresenter(interactor: interactor, router: router, context: context)
+        let presenter = ProfilePresenter(interactor: interactor, router: router,
+                                         user: context.user,
+                                         cameraManager: DIContainer.cameraManager)
         let viewController = ProfileViewController(output: presenter)
 
         presenter.view = viewController
@@ -40,7 +42,6 @@ extension ProfileBuilder: ProfileBuilderProtocol {
 
 struct ProfileContext {
 
-    let uid: String
-    let email: String?
+    let user: User?
 
 }

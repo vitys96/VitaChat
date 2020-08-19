@@ -15,6 +15,7 @@ final class PeoplePresenter {
     private var interactor: PeopleInteractorInput
     private let router: PeopleRouterInput
     private let currentUser: AppUser
+    private var users = [AppUser]()
 
     // MARK: - Properties
 
@@ -25,17 +26,17 @@ final class PeoplePresenter {
         self.currentUser = currentUser
     }
 
-//    private func makeViewModels() -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
-//        let usersViewModel = activeChats.map { PeopleViewModel(with: $0) }
-//
-//        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
-//
-//        snapshot.appendSections([.users])
-//
-//        snapshot.appendItems(usersViewModel, toSection: .users)
-//
-//        return snapshot
-//    }
+    private func makeViewModels(users: [AppUser]) -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
+        let usersModel = users.map { PeopleViewModel(with: $0) }
+
+        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
+
+        snapshot.appendSections([.users])
+
+        snapshot.appendItems(usersModel, toSection: .users)
+
+        return snapshot
+    }
 
 }
 
@@ -52,6 +53,7 @@ extension PeoplePresenter: PeopleViewOutput {
     }
 
     func viewDidLoad() {
+        interactor.fetchUsersData(with: users, userId: currentUser.id)
         view?.reloadData(with: nil)
     }
 
@@ -59,6 +61,10 @@ extension PeoplePresenter: PeopleViewOutput {
 
 // MARK: - PeopleInteractorOutput
 extension PeoplePresenter: PeopleInteractorOutput {
+
+    func usersDidFetched(users: [AppUser]) {
+        view?.showDataSource(data: makeViewModels(users: users))
+    }
 
     func userDidLogOut() {
         view?.stopLoadingAnimation()

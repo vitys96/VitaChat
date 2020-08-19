@@ -16,14 +16,16 @@ final class AuthInteractor {
     weak var output: AuthInteractorOutput?
     private let authService: AuthServiceProtocol
     private let firestoreService: FirestoreServiceProtocol
+    private let userService: UserServiceProtocol
 
     // MARK: - Properties
     private let disposeBag = DisposeBag()
 
     // MARK: - Init
-    init(authService: AuthServiceProtocol, firestoreService: FirestoreServiceProtocol) {
+    init(authService: AuthServiceProtocol, firestoreService: FirestoreServiceProtocol, userService: UserServiceProtocol) {
         self.authService = authService
         self.firestoreService = firestoreService
+        self.userService = userService
     }
 
     // MARK: - Private methods
@@ -39,7 +41,10 @@ extension AuthInteractor: AuthInteractorInput {
             .subscribe(onSuccess: { [unowned self] fetchedUser in
                 self.firestoreService.getUserData(user: fetchedUser)
                     .observeOn(MainScheduler.instance)
-                    .subscribe(onSuccess: { [unowned self] in self.output?.userDidExistInDB(user: $0)},
+                    .subscribe(onSuccess: { [unowned self] in
+                        self.output?.userDidExistInDB(user: $0)
+                        self.userService.saveUser($0)
+                        },
                                onError: { [unowned self] _ in self.output?.userDidNotExistInDB(user: fetchedUser)} )
                     .disposed(by: self.disposeBag)
                 },

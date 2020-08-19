@@ -21,7 +21,8 @@ extension AuthBuilder:AuthBuilderProtocol {
 
     static func build() -> AuthViewController {
         let interactor = AuthInteractor(authService: DIContainer.authService,
-                                        firestoreService: DIContainer.firestoreService)
+                                        firestoreService: DIContainer.firestoreService,
+                                        userService: DIContainer.userService)
         let router = AuthRouter()
         let presenter = AuthPresenter(interactor: interactor, router: router)
         let viewController = AuthViewController(output: presenter)

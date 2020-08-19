@@ -24,7 +24,9 @@ protocol ProfileViewInput: class {
     /**
      Заполнить экран профиля
      */
-    func showProfileView(model: ProfileViewModel)
+    func showProfileView(model: ProfileViewModel, avatarImageUrl: URL?)
+
+    func changeAvatar(with image: UIImage)
 
 }
 
@@ -35,6 +37,8 @@ protocol ProfileViewOutput {
     func viewDidLoad()
 
     func saveUserData(contactInfo: ContactInfo, imageUrl: String?)
+
+    func didTapAvatarButton(in view: UIViewController)
 }
 
 // MARK: - Interactor

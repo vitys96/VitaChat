@@ -117,7 +117,7 @@ final class ConversationsViewController: BaseViewController {
 extension ConversationsViewController: ConversationsViewInput {
 
     func configureView(navigationTitle: String) {
-        title = navigationTitle
+        self.navigationItem.title = navigationTitle
     }
 
     func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>) {

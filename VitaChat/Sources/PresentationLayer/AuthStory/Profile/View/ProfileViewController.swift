@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 import FirebaseAuth
 
 final class ProfileViewController: BaseViewController {
@@ -57,6 +58,13 @@ final class ProfileViewController: BaseViewController {
         goToChatsButton.rx.tap
             .subscribe(onNext: { [unowned self] in self.goToChatsTapped() })
             .disposed(by: disposeBag)
+
+        avatarButton.didPressBannerImageView
+            .subscribe(onNext: { [unowned self] in
+                self.output.didTapAvatarButton(in: self)
+                
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: Life cycle
@@ -81,7 +89,7 @@ final class ProfileViewController: BaseViewController {
     }
 
     private func layout() {
-        let imageViewSize: CGFloat = 150
+        let imageViewSize: CGFloat = 100
         let segmentedControlHeight: CGFloat = 36
         let buttonHeight: CGFloat = 50
 
@@ -172,7 +180,12 @@ final class ProfileViewController: BaseViewController {
 // MARK: - ProfileViewInput
 extension ProfileViewController: ProfileViewInput {
 
-    func showProfileView(model: ProfileViewModel) {
+    func changeAvatar(with image: UIImage) {
+        avatarButton.configure(with: image)
+    }
+
+    func showProfileView(model: ProfileViewModel, avatarImageUrl: URL?) {
+        avatarButton.downloadAccountImage(with: avatarImageUrl)
         welcomeLabel.attributedText = model.welcome
         fullNameLabel.attributedText = model.fullName
         fullNameTextField.placeholder = model.fullNameTextFieldPlaceholder
@@ -180,8 +193,6 @@ extension ProfileViewController: ProfileViewInput {
         aboutMeTextField.placeholder = model.aboutMeTextFieldPlaceholder
 
         sexLabel.attributedText = model.sex
-
-        goToChatsButton.setAttributedTitle(model.actionButtonTitle, for: .normal)
         sexSegmentedControl.setTitleTextAttributes(model.segmentedControlNormalAttributes, for: .normal)
         sexSegmentedControl.setTitleTextAttributes(model.segmentedControlSelectedAttributes, for: .selected)
     }

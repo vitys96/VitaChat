@@ -11,11 +11,11 @@ import UIKit
 struct PeopleViewModel: Hashable {
 
     // MARK: - Properties
-    let id: Int
+    let id: String
     let username: NSAttributedString
     let userImageString: String
 
-    init(with model: PeopleModelCell) {
+    init(with model: AppUser) {
         let colorManager = DIContainer.colorManager
 
         id = model.id

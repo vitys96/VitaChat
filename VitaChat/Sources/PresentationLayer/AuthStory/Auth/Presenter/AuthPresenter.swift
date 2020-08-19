@@ -68,7 +68,7 @@ extension AuthPresenter: AuthInteractorOutput {
 
     func userDidNotExistInDB(user: User) {
         view?.stopLoadingAnimation()
-        let context = ProfileContext(uid: user.uid, email: user.email)
+        let context = ProfileContext(user: user)
         router.navigateToProfile(with: context)
     }
     

@@ -31,6 +31,10 @@ final class DIContainer {
             FontManager.shared as FontManagerProtocol
         }
 
+        container.register(.singleton) {
+            CameraManager.shared as CameraManagerProtocol
+        }
+
         // MARK: - Common services
         container.register {
             AuthService() as AuthServiceProtocol
@@ -55,6 +59,7 @@ final class DIContainer {
         return appDelegates
     }
 
+    // MARK: - Managers
     static var colorManager: ColorManagerProtocol {
         guard let colorManager = try? instance.resolve() as ColorManagerProtocol else {
             fatalError()
@@ -67,6 +72,13 @@ final class DIContainer {
             fatalError()
         }
         return fontManager
+    }
+
+    static var cameraManager: CameraManagerProtocol {
+        guard let cameraManager = try? instance.resolve() as CameraManagerProtocol else {
+            fatalError()
+        }
+        return cameraManager
     }
 
     static var authService: AuthServiceProtocol {

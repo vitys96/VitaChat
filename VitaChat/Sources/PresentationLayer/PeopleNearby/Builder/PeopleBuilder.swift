@@ -20,7 +20,8 @@ final class PeopleBuilder {
 extension PeopleBuilder: PeopleBuilderProtocol {
 
     static func build(with currentUser: AppUser) -> PeopleViewController {
-        let interactor = PeopleInteractor(userService: DIContainer.userService)
+        let interactor = PeopleInteractor(userService: DIContainer.userService,
+                                          firestoreService: DIContainer.firestoreService)
         let router = PeopleRouter()
         let presenter = PeoplePresenter(interactor: interactor, router: router, currentUser: currentUser)
         let viewController = PeopleViewController(output: presenter)

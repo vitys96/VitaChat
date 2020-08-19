@@ -13,6 +13,10 @@ import RxSwift
 protocol FirestoreServiceProtocol {
 
     func getUserData(user: User) -> Single<AppUser>
+
     func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?,
                          description: String?, sex: String) -> Single<AppUser>
+
+    func observeUsers(users: [AppUser], currentUserId: String,
+                      completion: @escaping ([AppUser]) -> Void) -> Single<ListenerRegistration>
 }

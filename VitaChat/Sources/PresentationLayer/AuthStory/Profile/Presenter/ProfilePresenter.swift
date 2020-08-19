@@ -6,6 +6,7 @@
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
+import FirebaseAuth
 import UIKit
 
 final class ProfilePresenter {
@@ -14,17 +15,18 @@ final class ProfilePresenter {
     weak var view: ProfileViewInput?
     private var interactor: ProfileInteractorInput
     private let router: ProfileRouterInput
-    private let uid: String
-    private let email: String?
+    private let user: User?
+    private let cameraManager: CameraManagerProtocol
 
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: ProfileInteractorInput, router: ProfileRouterInput, context: ProfileContext) {
+    init(interactor: ProfileInteractorInput, router: ProfileRouterInput, user: User?,
+         cameraManager: CameraManagerProtocol) {
         self.interactor = interactor
         self.router = router
-        self.uid = context.uid
-        self.email = context.email
+        self.user = user
+        self.cameraManager = cameraManager
     }
 
 }
@@ -32,19 +34,30 @@ final class ProfilePresenter {
 // MARK: - ProfileViewOutput
 extension ProfilePresenter: ProfileViewOutput {
 
+    func didTapAvatarButton(in view: UIViewController) {
+        cameraManager.showActionSheet(vc: view) { (image) in
+            if let image = image {
+                self.view?.changeAvatar(with: image)
+            }
+        }
+    }
+
     func saveUserData(contactInfo: ContactInfo, imageUrl: String?) {
         view?.startLoadingAnimation()
-        guard let email = email else {
+        guard let user = user, let email = user.email else {
             return
         }
         if interactor.validateContacts(contactInfo) {
-            interactor.saveUserProfile(id: uid, email: email, contactInfo: contactInfo, imageUrl: imageUrl)
+            interactor.saveUserProfile(id: user.uid, email: email, contactInfo: contactInfo, imageUrl: imageUrl)
         }
     }
 
     func viewDidLoad() {
         view?.stopLoadingAnimation()
-        view?.showProfileView(model: ProfileViewModel())
+//        guard let user = user else {
+//            return
+//        }
+        view?.showProfileView(model: ProfileViewModel(), avatarImageUrl: user?.photoURL)
     }
 }
 

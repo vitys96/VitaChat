@@ -49,8 +49,42 @@ final class FirestoreService {
         }.asObservable()
     }
 
+    private func observe(with usersData: [AppUser], currentUserId: String,
+                         completion: @escaping ([AppUser]) -> Void) -> Observable<ListenerRegistration> {
+        var users = usersData
+        return Single<ListenerRegistration>.create { (single) -> Disposable in
+            let usersListener = self.usersRef.addSnapshotListener { (querySnapshot, error) in
+                if let err = error {
+                    return single(.error(err))
+                }
+                guard let snapshot = querySnapshot else {
+                    return single(.error(SignUpError.unknownError))
+                }
+                snapshot.documentChanges.forEach { (diff) in
+                    guard let appUser = AppUser(document: diff.document) else { return }
+                    switch diff.type {
+                    case .added:
+                        guard !users.contains(appUser) else { return }
+                        guard appUser.id != currentUserId else { return }
+                        users.append(appUser)
+                    case .modified:
+                        guard let index = users.firstIndex(of: appUser) else { return }
+                        users[index] = appUser
+                    case .removed:
+                        guard let index = users.firstIndex(of: appUser) else { return }
+                        users.remove(at: index)
+                    }
+                }
+                completion(users)
+            }
+            single(.success(usersListener))
+            return Disposables.create()
+        }.asObservable()
+    }
+
 }
 
+// MARK: - FirestoreServiceProtocol
 extension FirestoreService: FirestoreServiceProtocol {
 
     func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?, description: String?,
@@ -74,5 +108,10 @@ extension FirestoreService: FirestoreServiceProtocol {
     func getUserData(user: User) -> Single<AppUser> {
         let docRef = usersRef.document(user.uid)
         return getDocument(docRef: docRef).asSingle()
+    }
+
+    func observeUsers(users: [AppUser], currentUserId: String,
+                      completion: @escaping ([AppUser]) -> Void) -> Single<ListenerRegistration> {
+        return observe(with: users, currentUserId: currentUserId, completion: completion).asSingle()
     }
 }

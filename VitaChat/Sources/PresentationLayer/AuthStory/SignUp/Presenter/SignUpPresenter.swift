@@ -59,7 +59,7 @@ extension SignUpPresenter: SignUpInteractorOutput {
     }
 
     func userFetched(user: User) {
-        let profileContext = ProfileContext(uid: user.uid, email: user.email)
+        let profileContext = ProfileContext(user: user)
         router.navigateToProfileCreation(with: profileContext)
     }
     

@@ -125,22 +125,22 @@ final class PeopleViewController: BaseViewController {
 // MARK: - PeopleViewInput
 extension PeopleViewController: PeopleViewInput {
 
-    func didTapLogOutButton() {
-        
+    func showDataSource(data: NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>) {
+        dataSource?.apply(data, animatingDifferences: true)
+        collectionView.reloadData()
     }
 
-
     func reloadData(with searchText: String?) {
-        let peopleViewModel = users.map { PeopleViewModel(with: $0) }
-        let filtered = peopleViewModel.filter { user in
-            return user.containsText(filterText: searchText)
-        }
-        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
-
-        snapshot.appendSections([.users])
-
-        snapshot.appendItems(filtered, toSection: .users)
-        dataSource?.apply(snapshot, animatingDifferences: true)
+//        let peopleViewModel = users.map { PeopleViewModel(with: $0) }
+//        let filtered = peopleViewModel.filter { user in
+//            return user.containsText(filterText: searchText)
+//        }
+//        var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
+//
+//        snapshot.appendSections([.users])
+//
+//        snapshot.appendItems(filtered, toSection: .users)
+//        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 

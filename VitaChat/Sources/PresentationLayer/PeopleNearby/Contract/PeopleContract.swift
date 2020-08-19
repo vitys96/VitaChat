@@ -22,6 +22,8 @@ protocol PeopleViewInput: class {
 
     func reloadData(with searchText: String?)
 
+    func showDataSource(data: NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>)
+
 }
 
 protocol PeopleViewOutput {
@@ -38,10 +40,13 @@ protocol PeopleInteractorInput {
 
     func logOutUser()
 
+    func fetchUsersData(with users: [AppUser], userId: String)
+
 }
 protocol PeopleInteractorOutput: class {
 
     func userDidLogOut()
+    func usersDidFetched(users: [AppUser])
 }
 
 // MARK: - Router

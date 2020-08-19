@@ -63,18 +63,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupMainWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let userService = DIContainer.userService
-
-        if let user = userService.getUser() {
-            let tabBarController = TabBarController()
-            tabBarController.configure(screens: [
-                (.conversations, ConversationsBuilder.build(with: user)),
-                (.people, PeopleBuilder.build(with: user))
-            ])
-            window?.rootViewController = tabBarController
-        } else {
-            let viewController = AuthBuilder.build()
-            window?.rootViewController = viewController
-        }
+//
+//        if let user = userService.getUser() {
+//            let tabBarController = TabBarController()
+//            tabBarController.configure(screens: [
+//                (.conversations, ConversationsBuilder.build(with: user)),
+//                (.people, PeopleBuilder.build(with: user))
+//            ])
+//            window?.rootViewController = tabBarController
+//        } else {
+//            let viewController = AuthBuilder.build()
+//            window?.rootViewController = viewController
+//        }
+        window?.rootViewController = ProfileBuilder.build(with: ProfileContext(user: nil))
         window?.makeKeyAndVisible()
     }
 
