@@ -40,7 +40,6 @@ final class ProfileViewController: BaseViewController {
     private let colorManager = DIContainer.colorManager
     private let disposeBag = DisposeBag()
 
-
     // MARK: - Init
     init(output: ProfileViewOutput) {
         self.output = output
@@ -59,11 +58,8 @@ final class ProfileViewController: BaseViewController {
             .subscribe(onNext: { [unowned self] in self.goToChatsTapped() })
             .disposed(by: disposeBag)
 
-        avatarButton.didPressBannerImageView
-            .subscribe(onNext: { [unowned self] in
-                self.output.didTapAvatarButton(in: self)
-                
-            })
+        avatarButton.didPressAvatarImage
+            .subscribe(onNext: { [unowned self] in self.output.didTapAvatarButton(in: self) })
             .disposed(by: disposeBag)
     }
 

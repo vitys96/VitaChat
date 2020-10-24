@@ -38,11 +38,11 @@ final class ProfileInteractor {
 // MARK: - ProfileInteractorInput
 extension ProfileInteractor: ProfileInteractorInput {
 
-    func saveUserProfile(id: String, email: String, contactInfo: ContactInfo, imageUrl: String?) {
+    func saveUserProfile(id: String, email: String, contactInfo: ContactInfo, image: UIImage?) {
         firestoreService.saveProfileWith(id: id,
                                          email: email,
                                          username: contactInfo.userName,
-                                         avatarImage: nil,
+                                         avatarImage: image,
                                          description: contactInfo.description,
                                          sex: contactInfo.sex)
             .observeOn(MainScheduler.instance)

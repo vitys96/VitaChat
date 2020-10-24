@@ -20,6 +20,13 @@ final class FirestoreService {
         return db.collection("users")
     }
 
+    private let storageService: StorageSeviceProtocol
+
+    // MARK: - Init
+    init(storageService: StorageSeviceProtocol) {
+        self.storageService = storageService
+    }
+
     private func saveUser(uid: String, userData: AppUser) -> Observable<AppUser> {
         return Single<AppUser>.create { single in
             self.usersRef.document(uid).setData(userData.representation) { error in
@@ -93,16 +100,24 @@ extension FirestoreService: FirestoreServiceProtocol {
         guard let name = username, let descr = description else {
             return .error(AuthUserError.notFilled)
         }
-
-        let user = AppUser(username: name,
+        guard let imageUser = avatarImage else {
+            return .error(AuthUserError.photoNotExist)
+        }
+        var user = AppUser(username: name,
                            email: email,
                            avatarStringURL: "not exist",
                            description: descr,
                            sex: sex,
                            id: id)
-
+        storageService.upload(photo: imageUser) { result in
+            switch result {
+            case .success(let url):
+                user.avatarStringURL = url.absoluteString
+            case .failure(_):
+                print("laal")
+            }
+        }
         return saveUser(uid: id, userData: user).asSingle()
-
     }
 
     func getUserData(user: User) -> Single<AppUser> {

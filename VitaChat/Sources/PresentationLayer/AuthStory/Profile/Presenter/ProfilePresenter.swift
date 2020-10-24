@@ -17,6 +17,7 @@ final class ProfilePresenter {
     private let router: ProfileRouterInput
     private let user: User?
     private let cameraManager: CameraManagerProtocol
+    private var userSelectedImage: UIImage? = nil
 
     // MARK: - Properties
 
@@ -38,6 +39,7 @@ extension ProfilePresenter: ProfileViewOutput {
         cameraManager.showActionSheet(vc: view) { (image) in
             if let image = image {
                 self.view?.changeAvatar(with: image)
+                self.userSelectedImage = image
             }
         }
     }
@@ -48,7 +50,7 @@ extension ProfilePresenter: ProfileViewOutput {
             return
         }
         if interactor.validateContacts(contactInfo) {
-            interactor.saveUserProfile(id: user.uid, email: email, contactInfo: contactInfo, imageUrl: imageUrl)
+            interactor.saveUserProfile(id: user.uid, email: email, contactInfo: contactInfo, image: userSelectedImage)
         }
     }
 

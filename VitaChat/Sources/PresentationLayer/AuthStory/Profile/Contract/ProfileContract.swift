@@ -44,7 +44,7 @@ protocol ProfileViewOutput {
 // MARK: - Interactor
 protocol ProfileInteractorInput {
 
-    func saveUserProfile(id: String, email: String, contactInfo: ContactInfo, imageUrl: String?)
+    func saveUserProfile(id: String, email: String, contactInfo: ContactInfo, image: UIImage?)
 
     func validateContacts(_ contacts: ContactInfo) -> Bool
 

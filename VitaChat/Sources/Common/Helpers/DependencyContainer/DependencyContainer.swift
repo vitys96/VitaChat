@@ -46,7 +46,7 @@ final class DIContainer {
             StorageService() as StorageSeviceProtocol
         }
         container.register {
-            FirestoreService() as FirestoreServiceProtocol
+            FirestoreService(storageService: try container.resolve()) as FirestoreServiceProtocol
         }
         container.register {
             UserService() as UserServiceProtocol

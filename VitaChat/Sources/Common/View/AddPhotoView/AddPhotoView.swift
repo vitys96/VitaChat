@@ -29,17 +29,22 @@ class AddPhotoView: UIView {
         $0.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
         $0.tintColor = colorManager.tabBar
     }
+    
 
     // MARK: - Computing properties
-    var didPressBannerImageView: Observable<Void> {
+    var didPressAvatarImage: Observable<Void> {
         return avatarImageViewTapGesture.rx.event.map { _ in }.asObservable()
+    }
+
+    var selectedPhotos: Observable<UIImage> {
+        return selectedPhotosSubject.asObservable()
     }
 
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
     private let avatarButtonLength: CGFloat = 100
     private let avatarImageViewTapGesture = UITapGestureRecognizer()
-    var reuseBag = DisposeBag()
+    private let selectedPhotosSubject = PublishSubject<UIImage>()
 
     // MARK: - Binding
     private func bindObservable() {
@@ -92,6 +97,7 @@ class AddPhotoView: UIView {
     }
 
     func configure(with image: UIImage) {
+        selectedPhotosSubject.onNext(image)
         avatarImageView.image = image
     }
 
