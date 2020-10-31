@@ -17,7 +17,7 @@ final class ProfileViewController: BaseViewController {
     private let welcomeLabel = UILabel().with {
         $0.textAlignment = .center
     }
-    private lazy var avatarButton = AddPhotoView()
+    private let avatarButton = AddPhotoView()
     private let fullNameLabel = UILabel()
     private let aboutMeLabel = UILabel()
     private let fullNameTextField = OneLineTextField()
@@ -168,7 +168,7 @@ final class ProfileViewController: BaseViewController {
                                   description: aboutMeTextField.text,
                                   sex: sexTitle)
 
-        self.output.saveUserData(contactInfo: contact, imageUrl: "dkdkdk")
+        self.output.saveUserData(contactInfo: contact)
     }
 
 }

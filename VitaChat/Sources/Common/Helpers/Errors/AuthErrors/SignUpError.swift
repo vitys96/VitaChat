@@ -14,6 +14,7 @@ enum SignUpError {
     case passwordsNotMatched
     case unknownError
     case serverError
+    case canNotUploadPhoto
 }
 
 extension SignUpError: LocalizedError {
@@ -29,6 +30,8 @@ extension SignUpError: LocalizedError {
             return NSLocalizedString("Неизвестная ошибка", comment: "")
         case .serverError:
             return NSLocalizedString("Ошибка сервера", comment: "")
+        case .canNotUploadPhoto:
+            return NSLocalizedString("Не удалось загрузить фото", comment: "")
         }
     }
 }

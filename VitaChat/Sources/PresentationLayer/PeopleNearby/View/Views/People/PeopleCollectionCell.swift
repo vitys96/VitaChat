@@ -8,14 +8,17 @@
 
 import PinLayout
 import RxSwift
+import Kingfisher
 
 class PeopleCollectionCell: UICollectionViewCell {
 
     // MARK: - Subviews
-    private let containerView = UIView()
-
-    private let imageView = UIImageView()
-
+    private let containerView = ShadowContainerView()
+    private let imageView = UIImageView().with {
+        $0.layer.cornerRadius = 8
+        $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        $0.clipsToBounds = true
+    }
     private let userNameLabel = UILabel()
 
     // MARK: - Protocol propeties
@@ -31,7 +34,6 @@ class PeopleCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
 
         addSubviews()
-        configure()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -42,6 +44,7 @@ class PeopleCollectionCell: UICollectionViewCell {
         super.prepareForReuse()
 
         reuseBag = DisposeBag()
+        imageView.kf.cancelDownloadTask()
     }
 
     // MARK: - Layout
@@ -51,7 +54,6 @@ class PeopleCollectionCell: UICollectionViewCell {
     }
 
     private func layout() {
-
         containerView.pin.all()
 
         imageView.pin
@@ -65,12 +67,12 @@ class PeopleCollectionCell: UICollectionViewCell {
             .marginBottom(Margin.x2)
             .sizeToFit()
 
+        contentView.pin.height(containerView.frame.maxY + Margin.x2)
     }
 
     // MARK: - Public methods
     func setup(with model: PeopleViewModel) {
-
-        imageView.image = UIImage.withName(model.userImageString)
+        imageView.kf.setImage(with: model.userImageUrl)
         userNameLabel.attributedText = model.username
 
         setNeedsLayout()
@@ -78,25 +80,12 @@ class PeopleCollectionCell: UICollectionViewCell {
 
     // MARK: - Private methods
     private func addSubviews() {
-
-        contentView.addSubviews([
-            containerView,
-        ])
         containerView.addSubviews([
             imageView,
             userNameLabel,
         ])
 
-    }
-
-    private func configure() {
-        self.layer.cornerRadius = 4
-
-        self.layer.shadowColor = #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1)
-        self.layer.shadowRadius = 3
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
+        contentView.addSubview(containerView)
     }
 
 }
-

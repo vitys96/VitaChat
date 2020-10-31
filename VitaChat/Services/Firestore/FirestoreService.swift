@@ -71,8 +71,7 @@ final class FirestoreService {
                     guard let appUser = AppUser(document: diff.document) else { return }
                     switch diff.type {
                     case .added:
-                        guard !users.contains(appUser) else { return }
-                        guard appUser.id != currentUserId else { return }
+                        guard !users.contains(appUser), appUser.id != currentUserId else { return }
                         users.append(appUser)
                     case .modified:
                         guard let index = users.firstIndex(of: appUser) else { return }
@@ -94,29 +93,37 @@ final class FirestoreService {
 // MARK: - FirestoreServiceProtocol
 extension FirestoreService: FirestoreServiceProtocol {
 
-    func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?, description: String?,
+    func uploadPhoto1(with image: UIImage) -> Single<URL> {
+        storageService.uploadPhoto1(with: image).asSingle()
+    }
+
+    func uploadPhoto(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
+        storageService.upload(photo: image, completion: completion)
+    }
+
+    func saveProfileWith(id: String, email: String, username: String?, avatarImageUrl: String, description: String?,
                          sex: String) -> Single<AppUser> {
 
         guard let name = username, let descr = description else {
             return .error(AuthUserError.notFilled)
         }
-        guard let imageUser = avatarImage else {
-            return .error(AuthUserError.photoNotExist)
-        }
-        var user = AppUser(username: name,
+//        guard let imageUser = avatarImage else {
+//            return .error(AuthUserError.photoNotExist)
+//        }
+        let user = AppUser(username: name,
                            email: email,
-                           avatarStringURL: "not exist",
+                           avatarStringURL: avatarImageUrl,
                            description: descr,
                            sex: sex,
                            id: id)
-        storageService.upload(photo: imageUser) { result in
-            switch result {
-            case .success(let url):
-                user.avatarStringURL = url.absoluteString
-            case .failure(_):
-                print("laal")
-            }
-        }
+//        storageService.upload(photo: imageUser) { result in
+//            switch result {
+//            case .success(let url):
+//                user.avatarStringURL = url.absoluteString
+//            case .failure(_):
+//                print("laal")
+//            }
+//        }
         return saveUser(uid: id, userData: user).asSingle()
     }
 

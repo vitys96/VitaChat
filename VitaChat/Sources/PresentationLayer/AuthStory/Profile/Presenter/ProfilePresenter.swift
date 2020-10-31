@@ -44,7 +44,7 @@ extension ProfilePresenter: ProfileViewOutput {
         }
     }
 
-    func saveUserData(contactInfo: ContactInfo, imageUrl: String?) {
+    func saveUserData(contactInfo: ContactInfo) {
         view?.startLoadingAnimation()
         guard let user = user, let email = user.email else {
             return

@@ -14,9 +14,13 @@ protocol FirestoreServiceProtocol {
 
     func getUserData(user: User) -> Single<AppUser>
 
-    func saveProfileWith(id: String, email: String, username: String?, avatarImage: UIImage?,
+    func saveProfileWith(id: String, email: String, username: String?, avatarImageUrl: String,
                          description: String?, sex: String) -> Single<AppUser>
 
     func observeUsers(users: [AppUser], currentUserId: String,
                       completion: @escaping ([AppUser]) -> Void) -> Single<ListenerRegistration>
+
+    func uploadPhoto(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void)
+
+    func uploadPhoto1(with image: UIImage) -> Single<URL>
 }

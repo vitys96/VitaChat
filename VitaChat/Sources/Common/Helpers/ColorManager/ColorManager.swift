@@ -31,6 +31,7 @@ final class ColorManager: ColorManagerProtocol {
     private(set) var n12 = UIColor(hex: "#707476")
     private(set) var n13 = UIColor(hex: "#242424")
     private(set) var n14 = UIColor(hex: "#000000")
+    private(set) var n15 = UIColor(hex: "#2C2C2E")
     private(set) var staticWhite = UIColor(hex: "#FFFFFF")
     private(set) var staticBlack = UIColor(hex: "#000000")
     private(set) var tabBar = UIColor(hex: "#8E5AF7")
@@ -38,7 +39,7 @@ final class ColorManager: ColorManagerProtocol {
     // MARK: - Public methods
     func setup(
         n1: UIColor?, n2: UIColor?, n3: UIColor?, n4: UIColor?, n5: UIColor?, n6: UIColor?, n7: UIColor?,
-        n8: UIColor?, n9: UIColor?, n10: UIColor?, n11: UIColor?, n12: UIColor?, n13: UIColor?, n14: UIColor?,
+        n8: UIColor?, n9: UIColor?, n10: UIColor?, n11: UIColor?, n12: UIColor?, n13: UIColor?, n14: UIColor?, n15: UIColor?,
         staticWhite: UIColor?, staticBlack: UIColor?, tabBar: UIColor?) {
         n1.map { self.n1 = $0 }
         n2.map { self.n2 = $0 }
@@ -54,6 +55,7 @@ final class ColorManager: ColorManagerProtocol {
         n12.map { self.n12 = $0 }
         n13.map { self.n13 = $0 }
         n14.map { self.n14 = $0 }
+        n15.map { self.n15 = $0 }
         staticWhite.map { self.staticWhite = $0 }
         staticBlack.map { self.staticBlack = $0 }
         tabBar.map { self.tabBar = $0 } 

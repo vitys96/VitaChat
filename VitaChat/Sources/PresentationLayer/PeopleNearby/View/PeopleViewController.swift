@@ -14,7 +14,7 @@ enum UsersSection: Int, CaseIterable {
     func desr(usersCount: Int) -> String {
         switch self {
         case .users:
-            return "Рядом с вами \(usersCount) человек"
+            return String(format: "Рядом %@", String.pluralBy("NumberOfPeople", usersCount))
         }
     }
 }
@@ -166,7 +166,6 @@ extension PeopleViewController {
             case .users:
                 let cell = collectionView.cell(at: indexPath, for: PeopleCollectionCell.self)
                 cell.setup(with: user)
-                cell.backgroundColor = self.colorManager.n11
                 return cell
             }
         })

@@ -25,6 +25,7 @@ public protocol ColorManagerProtocol {
     var n12: UIColor { get }
     var n13: UIColor { get }
     var n14: UIColor { get }
+    var n15: UIColor { get }
     var staticWhite: UIColor { get }    // Неинвертируемый белый цвет
     var staticBlack: UIColor { get }    // Неинвертируемый черный цвет
     var tabBar: UIColor { get }
@@ -45,6 +46,7 @@ public protocol ColorManagerProtocol {
         n12: UIColor?,
         n13: UIColor?,
         n14: UIColor?,
+        n15: UIColor?,
         staticWhite: UIColor?,
         staticBlack: UIColor?,
         tabBar: UIColor?)

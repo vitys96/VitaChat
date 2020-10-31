@@ -28,11 +28,8 @@ final class PeoplePresenter {
 
     private func makeViewModels(users: [AppUser]) -> NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel> {
         let usersModel = users.map { PeopleViewModel(with: $0) }
-
         var snapshot = NSDiffableDataSourceSnapshot<UsersSection, PeopleViewModel>()
-
         snapshot.appendSections([.users])
-
         snapshot.appendItems(usersModel, toSection: .users)
 
         return snapshot

@@ -39,17 +39,30 @@ final class ProfileInteractor {
 extension ProfileInteractor: ProfileInteractorInput {
 
     func saveUserProfile(id: String, email: String, contactInfo: ContactInfo, image: UIImage?) {
-        firestoreService.saveProfileWith(id: id,
-                                         email: email,
-                                         username: contactInfo.userName,
-                                         avatarImage: image,
-                                         description: contactInfo.description,
-                                         sex: contactInfo.sex)
-            .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { [unowned self] in self.userFetched(user: $0)},
-                       onError: { [unowned self] in self.output?.errorFetched(error: $0)
-        })
-            .disposed(by: disposeBag)
+        guard let image = image else {
+            // MARK: - обработать кейс, когда юзер не загрузил фото
+            return
+        }
+        firestoreService.uploadPhoto(image: image) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let savedImageUrl):
+                self.firestoreService.saveProfileWith(id: id,
+                                                 email: email,
+                                                 username: contactInfo.userName,
+                                                 avatarImageUrl: savedImageUrl.absoluteString,
+                                                 description: contactInfo.description,
+                                                 sex: contactInfo.sex)
+                    .observeOn(MainScheduler.instance)
+                    .subscribe(onSuccess: { [unowned self] in self.userFetched(user: $0)},
+                               onError: { [unowned self] in self.output?.errorFetched(error: $0)
+                })
+                    .disposed(by: self.disposeBag)
+            case .failure(_):
+                print("laal")
+            // MARK: - обработать кейс, когда не удалось загрузить фото юзера
+            }
+        }
     }
 
     func validateContacts(_ contacts: ContactInfo) -> Bool {

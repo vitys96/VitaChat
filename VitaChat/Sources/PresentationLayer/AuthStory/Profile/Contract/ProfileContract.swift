@@ -36,7 +36,7 @@ protocol ProfileViewOutput {
    */
     func viewDidLoad()
 
-    func saveUserData(contactInfo: ContactInfo, imageUrl: String?)
+    func saveUserData(contactInfo: ContactInfo)
 
     func didTapAvatarButton(in view: UIViewController)
 }

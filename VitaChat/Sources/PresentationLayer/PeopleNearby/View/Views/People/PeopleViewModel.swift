@@ -13,14 +13,14 @@ struct PeopleViewModel: Hashable {
     // MARK: - Properties
     let id: String
     let username: NSAttributedString
-    let userImageString: String
+    let userImageUrl: URL?
 
     init(with model: AppUser) {
         let colorManager = DIContainer.colorManager
 
         id = model.id
         username = model.username.addAttributes(fontStyle: .regular, size: 18, color: colorManager.n1)
-        userImageString = model.avatarStringURL
+        userImageUrl = URL(string: model.avatarStringURL)
     }
 
     func hash(into hasher: inout Hasher) {

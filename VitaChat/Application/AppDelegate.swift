@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             n12: UIColor(named: "n12"),
             n13: UIColor(named: "n13"),
             n14: UIColor(named: "n14"),
+            n15: UIColor(named: "n15"),
             staticWhite: UIColor(named: "staticWhite"),
             staticBlack: UIColor(named: "staticBlack"),
             tabBar: UIColor(named: "tabBar")
@@ -64,18 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let userService = DIContainer.userService
 //
-//        if let user = userService.getUser() {
-//            let tabBarController = TabBarController()
-//            tabBarController.configure(screens: [
-//                (.conversations, ConversationsBuilder.build(with: user)),
-//                (.people, PeopleBuilder.build(with: user))
-//            ])
-//            window?.rootViewController = tabBarController
-//        } else {
-//            let viewController = AuthBuilder.build()
-//            window?.rootViewController = viewController
-//        }
-        window?.rootViewController = ProfileBuilder.build(with: ProfileContext(user: nil))
+        if let user = userService.getUser() {
+            let tabBarController = TabBarController()
+            tabBarController.configure(screens: [
+                (.conversations, ConversationsBuilder.build(with: user)),
+                (.people, PeopleBuilder.build(with: user))
+            ])
+            window?.rootViewController = tabBarController
+        } else {
+            let viewController = AuthBuilder.build()
+            window?.rootViewController = viewController
+        }
+//        window?.rootViewController = ProfileBuilder.build(with: ProfileContext(user: nil))
         window?.makeKeyAndVisible()
     }
 
