@@ -9,16 +9,6 @@
 import RxSwift
 import UIKit
 
-enum UsersSection: Int, CaseIterable {
-    case users
-    func desr(usersCount: Int) -> String {
-        switch self {
-        case .users:
-            return String(format: "Рядом %@", String.pluralBy("NumberOfPeople", usersCount))
-        }
-    }
-}
-
 final class PeopleViewController: BaseViewController {
 
     // MARK: - Subviews
@@ -100,11 +90,9 @@ final class PeopleViewController: BaseViewController {
 
     // MARK: - Private methods
     private func addSubviews() {
-
         view.addSubviews([
             collectionView,
         ])
-
         setupActivityIndicator()
     }
 
@@ -149,6 +137,15 @@ extension PeopleViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension PeopleViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let user = dataSource?.itemIdentifier(for: indexPath) else { return }
+        output.didSelectUser(user: user)
     }
 }
 

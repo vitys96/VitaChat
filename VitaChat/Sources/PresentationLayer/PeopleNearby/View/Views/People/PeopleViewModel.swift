@@ -14,6 +14,7 @@ struct PeopleViewModel: Hashable {
     let id: String
     let username: NSAttributedString
     let userImageUrl: URL?
+    let description : NSAttributedString
 
     init(with model: AppUser) {
         let colorManager = DIContainer.colorManager

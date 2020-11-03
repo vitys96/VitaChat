@@ -52,6 +52,7 @@
 		716F4A1824759E4B00496FC5 /* ChatRequestInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1124759E4B00496FC5 /* ChatRequestInteractor.swift */; };
 		716F4A1B2475A29600496FC5 /* StackView + Entension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1A2475A29600496FC5 /* StackView + Entension.swift */; };
 		716F4A1E2475BF9300496FC5 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716F4A1D2475BF9300496FC5 /* GradientButton.swift */; };
+		71716AA92550455C00A51985 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71716AA82550455C00A51985 /* MapKit.framework */; };
 		71763776245CB97900307C51 /* AuthContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7176376F245CB97900307C51 /* AuthContract.swift */; };
 		71763777245CB97900307C51 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763770245CB97900307C51 /* AuthPresenter.swift */; };
 		71763778245CB97900307C51 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763771245CB97900307C51 /* AuthRouter.swift */; };
@@ -59,6 +60,7 @@
 		7176377A245CB97900307C51 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763773245CB97900307C51 /* AuthBuilder.swift */; };
 		7176377B245CB97900307C51 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71763774245CB97900307C51 /* AuthInteractor.swift */; };
 		71766D512461F7E900F41BC5 /* ContactInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71766D502461F7E900F41BC5 /* ContactInfo.swift */; };
+		717BACED254F0CDD003E09FA /* UserSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717BACEC254F0CDD003E09FA /* UserSection.swift */; };
 		7189EEC924EC36B300197F2A /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7189EEC824EC36B300197F2A /* CameraManager.swift */; };
 		7189EECB24EC36BF00197F2A /* CameraManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */; };
 		719C423B24E08AE300485113 /* LoginContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719C423424E08AE300485113 /* LoginContract.swift */; };
@@ -191,6 +193,8 @@
 		716F4A1124759E4B00496FC5 /* ChatRequestInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestInteractor.swift; sourceTree = "<group>"; };
 		716F4A1A2475A29600496FC5 /* StackView + Entension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView + Entension.swift"; sourceTree = "<group>"; };
 		716F4A1D2475BF9300496FC5 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		71716AA82550455C00A51985 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		71716AAA2550456A00A51985 /* VitaChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaChat.entitlements; sourceTree = "<group>"; };
 		7176376F245CB97900307C51 /* AuthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContract.swift; sourceTree = "<group>"; };
 		71763770245CB97900307C51 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		71763771245CB97900307C51 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 		71763773245CB97900307C51 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
 		71763774245CB97900307C51 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
 		71766D502461F7E900F41BC5 /* ContactInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfo.swift; sourceTree = "<group>"; };
+		717BACEC254F0CDD003E09FA /* UserSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSection.swift; sourceTree = "<group>"; };
 		7189EEC824EC36B300197F2A /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManagerProtocol.swift; sourceTree = "<group>"; };
 		719C423424E08AE300485113 /* LoginContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginContract.swift; sourceTree = "<group>"; };
@@ -290,6 +295,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71716AA92550455C00A51985 /* MapKit.framework in Frameworks */,
 				A17A495D8259E5E51F29E5AD /* Pods_VitaChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,6 +739,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		717BACEB254F0CCF003E09FA /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				717BACEC254F0CDD003E09FA /* UserSection.swift */,
+			);
+			name = Enum;
+			sourceTree = "<group>";
+		};
 		7189EEC724EC369B00197F2A /* CameraManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,6 +754,54 @@
 				7189EECA24EC36BF00197F2A /* CameraManagerProtocol.swift */,
 			);
 			path = CameraManager;
+			sourceTree = "<group>";
+		};
+		719AAA1425509BDB0061275D /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3024746B4100F18449 /* HumanProfileContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		719AAA1625509BE30061275D /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3424746B4100F18449 /* HumanProfileBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		719AAA1825509BE80061275D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3324746B4100F18449 /* HumanProfileViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		719AAA1B25509BEF0061275D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		719AAA1F25509BF50061275D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3524746B4100F18449 /* HumanProfileInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		719AAA2125509BFC0061275D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				71B43A3224746B4100F18449 /* HumanProfileRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		719C423224E08A7300485113 /* Login */ = {
@@ -833,6 +895,7 @@
 		719D8A8A244F682E00319E42 /* VitaChat */ = {
 			isa = PBXGroup;
 			children = (
+				71716AAA2550456A00A51985 /* VitaChat.entitlements */,
 				715889AB244F7A7300178F19 /* Application */,
 				719D8A9F244F710700319E42 /* Sources */,
 				7109EF5E246023BB000AB219 /* Services */,
@@ -1019,12 +1082,12 @@
 		71B43A2E24746AFB00F18449 /* HumanProfile */ = {
 			isa = PBXGroup;
 			children = (
-				71B43A3024746B4100F18449 /* HumanProfileContract.swift */,
-				71B43A3424746B4100F18449 /* HumanProfileBuilder.swift */,
-				71B43A3324746B4100F18449 /* HumanProfileViewController.swift */,
-				71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */,
-				71B43A3524746B4100F18449 /* HumanProfileInteractor.swift */,
-				71B43A3224746B4100F18449 /* HumanProfileRouter.swift */,
+				719AAA1425509BDB0061275D /* Contract */,
+				719AAA1625509BE30061275D /* Builder */,
+				719AAA1825509BE80061275D /* View */,
+				719AAA1B25509BEF0061275D /* Presenter */,
+				719AAA1F25509BF50061275D /* Interactor */,
+				719AAA2125509BFC0061275D /* Router */,
 			);
 			path = HumanProfile;
 			sourceTree = "<group>";
@@ -1219,6 +1282,7 @@
 		71F6A7A224E8689C00C74BC3 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				717BACEB254F0CCF003E09FA /* Enum */,
 				71A53AB12471CEC800E2923C /* PeoplePresenter.swift */,
 			);
 			name = Presenter;
@@ -1420,6 +1484,7 @@
 		B06BBB79372339FA4DE2F9A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				71716AA82550455C00A51985 /* MapKit.framework */,
 				92C19D9A6676F1302964976B /* Pods_VitaChat.framework */,
 			);
 			name = Frameworks;
@@ -1617,6 +1682,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717BACED254F0CDD003E09FA /* UserSection.swift in Sources */,
 				716F4A1624759E4B00496FC5 /* ChatRequestViewController.swift in Sources */,
 				71A71740245EDC9E0008A738 /* UIButton + PressAnimation.swift in Sources */,
 				71FE9C982460B652008D7E4A /* AppUser.swift in Sources */,
@@ -1878,6 +1944,7 @@
 			baseConfigurationReference = 1FBC07E912026090F47C6246 /* Pods-VitaChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VitaChat/VitaChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W75NGL2JLS;
 				INFOPLIST_FILE = VitaChat/Resources/Configuration/Info.plist;
@@ -1895,6 +1962,7 @@
 			baseConfigurationReference = 690042C65D58780D3D442A54 /* Pods-VitaChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = VitaChat/VitaChat.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W75NGL2JLS;
 				INFOPLIST_FILE = VitaChat/Resources/Configuration/Info.plist;

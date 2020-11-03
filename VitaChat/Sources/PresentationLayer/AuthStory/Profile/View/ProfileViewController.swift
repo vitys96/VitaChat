@@ -61,6 +61,10 @@ final class ProfileViewController: BaseViewController {
         avatarButton.didPressAvatarImage
             .subscribe(onNext: { [unowned self] in self.output.didTapAvatarButton(in: self) })
             .disposed(by: disposeBag)
+
+        avatarButton.avatrDidChange
+            .subscribe(onNext: { [unowned self] in self.output.didChangeAvatar(image: $0) })
+            .disposed(by: disposeBag)
     }
 
     // MARK: Life cycle
@@ -180,8 +184,8 @@ extension ProfileViewController: ProfileViewInput {
         avatarButton.configure(with: image)
     }
 
-    func showProfileView(model: ProfileViewModel, avatarImageUrl: URL?) {
-        avatarButton.downloadAccountImage(with: avatarImageUrl)
+    func showProfileView(model: ProfileViewModel) {
+        avatarButton.downloadAccountImage(with: model.avatarImageUrl)
         welcomeLabel.attributedText = model.welcome
         fullNameLabel.attributedText = model.fullName
         fullNameTextField.placeholder = model.fullNameTextFieldPlaceholder

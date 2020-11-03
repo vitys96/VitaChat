@@ -14,13 +14,15 @@ final class HumanProfilePresenter {
     weak var view: HumanProfileViewInput?
     private var interactor: HumanProfileInteractorInput
     private let router: HumanProfileRouterInput
+    private let user: AppUser
 
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: HumanProfileInteractorInput, router: HumanProfileRouterInput) {
+    init(interactor: HumanProfileInteractorInput, router: HumanProfileRouterInput, context: HumanProfileContext) {
         self.interactor = interactor
         self.router = router
+        user = context.user
     }
 
 }

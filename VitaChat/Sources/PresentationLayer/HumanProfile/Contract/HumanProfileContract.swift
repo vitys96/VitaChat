@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Builder
 protocol HumanProfileBuilderProtocol: class {
-    static func build() -> HumanProfileViewController
+    static func build(with context: HumanProfileContext) -> HumanProfileViewController
 }
 
 // MARK: - View

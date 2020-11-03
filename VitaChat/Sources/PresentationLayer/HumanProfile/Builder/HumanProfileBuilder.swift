@@ -19,10 +19,10 @@ final class HumanProfileBuilder {
 // MARK: - HumanProfileBuilderProtocol
 extension HumanProfileBuilder: HumanProfileBuilderProtocol {
 
-    static func build() -> HumanProfileViewController {
+    static func build(with context: HumanProfileContext) -> HumanProfileViewController {
         let interactor = HumanProfileInteractor()
         let router = HumanProfileRouter()
-        let presenter = HumanProfilePresenter(interactor: interactor, router: router)
+        let presenter = HumanProfilePresenter(interactor: interactor, router: router, context: context)
         let viewController = HumanProfileViewController(output: presenter)
 
         presenter.view = viewController
@@ -31,5 +31,11 @@ extension HumanProfileBuilder: HumanProfileBuilderProtocol {
 
         return viewController
     }
+
+}
+
+struct HumanProfileContext {
+
+    let imageUrl: Url
 
 }

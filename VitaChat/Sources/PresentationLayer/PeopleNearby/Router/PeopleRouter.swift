@@ -19,6 +19,11 @@ final class PeopleRouter {
 
 extension PeopleRouter: PeopleRouterInput {
 
+    func navigateToHumanProfile(with context: HumanProfileContext) {
+        let viewController = HumanProfileBuilder.build(with: context)
+        view?.present(viewController, animated: true)
+    }
+
     func navigateToAuth() {
         let authViewControoler = AuthBuilder.build()
         authViewControoler.modalPresentationStyle = .fullScreen

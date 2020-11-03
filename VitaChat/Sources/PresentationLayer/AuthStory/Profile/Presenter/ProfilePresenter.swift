@@ -35,6 +35,10 @@ final class ProfilePresenter {
 // MARK: - ProfileViewOutput
 extension ProfilePresenter: ProfileViewOutput {
 
+    func didChangeAvatar(image: UIImage) {
+        userSelectedImage = image
+    }
+
     func didTapAvatarButton(in view: UIViewController) {
         cameraManager.showActionSheet(vc: view) { (image) in
             if let image = image {
@@ -56,10 +60,7 @@ extension ProfilePresenter: ProfileViewOutput {
 
     func viewDidLoad() {
         view?.stopLoadingAnimation()
-//        guard let user = user else {
-//            return
-//        }
-        view?.showProfileView(model: ProfileViewModel(), avatarImageUrl: user?.photoURL)
+        view?.showProfileView(model: ProfileViewModel(with: user?.photoURL))
     }
 }
 

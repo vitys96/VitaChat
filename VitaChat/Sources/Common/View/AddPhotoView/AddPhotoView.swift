@@ -13,7 +13,6 @@ import SDWebImage
 class AddPhotoView: UIView {
 
     // MARK: - Subviews
-
     private lazy var avatarImageView = UIImageView().with {
         $0.contentMode = .scaleAspectFill
         let configuration = UIImage.SymbolConfiguration(font: UIFont.boldSystemFont(ofSize: 100))
@@ -24,7 +23,6 @@ class AddPhotoView: UIView {
         $0.clipsToBounds = true
         $0.layer.masksToBounds = true
     }
-
     private lazy var plusButton = UIButton(type: .system).with {
         $0.setImage(#imageLiteral(resourceName: "plus"), for: .normal)
         $0.tintColor = colorManager.tabBar
@@ -35,21 +33,21 @@ class AddPhotoView: UIView {
         return avatarImageViewTapGesture.rx.event.map { _ in }.asObservable()
     }
 
+    var avatrDidChange: Observable<UIImage> {
+        return selectedPhotosSubject.asObservable()
+    }
+
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
     private let avatarButtonLength: CGFloat = 100
     private let avatarImageViewTapGesture = UITapGestureRecognizer()
+    private let selectedPhotosSubject = PublishSubject<UIImage>()
 
-    // MARK: - Binding
-    private func bindObservable() {
-
-    }
 
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        bindObservable()
         addSubview()
     }
 
@@ -69,17 +67,12 @@ class AddPhotoView: UIView {
             .size(avatarButtonLength)
             .horizontally()
 
-//        plusButton.pin
-//            .size(30)
-//            .left(to: avatarImageView.edge.right)
-//            .marginLeft(16)
     }
 
     // MARK: - Private methods
     private func addSubview() {
         addSubviews([
             avatarImageView,
-//            plusButton
         ])
     }
 
@@ -87,7 +80,10 @@ class AddPhotoView: UIView {
         guard let url = url else {
             return
         }
-        avatarImageView.sd_setImage(with: url)
+        avatarImageView.sd_setImage(with: url) { (image, _, _, _) in
+            guard let image = image else { return }
+            self.selectedPhotosSubject.onNext(image)
+        }
     }
 
     func configure(with image: UIImage) {

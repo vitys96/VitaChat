@@ -31,8 +31,15 @@ protocol PeopleViewOutput {
      Метод сообщающий, что view была загружена
    */
     func viewDidLoad()
-
+    /**
+      Метод сообщающий, что кнопка log out была нажата
+    */
     func didTapLogOutButton()
+    /**
+      Метод сообщающий, что нажали на кого-либо юзера
+    */
+    func didSelectUser(user: PeopleViewModel)
+
 }
 
 // MARK: - Interactor
@@ -53,6 +60,12 @@ protocol PeopleInteractorOutput: class {
 protocol PeopleRouterInput {
 
     func showLogOutAlert(destructiveHandler: @escaping (Bool) -> Void)
-
+    /**
+      Переход на экран авторизации
+    */
     func navigateToAuth()
+    /**
+      Переход на экран конкретного юзера
+    */
+    func navigateToHumanProfile(with context: HumanProfileContext)
 }

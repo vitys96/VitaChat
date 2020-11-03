@@ -24,7 +24,7 @@ protocol ProfileViewInput: class {
     /**
      Заполнить экран профиля
      */
-    func showProfileView(model: ProfileViewModel, avatarImageUrl: URL?)
+    func showProfileView(model: ProfileViewModel)
 
     func changeAvatar(with image: UIImage)
 
@@ -37,8 +37,14 @@ protocol ProfileViewOutput {
     func viewDidLoad()
 
     func saveUserData(contactInfo: ContactInfo)
-
+    /**
+      Метод сообщающий, что была нажата кнопка с аватаром
+    */
     func didTapAvatarButton(in view: UIViewController)
+    /**
+      Метод сообщающий, что была изменена аватарка юзера
+    */
+    func didChangeAvatar(image: UIImage)
 }
 
 // MARK: - Interactor

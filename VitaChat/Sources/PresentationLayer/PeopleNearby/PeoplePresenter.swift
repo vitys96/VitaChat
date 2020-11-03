@@ -40,6 +40,10 @@ final class PeoplePresenter {
 // MARK: - PeopleViewOutput
 extension PeoplePresenter: PeopleViewOutput {
 
+    func didSelectUser(user: PeopleViewModel) {
+        let user = self.users.first(where: { $0.id == user.id })
+    }
+
     func didTapLogOutButton() {
         router.showLogOutAlert { [unowned self] isNeedtoLogOut in
             if isNeedtoLogOut {
