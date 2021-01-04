@@ -10,16 +10,21 @@ import UIKit
 
 // MARK: - Builder
 protocol HumanProfileBuilderProtocol: class {
-    static func build(with context: HumanProfileContext) -> HumanProfileViewController
+    static func build(with user: AppUser) -> HumanProfileViewController
 }
 
 // MARK: - View
-protocol HumanProfileViewInput: class {}
+protocol HumanProfileViewInput: class {
+    /**
+     Метод для передачи вью модели на слой view
+     */
+    func showData(with model: HumanProfileViewModel)
+}
 
 protocol HumanProfileViewOutput {
-   /**
+    /**
      Метод сообщающий, что view была загружена
-   */
+     */
     func viewDidLoad()
 }
 

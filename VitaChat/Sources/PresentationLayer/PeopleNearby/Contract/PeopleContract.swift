@@ -67,5 +67,5 @@ protocol PeopleRouterInput {
     /**
       Переход на экран конкретного юзера
     */
-    func navigateToHumanProfile(with context: HumanProfileContext)
+    func navigateToHumanProfile(with user: AppUser)
 }

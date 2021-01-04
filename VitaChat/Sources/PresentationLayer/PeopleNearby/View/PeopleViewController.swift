@@ -22,6 +22,7 @@ final class PeopleViewController: BaseViewController {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.delegate = self
         collectionView.register(cellType: PeopleCollectionCell.self)
         collectionView.registerView(viewType: SectionHeader.self, elementKind: UICollectionView.elementKindSectionHeader)
         return collectionView
@@ -138,6 +139,7 @@ extension PeopleViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         reloadData(with: searchText)
     }
+
 }
 
 // MARK: - UICollectionViewDelegate
@@ -147,6 +149,7 @@ extension PeopleViewController: UICollectionViewDelegate {
         guard let user = dataSource?.itemIdentifier(for: indexPath) else { return }
         output.didSelectUser(user: user)
     }
+
 }
 
 // MARK: - Data Source

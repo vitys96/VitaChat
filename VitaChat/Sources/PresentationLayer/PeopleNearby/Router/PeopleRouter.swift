@@ -19,8 +19,8 @@ final class PeopleRouter {
 
 extension PeopleRouter: PeopleRouterInput {
 
-    func navigateToHumanProfile(with context: HumanProfileContext) {
-        let viewController = HumanProfileBuilder.build(with: context)
+    func navigateToHumanProfile(with user: AppUser) {
+        let viewController = HumanProfileBuilder.build(with: user)
         view?.present(viewController, animated: true)
     }
 

@@ -129,7 +129,13 @@ final class HumanProfileViewController: BaseViewController {
 }
 
 // MARK: - HumanProfileViewInput
-extension HumanProfileViewController: HumanProfileViewInput {}
+extension HumanProfileViewController: HumanProfileViewInput {
+    
+    func showData(with model: HumanProfileViewModel) {
+        
+    }
+
+}
 
 extension HumanProfileViewController: UITextFieldDelegate {
 

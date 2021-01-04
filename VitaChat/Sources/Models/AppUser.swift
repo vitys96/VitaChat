@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseFirestore
 
-struct AppUser: Hashable, Decodable, Encodable {
+struct AppUser: Hashable, Codable {
 
     var username: String
     var email: String

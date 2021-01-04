@@ -19,17 +19,21 @@ final class HumanProfilePresenter {
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: HumanProfileInteractorInput, router: HumanProfileRouterInput, context: HumanProfileContext) {
+    init(interactor: HumanProfileInteractorInput, router: HumanProfileRouterInput, user: AppUser) {
         self.interactor = interactor
         self.router = router
-        user = context.user
+        self.user = user
     }
 
 }
 
 // MARK: - HumanProfileViewOutput
 extension HumanProfilePresenter: HumanProfileViewOutput {
-    func viewDidLoad() {}
+    
+    func viewDidLoad() {
+        
+    }
+
 }
 
 // MARK: - HumanProfileInteractorOutput

@@ -41,7 +41,10 @@ final class PeoplePresenter {
 extension PeoplePresenter: PeopleViewOutput {
 
     func didSelectUser(user: PeopleViewModel) {
-        let user = self.users.first(where: { $0.id == user.id })
+        guard let user = self.users.first(where: { $0.id == user.id }) else {
+            return
+        }
+        router.navigateToHumanProfile(with: user)
     }
 
     func didTapLogOutButton() {
@@ -64,6 +67,7 @@ extension PeoplePresenter: PeopleViewOutput {
 extension PeoplePresenter: PeopleInteractorOutput {
 
     func usersDidFetched(users: [AppUser]) {
+        self.users = users
         view?.showDataSource(data: makeViewModels(users: users))
     }
 
