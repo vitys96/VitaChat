@@ -31,7 +31,7 @@ final class HumanProfilePresenter {
 extension HumanProfilePresenter: HumanProfileViewOutput {
     
     func viewDidLoad() {
-        
+        view?.showData(with: HumanProfileViewModel(with: user))
     }
 
 }

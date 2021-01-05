@@ -13,6 +13,7 @@ struct HumanProfileViewModel {
     let id: String
     let name: NSAttributedString
     let aboutInfo: NSAttributedString
+    let avatarStringURL: URL?
     
     init(with user: AppUser) {
         let colorManager = DIContainer.colorManager
@@ -20,6 +21,7 @@ struct HumanProfileViewModel {
         id = user.id
         name = user.username.addAttributes(fontStyle: .regular, size: 18, color: colorManager.n1)
         aboutInfo = user.description.addAttributes(fontStyle: .regular, size: 18, color: colorManager.n1)
+        avatarStringURL = URL(string: user.avatarStringURL)
     }
     
 }

@@ -18,5 +18,4 @@ target 'VitaChat' do
   pod 'Firebase/Storage'
   pod 'JGProgressHUD'
   pod 'IQKeyboardManagerSwift'
-  pod 'SDWebImage', '~> 5.0'
 end

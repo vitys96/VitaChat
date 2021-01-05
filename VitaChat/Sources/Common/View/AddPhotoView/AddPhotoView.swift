@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import SDWebImage
 
 class AddPhotoView: UIView {
 
@@ -43,7 +42,6 @@ class AddPhotoView: UIView {
     private let avatarImageViewTapGesture = UITapGestureRecognizer()
     private let selectedPhotosSubject = PublishSubject<UIImage>()
 
-
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,7 +64,6 @@ class AddPhotoView: UIView {
         avatarImageView.pin
             .size(avatarButtonLength)
             .horizontally()
-
     }
 
     // MARK: - Private methods
@@ -80,10 +77,11 @@ class AddPhotoView: UIView {
         guard let url = url else {
             return
         }
-        avatarImageView.sd_setImage(with: url) { (image, _, _, _) in
-            guard let image = image else { return }
-            self.selectedPhotosSubject.onNext(image)
-        }
+        avatarImageView.kf.setImage(with: url, completionHandler: { result in
+            if case let .success(image) = result {
+                self.selectedPhotosSubject.onNext(image.image)
+            }
+        })
     }
 
     func configure(with image: UIImage) {

@@ -15,20 +15,17 @@ final class HumanProfileViewController: BaseViewController {
         $0.backgroundColor = colorManager.n13
     }
     private let imageView = UIImageView().with {
-        $0.image = UIImage.withName("human2")
         $0.contentMode = .scaleAspectFill
     }
     private let nameLabel = UILabel().with {
         $0.textColor = .black
-        $0.text = "jkwhd Mdqjwhd"
     }
     private let aboutMeLabel = UILabel().with {
         $0.textColor = .black
-        $0.text = "jkwhd Mdqjwhd"
     }
     private lazy var textField = InsertableTextField().with {
         $0.backgroundColor = DIContainer.colorManager.n11
-        $0.placeholder = "Write something here …"
+        $0.placeholder = "Напишите что-нибудь..."
         $0.font = UIFont.systemFont(ofSize: 14)
         $0.clearButtonMode = .whileEditing
         $0.borderStyle = .none
@@ -132,7 +129,11 @@ final class HumanProfileViewController: BaseViewController {
 extension HumanProfileViewController: HumanProfileViewInput {
     
     func showData(with model: HumanProfileViewModel) {
+        nameLabel.attributedText  = model.name
+        aboutMeLabel.attributedText = model.aboutInfo
+        imageView.kf.setImage(with: model.avatarStringURL)
         
+        view.setNeedsLayout()
     }
 
 }
