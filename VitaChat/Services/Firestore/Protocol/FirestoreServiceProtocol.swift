@@ -23,4 +23,6 @@ protocol FirestoreServiceProtocol {
     func uploadPhoto(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void)
 
     func uploadPhoto1(with image: UIImage) -> Single<URL>
+    
+    func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void>
 }

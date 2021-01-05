@@ -29,6 +29,11 @@ final class HumanProfilePresenter {
 
 // MARK: - HumanProfileViewOutput
 extension HumanProfilePresenter: HumanProfileViewOutput {
+
+    func didTapSendMesssage(message: String) {
+        view?.startLoadingAnimation()
+        interactor.createWaitingChat(user: user, message: message)
+    }
     
     func viewDidLoad() {
         view?.showData(with: HumanProfileViewModel(with: user))
@@ -38,6 +43,16 @@ extension HumanProfilePresenter: HumanProfileViewOutput {
 
 // MARK: - HumanProfileInteractorOutput
 extension HumanProfilePresenter: HumanProfileInteractorOutput {
+
+    func chatRequestFetchedSuccessfully() {
+        view?.stopLoadingAnimation()
+        router.dismiss()
+    }
+    
+    func chatRequestFetched(with error: Error) {
+        view?.stopLoadingAnimation()
+        router.showErrorAlert(title: error.localizedDescription)
+    }
     
 }
 

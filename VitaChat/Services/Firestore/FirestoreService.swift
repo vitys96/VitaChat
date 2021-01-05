@@ -92,6 +92,32 @@ final class FirestoreService {
 
 // MARK: - FirestoreServiceProtocol
 extension FirestoreService: FirestoreServiceProtocol {
+    
+    func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void> {
+        let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
+        let messageRef = reference.document(currentUser.id).collection("messages")
+
+        let message = AppMessage(user: currentUser, content: message)
+        let chat = AppChat(friendUsername: currentUser.username,
+                           friendAvatarStringURL: currentUser.avatarStringURL,
+                           lastMessageContent: message.content,
+                           friendId: currentUser.id)
+        
+        return Single<Void>.create { single in
+            reference.document(currentUser.id).setData(chat.representation) { error in
+                if let err = error {
+                    return single(.error(err))
+                }
+                messageRef.addDocument(data: message.representation) { error in
+                    if let err = error {
+                        return single(.error(err))
+                    }
+                    return single(.success(()))
+                }
+            }
+            return Disposables.create()
+        }
+    }
 
     func uploadPhoto1(with image: UIImage) -> Single<URL> {
         storageService.uploadPhoto1(with: image).asSingle()

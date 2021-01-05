@@ -103,7 +103,6 @@
 		71B1F61324616E0D0017D83E /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F61224616E0D0017D83E /* ValidationService.swift */; };
 		71B1F619246188EF0017D83E /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F618246188EF0017D83E /* FirestoreService.swift */; };
 		71B1F61C246188FD0017D83E /* FirestoreServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F61B246188FD0017D83E /* FirestoreServiceProtocol.swift */; };
-		71B1F61F24618EAC0017D83E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B1F61E24618EAC0017D83E /* Alertable.swift */; };
 		71B43A3724746B4100F18449 /* HumanProfileContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3024746B4100F18449 /* HumanProfileContract.swift */; };
 		71B43A3824746B4100F18449 /* HumanProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */; };
 		71B43A3924746B4100F18449 /* HumanProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B43A3224746B4100F18449 /* HumanProfileRouter.swift */; };
@@ -143,6 +142,8 @@
 		71FE9C9B2460B6B8008D7E4A /* AuthUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */; };
 		71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */; };
 		A17A495D8259E5E51F29E5AD /* Pods_VitaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C19D9A6676F1302964976B /* Pods_VitaChat.framework */; };
+		E9DF7B2125A4AEB30010FA9A /* AppChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DF7B2025A4AEB30010FA9A /* AppChat.swift */; };
+		E9DF7B2425A4AF8E0010FA9A /* AppMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DF7B2325A4AF8E0010FA9A /* AppMessage.swift */; };
 		E9F9078825A25E5C0016FF40 /* HumanProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F9078725A25E5C0016FF40 /* HumanProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -248,7 +249,6 @@
 		71B1F61224616E0D0017D83E /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		71B1F618246188EF0017D83E /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		71B1F61B246188FD0017D83E /* FirestoreServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceProtocol.swift; sourceTree = "<group>"; };
-		71B1F61E24618EAC0017D83E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		71B43A3024746B4100F18449 /* HumanProfileContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileContract.swift; sourceTree = "<group>"; };
 		71B43A3124746B4100F18449 /* HumanProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfilePresenter.swift; sourceTree = "<group>"; };
 		71B43A3224746B4100F18449 /* HumanProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileRouter.swift; sourceTree = "<group>"; };
@@ -289,6 +289,8 @@
 		71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserError.swift; sourceTree = "<group>"; };
 		71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
 		92C19D9A6676F1302964976B /* Pods_VitaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9DF7B2025A4AEB30010FA9A /* AppChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppChat.swift; sourceTree = "<group>"; };
+		E9DF7B2325A4AF8E0010FA9A /* AppMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMessage.swift; sourceTree = "<group>"; };
 		E9F9078725A25E5C0016FF40 /* HumanProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanProfileViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -447,7 +449,6 @@
 			children = (
 				71268D1D24E48E4800FE4857 /* UtilityTypes */,
 				71A53AAB2471AE6000E2923C /* Constants */,
-				71B1F61D24618E770017D83E /* Protocols */,
 				71AED7CD245FFD380026D271 /* ViewControllers */,
 				71EAA5DE245F54EA00CF1449 /* View */,
 				713BBB11245C3146008BF210 /* Extensions */,
@@ -1073,14 +1074,6 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
-		71B1F61D24618E770017D83E /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				71B1F61E24618EAC0017D83E /* Alertable.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		71B43A2E24746AFB00F18449 /* HumanProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1464,6 +1457,8 @@
 			isa = PBXGroup;
 			children = (
 				71FE9C972460B652008D7E4A /* AppUser.swift */,
+				E9DF7B2025A4AEB30010FA9A /* AppChat.swift */,
+				E9DF7B2325A4AF8E0010FA9A /* AppMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1710,7 +1705,6 @@
 				71766D512461F7E900F41BC5 /* ContactInfo.swift in Sources */,
 				71B054262470944300981AF2 /* ConversationsHeaderView.swift in Sources */,
 				71B43A3B24746B4100F18449 /* HumanProfileBuilder.swift in Sources */,
-				71B1F61F24618EAC0017D83E /* Alertable.swift in Sources */,
 				71F1562024693E4300444D06 /* ConversationsContract.swift in Sources */,
 				713BBB1E245C40EC008BF210 /* UIImage+BundledImage.swift in Sources */,
 				716F07652467007400C859B4 /* BaseViewController.swift in Sources */,
@@ -1752,6 +1746,7 @@
 				71B1F61324616E0D0017D83E /* ValidationService.swift in Sources */,
 				71104782245D955B00D37620 /* FontManagerProtocol.swift in Sources */,
 				719C424924E08CBC00485113 /* LoginViewModel.swift in Sources */,
+				E9DF7B2125A4AEB30010FA9A /* AppChat.swift in Sources */,
 				71BA9CC0246063E300F704F5 /* ProfileRouter.swift in Sources */,
 				713CA0E824E48FB900019D99 /* UserDefaults+Codable.swift in Sources */,
 				71F1563524699A1E00444D06 /* Bundle+Decodable.swift in Sources */,
@@ -1769,6 +1764,7 @@
 				71104774245D780300D37620 /* UIView+Subviews.swift in Sources */,
 				71A53AB72471CEC800E2923C /* PeopleContract.swift in Sources */,
 				71B43A3A24746B4100F18449 /* HumanProfileViewController.swift in Sources */,
+				E9DF7B2425A4AF8E0010FA9A /* AppMessage.swift in Sources */,
 				71B43A3824746B4100F18449 /* HumanProfilePresenter.swift in Sources */,
 				71A53AAA24714E3800E2923C /* SectionHeader.swift in Sources */,
 				71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */,

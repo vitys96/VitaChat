@@ -94,11 +94,9 @@ final class ConversationsViewController: BaseViewController {
 
     // MARK: - Private methods
     private func addSubviews() {
-
         view.addSubviews([
             collectionView,
         ])
-
         setupActivityIndicator()
     }
 

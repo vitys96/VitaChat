@@ -6,14 +6,18 @@
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
-import UIKit
+import RxSwift
 
 class InsertableTextField: UITextField {
 
     // MARK: - Subviews
     private lazy var rightButton = UIButton(type: .system).with {
         $0.setImage(UIImage(named: "Sent"), for: .normal)
-//        $0.applyGradients()
+    }
+    
+    // MARK: - Computed properties
+    var didPressSendButton: Observable<Void> {
+        return rightButton.rx.tap.asObservable()
     }
 
     override init(frame: CGRect) {
@@ -52,6 +56,4 @@ class InsertableTextField: UITextField {
         return rect
     }
 
-    // MARK: - Private methods
-    private func addSubview() {}
 }

@@ -20,7 +20,8 @@ final class HumanProfileBuilder {
 extension HumanProfileBuilder: HumanProfileBuilderProtocol {
 
     static func build(with user: AppUser) -> HumanProfileViewController {
-        let interactor = HumanProfileInteractor()
+        let interactor = HumanProfileInteractor(userService: DIContainer.userService,
+                                                firestoreService: DIContainer.firestoreService)
         let router = HumanProfileRouter()
         let presenter = HumanProfilePresenter(interactor: interactor, router: router, user: user)
         let viewController = HumanProfileViewController(output: presenter)

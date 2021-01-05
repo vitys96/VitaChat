@@ -15,4 +15,14 @@ final class HumanProfileRouter {
 
 }
 
-extension HumanProfileRouter: HumanProfileRouterInput {}
+extension HumanProfileRouter: HumanProfileRouterInput {
+
+    func dismiss() {
+        view?.dismiss(animated: true)
+    }
+
+    func showErrorAlert(title: String) {
+        view?.showErrorAlert(labelText: "Ошибка", detailText: title)
+    }
+
+}

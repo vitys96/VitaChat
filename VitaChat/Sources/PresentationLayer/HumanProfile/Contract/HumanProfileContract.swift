@@ -15,6 +15,9 @@ protocol HumanProfileBuilderProtocol: class {
 
 // MARK: - View
 protocol HumanProfileViewInput: class {
+    func startLoadingAnimation()
+
+    func stopLoadingAnimation()
     /**
      Метод для передачи вью модели на слой view
      */
@@ -26,11 +29,35 @@ protocol HumanProfileViewOutput {
      Метод сообщающий, что view была загружена
      */
     func viewDidLoad()
+    /**
+     Метод сообщающий, что юзер отправил сообщение
+     */
+    func didTapSendMesssage(message: String)
 }
 
 // MARK: - Interactor
-protocol HumanProfileInteractorInput {}
-protocol HumanProfileInteractorOutput: class {}
+protocol HumanProfileInteractorInput {
+    /**
+     Метод для создания запроса на чат
+     */
+    func createWaitingChat(user: AppUser, message: String)
+}
+protocol HumanProfileInteractorOutput: class {
+    /**
+     Метод сообщающий, что запрос на чат был успешно отправлен
+     */
+    func chatRequestFetchedSuccessfully()
+    /**
+     Метод сообщающий, что запрос на чат был завершен с ошибкой
+     */
+    func chatRequestFetched(with error: Error)
+}
 
 // MARK: - Router
-protocol HumanProfileRouterInput {}
+protocol HumanProfileRouterInput {
+    func showErrorAlert(title: String)
+    /**
+    Закрыть модуль
+    */
+    func dismiss()
+}

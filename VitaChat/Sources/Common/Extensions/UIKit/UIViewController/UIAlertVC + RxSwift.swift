@@ -49,9 +49,9 @@ extension UIViewController {
                 alertController.addAction(action)
             }
 
-            self.present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true)
 
-            return Disposables.create { alertController.dismiss(animated: true, completion: nil) }
+            return Disposables.create { alertController.dismiss(animated: true) }
         }
     }
 }
@@ -70,7 +70,7 @@ extension UIViewController {
         }
     }
 
-    func showSuccessAlert(labelText: String? = nil, detailText: String?) {
+    func showSuccessAlert(labelText: String? = nil, detailText: String? = nil) {
         let errorAlert = JGProgressHUD(style: .dark)
         errorAlert.indicatorView = JGProgressHUDSuccessIndicatorView()
         errorAlert.textLabel.text = labelText
