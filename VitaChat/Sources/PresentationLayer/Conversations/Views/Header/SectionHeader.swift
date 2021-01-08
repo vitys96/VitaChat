@@ -16,8 +16,6 @@ class SectionHeader: UICollectionViewCell {
     // MARK: - Protocol poperties
     private let colorManager = DIContainer.colorManager
 
-    // MARK: - Computed properties
-
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)

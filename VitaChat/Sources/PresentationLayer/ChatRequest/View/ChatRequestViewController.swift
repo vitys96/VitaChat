@@ -21,24 +21,26 @@ final class ChatRequestViewController: BaseViewController {
     }
     private let nameLabel = UILabel().with {
         $0.textColor = .black
-        $0.text = "jkwhd Mdqjwhd"
+//        $0.text = "jkwhd Mdqjwhd"
     }
     private let aboutMeLabel = UILabel().with {
         $0.textColor = .black
-        $0.text = "jkwhd Mdqjwhd"
+//        $0.text = "jkwhd Mdqjwhd"
     }
     private let acceptButton = GradientButton().with {
         $0.setTitleColor(.white, for: .normal)
         $0.backgroundColor = .white
-//        $0.roundWithShadow(cornerRadius: 10)
-        $0.setTitle("ACCEPT", for: .normal)
+        $0.layer.cornerRadius = 10
+        $0.clipsToBounds = true
+        $0.setTitle("ПРИНЯТЬ", for: .normal)
     }
     private let denyButton = UIButton().with {
         $0.setTitleColor(.red, for: .normal)
         $0.backgroundColor = .white
-//        $0.roundWithShadow(cornerRadius: 10)
+        $0.layer.cornerRadius = 10
+        $0.clipsToBounds = true
         $0.setupBorder(withColor: UIColor.red.withAlphaComponent(0.4), andWidth: 1)
-        $0.setTitle("DENY", for: .normal)
+        $0.setTitle("ОТКЛОНИТЬ", for: .normal)
     }
 
     // MARK: - Protocol properties
@@ -71,7 +73,6 @@ final class ChatRequestViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configure()
         bindObservable()
         output.viewDidLoad()
     }
@@ -84,9 +85,6 @@ final class ChatRequestViewController: BaseViewController {
     }
 
     private func layout() {
-        let widthInPercent = 44
-        let outerMarginInPercent = 4
-        let innerMarginInPercent = 100 - 2 * (widthInPercent + outerMarginInPercent)
         let bottomButtonHeight: CGFloat = 45
 
         containerView.pin
@@ -113,19 +111,17 @@ final class ChatRequestViewController: BaseViewController {
 
         acceptButton.pin
             .height(bottomButtonHeight)
-            .width(widthInPercent%)
+            .width(45%)
             .below(of: aboutMeLabel)
-            .marginTop(Margin.x4)
-            .left(outerMarginInPercent%)
             .bottom(view.pin.safeArea.bottom)
+            .marginTop(Margin.x4)
+            .left(10)
 
         denyButton.pin
             .height(bottomButtonHeight)
-            .width(widthInPercent%)
-            .right(outerMarginInPercent%)
             .after(of: acceptButton, aligned: .center)
-            .marginLeft(innerMarginInPercent%)
-
+            .right(10)
+            .marginLeft(10)
     }
 
     // MARK: - Private methods
@@ -142,11 +138,16 @@ final class ChatRequestViewController: BaseViewController {
         ])
     }
 
-    private func configure() {
-//        containerView.roundWithShadow(cornerRadius: 30, shadowRadius: 5)
-    }
-
 }
 
 // MARK: - ChatRequestViewInput
-extension ChatRequestViewController: ChatRequestViewInput {}
+extension ChatRequestViewController: ChatRequestViewInput {
+
+    func showRequestChatData(with model: ChatRequestViewModel) {
+        imageView.kf.setImage(with: model.userImageUrl)
+        nameLabel.attributedText = model.username
+
+        view.setNeedsLayout()
+    }
+
+}

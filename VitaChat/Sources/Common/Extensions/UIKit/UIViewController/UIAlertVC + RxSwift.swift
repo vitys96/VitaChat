@@ -58,6 +58,7 @@ extension UIViewController {
 
 
 extension UIViewController {
+
     func showErrorAlert(labelText: String? = nil, detailText: String?) {
         let errorAlert = JGProgressHUD(style: .dark)
         errorAlert.indicatorView = JGProgressHUDErrorIndicatorView()
@@ -108,4 +109,5 @@ extension UIViewController {
             closedAction()
         }
     }
+
 }

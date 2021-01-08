@@ -10,11 +10,13 @@ import UIKit
 
 // MARK: - Builder
 protocol ChatRequestBuilderProtocol: class {
-    static func build() -> ChatRequestViewController
+    static func build(with chat: AppChat) -> ChatRequestViewController
 }
 
 // MARK: - View
-protocol ChatRequestViewInput: class {}
+protocol ChatRequestViewInput: class {
+    func showRequestChatData(with model: ChatRequestViewModel)
+}
 
 protocol ChatRequestViewOutput {
    /**

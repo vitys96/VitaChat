@@ -6,7 +6,6 @@
 //  Copyright © 2020 Okhrimenko Vitaliy. All rights reserved.
 //
 
-
 import Dip
 
 final class DIContainer {
@@ -50,6 +49,9 @@ final class DIContainer {
         }
         container.register {
             UserService() as UserServiceProtocol
+        }
+        container.register {
+            ListenerService() as ListenerServiceProtocol
         }
 
     }
@@ -114,6 +116,13 @@ final class DIContainer {
             fatalError()
         }
         return userService
+    }
+    
+    static var listenerService: ListenerServiceProtocol {
+        guard let listenerService = try? instance.resolve() as ListenerServiceProtocol else {
+            fatalError()
+        }
+        return listenerService
     }
 
 }

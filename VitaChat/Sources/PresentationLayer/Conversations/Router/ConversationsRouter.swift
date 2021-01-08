@@ -15,4 +15,11 @@ final class ConversationsRouter {
 
 }
 
-extension ConversationsRouter: ConversationsRouterInput {}
+extension ConversationsRouter: ConversationsRouterInput {
+
+    func navigateToChatRequestScreen(with chat: AppChat) {
+        let vc = ChatRequestBuilder.build(with: chat)
+        view?.present(vc, animated: true)
+    }
+
+}

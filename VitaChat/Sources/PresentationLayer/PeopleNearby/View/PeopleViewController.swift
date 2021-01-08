@@ -39,7 +39,6 @@ final class PeopleViewController: BaseViewController {
     private let colorManager = DIContainer.colorManager
     private let disposeBag = DisposeBag()
     var dataSource: UICollectionViewDiffableDataSource<UsersSection, PeopleViewModel>?
-    let users = Bundle.main.decode([PeopleModelCell].self, from: "users.json")
 
     // MARK: - Init
     init(output: PeopleViewOutput) {

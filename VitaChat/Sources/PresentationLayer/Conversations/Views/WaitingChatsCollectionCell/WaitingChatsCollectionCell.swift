@@ -37,7 +37,7 @@ class WaitingChatsCollectionCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        reuseBag = DisposeBag()
+        imageView.kf.cancelDownloadTask()
     }
 
     // MARK: - Layout
@@ -53,8 +53,9 @@ class WaitingChatsCollectionCell: UICollectionViewCell {
 
     // MARK: - Public methods
     func setup(with model: ConversationCellViewModel) {
-
-        imageView.image = UIImage.withName(model.userImageString)
+//        imageView.kf.cancelDownloadTask()
+        imageView.kf.setImage(with: model.userImageUrl, placeholder: UIImage.withName("human3"))
+        print(model.userImageUrl)
 
         setNeedsLayout()
     }

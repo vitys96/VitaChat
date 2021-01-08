@@ -12,21 +12,21 @@ import RxSwift
 
 
 final class FirestoreService {
-
+    
     // MARK: - Properties
     let db = Firestore.firestore()
-
+    
     private var usersRef: CollectionReference {
         return db.collection("users")
     }
-
+    
     private let storageService: StorageSeviceProtocol
-
+    
     // MARK: - Init
     init(storageService: StorageSeviceProtocol) {
         self.storageService = storageService
     }
-
+    
     private func saveUser(uid: String, userData: AppUser) -> Observable<AppUser> {
         return Single<AppUser>.create { single in
             self.usersRef.document(uid).setData(userData.representation) { error in
@@ -39,7 +39,7 @@ final class FirestoreService {
             return Disposables.create()
         }.asObservable()
     }
-
+    
     private func getDocument(docRef: DocumentReference) -> Observable<AppUser> {
         return Single<AppUser>.create { single in
             docRef.getDocument { (document, error) in
@@ -55,7 +55,7 @@ final class FirestoreService {
             return Disposables.create()
         }.asObservable()
     }
-
+    
     private func observe(with usersData: [AppUser], currentUserId: String,
                          completion: @escaping ([AppUser]) -> Void) -> Observable<ListenerRegistration> {
         var users = usersData
@@ -87,7 +87,7 @@ final class FirestoreService {
             return Disposables.create()
         }.asObservable()
     }
-
+    
 }
 
 // MARK: - FirestoreServiceProtocol
@@ -96,12 +96,12 @@ extension FirestoreService: FirestoreServiceProtocol {
     func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void> {
         let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))
         let messageRef = reference.document(currentUser.id).collection("messages")
-
+        
         let message = AppMessage(user: currentUser, content: message)
         let chat = AppChat(friendUsername: currentUser.username,
                            friendAvatarStringURL: currentUser.avatarStringURL,
-                           lastMessageContent: message.content,
-                           friendId: currentUser.id)
+                           friendId: currentUser.id,
+                           lastMessageContent: message.content)
         
         return Single<Void>.create { single in
             reference.document(currentUser.id).setData(chat.representation) { error in
@@ -118,46 +118,34 @@ extension FirestoreService: FirestoreServiceProtocol {
             return Disposables.create()
         }
     }
-
+    
     func uploadPhoto1(with image: UIImage) -> Single<URL> {
         storageService.uploadPhoto1(with: image).asSingle()
     }
-
+    
     func uploadPhoto(image: UIImage, completion: @escaping (Result<URL, Error>) -> Void) {
         storageService.upload(photo: image, completion: completion)
     }
-
+    
     func saveProfileWith(id: String, email: String, username: String?, avatarImageUrl: String, description: String?,
                          sex: String) -> Single<AppUser> {
-
         guard let name = username, let descr = description else {
             return .error(AuthUserError.notFilled)
         }
-//        guard let imageUser = avatarImage else {
-//            return .error(AuthUserError.photoNotExist)
-//        }
         let user = AppUser(username: name,
                            email: email,
                            avatarStringURL: avatarImageUrl,
                            description: descr,
                            sex: sex,
                            id: id)
-//        storageService.upload(photo: imageUser) { result in
-//            switch result {
-//            case .success(let url):
-//                user.avatarStringURL = url.absoluteString
-//            case .failure(_):
-//                print("laal")
-//            }
-//        }
         return saveUser(uid: id, userData: user).asSingle()
     }
-
+    
     func getUserData(user: User) -> Single<AppUser> {
         let docRef = usersRef.document(user.uid)
         return getDocument(docRef: docRef).asSingle()
     }
-
+    
     func observeUsers(users: [AppUser], currentUserId: String,
                       completion: @escaping ([AppUser]) -> Void) -> Single<ListenerRegistration> {
         return observe(with: users, currentUserId: currentUserId, completion: completion).asSingle()

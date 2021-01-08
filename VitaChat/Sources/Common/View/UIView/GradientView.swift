@@ -50,7 +50,8 @@ final class GradientView: UIView {
     }
 
     func setupGradient(from: Point = .topTrailing, to: Point = .bottomLeading,
-                       startColor: UIColor? = UIColor.init(hex: "C9A1F0"), endColor: UIColor? = UIColor.init(hex: "7AB2EB")) {
+                       startColor: UIColor? = UIColor.init(hex: "C9A1F0"),
+                       endColor: UIColor? = UIColor.init(hex: "7AB2EB")) {
         guard let gradientLayer = layer as? CAGradientLayer else {
             return
         }

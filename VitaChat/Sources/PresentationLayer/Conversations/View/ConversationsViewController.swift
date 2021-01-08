@@ -8,17 +8,7 @@
 
 import UIKit
 
-enum Section: Int, CaseIterable {
-    case waitingChats, activeChats
-    func description() -> String {
-        switch self {
-        case .waitingChats:
-            return "В ожидании"
-        case .activeChats:
-            return "Активные чаты"
-        }
-    }
-}
+
 
 final class ConversationsViewController: BaseViewController {
 
@@ -41,7 +31,7 @@ final class ConversationsViewController: BaseViewController {
 
     // MARK: - Protocol properties
     private let output: ConversationsViewOutput
-    var dataSource: UICollectionViewDiffableDataSource<Section, ConversationCellViewModel>?
+    var dataSource: UICollectionViewDiffableDataSource<ConversationCellType, ConversationCellViewModel>?
 
     // MARK: - Properties
     private let colorManager = DIContainer.colorManager
@@ -115,11 +105,11 @@ final class ConversationsViewController: BaseViewController {
 extension ConversationsViewController: ConversationsViewInput {
 
     func configureView(navigationTitle: String) {
-        self.navigationItem.title = navigationTitle
+        navigationItem.title = navigationTitle
     }
 
-    func showDataSource(data: NSDiffableDataSourceSnapshot<Section, ConversationCellViewModel>) {
-        dataSource?.apply(data, animatingDifferences: true)
+    func showDataSource(snapshot: NSDiffableDataSourceSnapshot<ConversationCellType, ConversationCellViewModel>) {
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -135,9 +125,10 @@ extension ConversationsViewController: UISearchBarDelegate {
 extension ConversationsViewController {
 
     private func createDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, ConversationCellViewModel>(collectionView: collectionView,
+        dataSource = UICollectionViewDiffableDataSource<ConversationCellType,
+                                                        ConversationCellViewModel>(collectionView: collectionView,
                                                                                         cellProvider: { (collectionView, indexPath, chat) -> UICollectionViewCell? in
-            guard let section = Section(rawValue: indexPath.section) else {
+            guard let section = ConversationCellType(rawValue: indexPath.section) else {
                 fatalError("Unknown section kind")
             }
 
@@ -159,7 +150,7 @@ extension ConversationsViewController {
             let sectionHeader = collectionView.dequeueReusableSupplementaryView(with: SectionHeader.self,
                                                                                        elementKind: kind,
                                                                                        for: indexPath)
-            guard let section = Section(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
+            guard let section = ConversationCellType(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
             sectionHeader.setup(title: section.description())
             
             return sectionHeader
@@ -172,9 +163,9 @@ extension ConversationsViewController {
 extension ConversationsViewController {
 
     private func createCompositionalLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (senctionIndex, layoutEnvironment) -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { (senctionIndex, _) -> NSCollectionLayoutSection? in
 
-            guard let section = Section(rawValue: senctionIndex) else {
+            guard let section = ConversationCellType(rawValue: senctionIndex) else {
                 fatalError("Unknown section kind")
             }
 
@@ -204,8 +195,8 @@ extension ConversationsViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 20
 
+        let sectionHeader = collectionView.createSectionHeader(width: .fractionalWidth(1), height: .estimated(100))
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
-        let sectionHeader = collectionView.createSectionHeader(width: .fractionalWidth(1), height: .estimated(1))
         section.boundarySupplementaryItems = [sectionHeader]
         section.orthogonalScrollingBehavior = .continuous
 
