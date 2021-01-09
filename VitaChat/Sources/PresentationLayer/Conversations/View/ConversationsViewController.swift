@@ -26,6 +26,7 @@ final class ConversationsViewController: BaseViewController {
         collectionView.register(cellType: ActiveChatsCollectionCell.self)
         collectionView.registerView(viewType: SectionHeader.self, elementKind: UICollectionView.elementKindSectionHeader)
         collectionView.register(cellType: WaitingChatsCollectionCell.self)
+        collectionView.delegate = self
         return collectionView
     }()
 
@@ -119,6 +120,23 @@ extension ConversationsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
     }
+}
+
+extension ConversationsViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let chat = dataSource?.itemIdentifier(for: indexPath),
+              let section = ConversationCellType(rawValue: indexPath.section) else {
+            return
+        }
+        switch section {
+        case .waitingChats:
+            output.didTapWaitingChat(with: chat)
+        default:
+            break
+        }
+    }
+
 }
 
 // MARK: - Data Source

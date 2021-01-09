@@ -25,6 +25,10 @@ protocol ConversationsViewOutput {
      Метод сообщающий, что view была загружена
      */
     func viewDidLoad()
+    /**
+     Метод сообщающий, что был нажат какой либо ожидающий чат
+     */
+    func didTapWaitingChat(with model: ConversationCellViewModel)
 }
 
 // MARK: - Interactor
@@ -33,6 +37,10 @@ protocol ConversationsInteractorInput {
      Метод для запроса чатов
      */
     func fetchChats(with chats: [AppChat])
+    /**
+     Удалить чат, который ожидает подтверждения
+     */
+    func removeWaitingChat(_ chat: AppChat)
 }
 protocol ConversationsInteractorOutput: class {
     /**
@@ -46,5 +54,13 @@ protocol ConversationsRouterInput {
     /**
      Метод сообщающий, что необходимо показать экран "Запроса чата"
      */
-    func navigateToChatRequestScreen(with chat: AppChat)
+    func navigateToChatRequestScreen(with context: ChatRequestContext)
+}
+
+// MARK: - Input
+protocol ConversationsModuleInput: class {
+    /**
+     Удалить чат, который ожидает подтверждения
+     */
+    func didTapRemoveWaitingChat(_ chat: AppChat)
 }

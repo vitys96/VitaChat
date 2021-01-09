@@ -55,7 +55,6 @@ class WaitingChatsCollectionCell: UICollectionViewCell {
     func setup(with model: ConversationCellViewModel) {
 //        imageView.kf.cancelDownloadTask()
         imageView.kf.setImage(with: model.userImageUrl, placeholder: UIImage.withName("human3"))
-        print(model.userImageUrl)
 
         setNeedsLayout()
     }

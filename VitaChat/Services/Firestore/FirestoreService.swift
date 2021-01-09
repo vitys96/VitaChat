@@ -15,12 +15,12 @@ final class FirestoreService {
     
     // MARK: - Properties
     let db = Firestore.firestore()
+
+    private let storageService: StorageSeviceProtocol
     
     private var usersRef: CollectionReference {
         return db.collection("users")
     }
-    
-    private let storageService: StorageSeviceProtocol
     
     // MARK: - Init
     init(storageService: StorageSeviceProtocol) {
@@ -88,10 +88,65 @@ final class FirestoreService {
         }.asObservable()
     }
     
+    private func deleteMessages(currentUserId: String, chat: AppChat) -> Observable<Void> {
+        let waitingChatRef = db.collection(["users", currentUserId, "waitingChats"].joined(separator: "/"))
+        let reference = waitingChatRef.document(chat.friendId).collection("messages")
+        return Single<Void>.create { single in
+            waitingChatRef.document(chat.friendId).delete { error in
+                if let err = error {
+                    return single(.error(err))
+                }
+                self.getWaitingChatMessages(currentUserId: currentUserId, chat: chat) { result in
+                    switch result {
+                    case .success(let messages):
+                        for message in messages {
+                            guard let documentId = message.id else { return }
+                            let messageRef = reference.document(documentId)
+                            messageRef.delete { (error) in
+                                if let error = error {
+                                    return single(.error(error))
+                                }
+                                return single(.success(()))
+                            }
+                        }
+                    case .failure(let error):
+                        return single(.error(error))
+                    }
+                }
+            }
+            return Disposables.create()
+        }.asObservable()
+    }
+    
+    func getWaitingChatMessages(currentUserId: String, chat: AppChat,
+                                 completion: @escaping (Result<[AppMessage], Error>) -> Void) {
+        let waitingChatRef = db.collection(["users", currentUserId, "waitingChats"].joined(separator: "/"))
+        let reference = waitingChatRef.document(chat.friendId).collection("messages")
+        var messages = [AppMessage]()
+        reference.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let querySnapshot = querySnapshot else {
+                return
+            }
+            for document in querySnapshot.documents {
+                guard let message = AppMessage(document: document) else { return }
+                messages.append(message)
+            }
+            completion(.success(messages))
+        }
+    }
+    
 }
 
 // MARK: - FirestoreServiceProtocol
 extension FirestoreService: FirestoreServiceProtocol {
+    
+    func deleteWaitingChat(currentUserId: String, chat: AppChat) -> Single<Void> {
+        return deleteMessages(currentUserId: currentUserId, chat: chat).asSingle()
+    }
     
     func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void> {
         let reference = db.collection(["users", receiver.id, "waitingChats"].joined(separator: "/"))

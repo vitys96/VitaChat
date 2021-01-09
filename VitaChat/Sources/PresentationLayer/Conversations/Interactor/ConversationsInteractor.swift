@@ -15,13 +15,19 @@ final class ConversationsInteractor {
     weak var output: ConversationsInteractorOutput?
     private var waitingChatsListener: ListenerRegistration?
     private let listenerService: ListenerServiceProtocol
+    private let userService: UserServiceProtocol
+    private let firestoreService: FirestoreServiceProtocol
     
     // MARK: - Properties
     private let disposeBag = DisposeBag()
     
     // MARK: - Init
-    init(listenerService: ListenerServiceProtocol) {
+    init(listenerService: ListenerServiceProtocol,
+         userService: UserServiceProtocol,
+         firestoreService: FirestoreServiceProtocol) {
         self.listenerService = listenerService
+        self.userService = userService
+        self.firestoreService = firestoreService
     }
     
     deinit {
@@ -34,6 +40,17 @@ final class ConversationsInteractor {
 
 // MARK: - ConversationsInteractorInput
 extension ConversationsInteractor: ConversationsInteractorInput {
+    
+    func removeWaitingChat(_ chat: AppChat) {
+        guard let id = userService.getUser()?.id else {
+            return
+        }
+        firestoreService.deleteWaitingChat(currentUserId: id, chat: chat)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { print("alala") },
+                       onError: { print($0) })
+            .disposed(by: disposeBag)
+    }
     
     func fetchChats(with chats: [AppChat]) {
         listenerService.waitingChatsObserve(chats: chats) { [weak self] chats in

@@ -7,7 +7,7 @@
 //
 
 import PinLayout
-import UIKit
+import RxSwift
 
 final class ChatRequestViewController: BaseViewController {
 
@@ -21,11 +21,9 @@ final class ChatRequestViewController: BaseViewController {
     }
     private let nameLabel = UILabel().with {
         $0.textColor = .black
-//        $0.text = "jkwhd Mdqjwhd"
     }
     private let aboutMeLabel = UILabel().with {
         $0.textColor = .black
-//        $0.text = "jkwhd Mdqjwhd"
     }
     private let acceptButton = GradientButton().with {
         $0.setTitleColor(.white, for: .normal)
@@ -47,7 +45,8 @@ final class ChatRequestViewController: BaseViewController {
     private let output: ChatRequestViewOutput
 
     // MARK: - Properties
-     private let colorManager = DIContainer.colorManager
+    private let colorManager = DIContainer.colorManager
+    private let disposeBag = DisposeBag()
 
     // MARK: - Init
     init(output: ChatRequestViewOutput) {
@@ -61,7 +60,14 @@ final class ChatRequestViewController: BaseViewController {
     }
 
     // MARK: - Binding
-    private func bindObservable() {}
+    private func bindObservable() {
+        denyButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                        self.dismiss(animated: true) {
+                            self.output.didTapDenyButton()
+                        } })
+            .disposed(by: disposeBag)
+    }
 
     // MARK: Life cycle
     override func loadView() {

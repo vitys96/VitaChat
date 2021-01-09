@@ -25,4 +25,6 @@ protocol FirestoreServiceProtocol {
     func uploadPhoto1(with image: UIImage) -> Single<URL>
     
     func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void>
+    
+    func deleteWaitingChat(currentUserId: String, chat: AppChat) -> Single<Void>
 }

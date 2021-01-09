@@ -35,13 +35,25 @@ final class ConversationsPresenter {
         return snapshot
     }
     
+    private func navigateToChatRequestScreen(with chat: AppChat) {
+        let context = ChatRequestContext(chat: chat, conversationModule: self)
+        router.navigateToChatRequestScreen(with: context)
+    }
+    
 }
 
 // MARK: - ConversationsViewOutput
 extension ConversationsPresenter: ConversationsViewOutput {
+
+    func didTapWaitingChat(with model: ConversationCellViewModel) {
+        guard let chat = waitingChats.first(where: { $0.friendId == model.id }) else {
+            return
+        }
+        navigateToChatRequestScreen(with: chat)
+    }
+    
     
     func viewDidLoad() {
-//        router.navigateToChatRequestScreen()
         interactor.fetchChats(with: [])
         view?.configureView(navigationTitle: currentUser.username)
     }
@@ -55,10 +67,19 @@ extension ConversationsPresenter: ConversationsInteractorOutput {
             guard let lastChat = chats.last else {
                 return
             }
-            router.navigateToChatRequestScreen(with: lastChat)
+            navigateToChatRequestScreen(with: lastChat)
         }
         waitingChats = chats
         view?.showDataSource(snapshot: makeViewModels(with: chats))
+    }
+    
+}
+
+// MARK: - ConversationsModuleInput
+extension ConversationsPresenter: ConversationsModuleInput {
+
+    func didTapRemoveWaitingChat(_ chat: AppChat) {
+        interactor.removeWaitingChat(chat)
     }
     
 }

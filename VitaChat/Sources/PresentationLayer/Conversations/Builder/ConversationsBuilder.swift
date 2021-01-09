@@ -20,7 +20,9 @@ final class ConversationsBuilder {
 extension ConversationsBuilder: ConversationsBuilderProtocol {
 
     static func build(with user: AppUser) -> ConversationsViewController {
-        let interactor = ConversationsInteractor(listenerService: DIContainer.listenerService)
+        let interactor = ConversationsInteractor(listenerService: DIContainer.listenerService,
+                                                 userService: DIContainer.userService,
+                                                 firestoreService: DIContainer.firestoreService)
         let router = ConversationsRouter()
         let presenter = ConversationsPresenter(interactor: interactor, router: router, currentUser: user)
         let viewController = ConversationsViewController(output: presenter)

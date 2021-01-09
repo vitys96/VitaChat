@@ -19,10 +19,10 @@ final class ChatRequestBuilder {
 // MARK: - ChatRequestBuilderProtocol
 extension ChatRequestBuilder: ChatRequestBuilderProtocol {
 
-    static func build(with chat: AppChat) -> ChatRequestViewController {
+    static func build(with context: ChatRequestContext) -> ChatRequestViewController {
         let interactor = ChatRequestInteractor()
         let router = ChatRequestRouter()
-        let presenter = ChatRequestPresenter(interactor: interactor, router: router, chat: chat)
+        let presenter = ChatRequestPresenter(interactor: interactor, router: router, context: context)
         let viewController = ChatRequestViewController(output: presenter)
 
         presenter.view = viewController
@@ -31,5 +31,12 @@ extension ChatRequestBuilder: ChatRequestBuilderProtocol {
 
         return viewController
     }
+
+}
+
+struct ChatRequestContext {
+
+    let chat: AppChat
+    let conversationModule: ConversationsModuleInput
 
 }

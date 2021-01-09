@@ -130,7 +130,6 @@
 		71F1562824695AC200444D06 /* ActiveChatsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1562724695AC200444D06 /* ActiveChatsCollectionCell.swift */; };
 		71F1562B24695BB400444D06 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1562A24695BB400444D06 /* UICollectionView.swift */; };
 		71F1562F2469670C00444D06 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1562E2469670C00444D06 /* AppearanceManager.swift */; };
-		71F15632246999BD00444D06 /* ConversationModelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F15631246999BD00444D06 /* ConversationModelCell.swift */; };
 		71F1563D2469E50F00444D06 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1563C2469E50F00444D06 /* GradientView.swift */; };
 		71FD36D024DDDC170057CA06 /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FD36CF24DDDC170057CA06 /* StandardButton.swift */; };
 		71FE9C952460A78B008D7E4A /* AddPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C942460A78B008D7E4A /* AddPhotoView.swift */; };
@@ -277,7 +276,6 @@
 		71F1562724695AC200444D06 /* ActiveChatsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveChatsCollectionCell.swift; sourceTree = "<group>"; };
 		71F1562A24695BB400444D06 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		71F1562E2469670C00444D06 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
-		71F15631246999BD00444D06 /* ConversationModelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationModelCell.swift; sourceTree = "<group>"; };
 		71F1563C2469E50F00444D06 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		71FD36CF24DDDC170057CA06 /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
 		71FE9C942460A78B008D7E4A /* AddPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoView.swift; sourceTree = "<group>"; };
@@ -1154,8 +1152,6 @@
 		71F1561724693E2600444D06 /* Conversations */ = {
 			isa = PBXGroup;
 			children = (
-				71F15630246999A100444D06 /* Model */,
-				71F156262469582E00444D06 /* Views */,
 				71F6A7A524E88B9A00C74BC3 /* Contract */,
 				71F6A7A624E88BA000C74BC3 /* Builder */,
 				71F6A7A724E88BA700C74BC3 /* View */,
@@ -1200,14 +1196,6 @@
 				71F1562E2469670C00444D06 /* AppearanceManager.swift */,
 			);
 			path = AppearanceManager;
-			sourceTree = "<group>";
-		};
-		71F15630246999A100444D06 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				71F15631246999BD00444D06 /* ConversationModelCell.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		71F1563A2469E4EF00444D06 /* UIView */ = {
@@ -1300,6 +1288,7 @@
 		71F6A7A724E88BA700C74BC3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				71F156262469582E00444D06 /* Views */,
 				E9A2472425A8F086006E757F /* Enum */,
 				71F1561C24693E4300444D06 /* ConversationsViewController.swift */,
 			);
@@ -1858,7 +1847,6 @@
 				71A53AAD2471AE6D00E2923C /* Margin.swift in Sources */,
 				71FD36D024DDDC170057CA06 /* StandardButton.swift in Sources */,
 				71A53AB82471CEC800E2923C /* PeoplePresenter.swift in Sources */,
-				71F15632246999BD00444D06 /* ConversationModelCell.swift in Sources */,
 				71763776245CB97900307C51 /* AuthContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,9 +17,9 @@ final class ConversationsRouter {
 
 extension ConversationsRouter: ConversationsRouterInput {
 
-    func navigateToChatRequestScreen(with chat: AppChat) {
-        let vc = ChatRequestBuilder.build(with: chat)
-        view?.present(vc, animated: true)
+    func navigateToChatRequestScreen(with context: ChatRequestContext) {
+        let chatRequestViewController = ChatRequestBuilder.build(with: context)
+        view?.present(chatRequestViewController, animated: true)
     }
 
 }

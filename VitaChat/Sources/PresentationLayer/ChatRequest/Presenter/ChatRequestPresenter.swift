@@ -15,20 +15,26 @@ final class ChatRequestPresenter {
     private var interactor: ChatRequestInteractorInput
     private let router: ChatRequestRouterInput
     private let chat: AppChat
+    private weak var conversationModule: ConversationsModuleInput?
 
     // MARK: - Properties
 
     // MARK: - Init
-    init(interactor: ChatRequestInteractorInput, router: ChatRequestRouterInput, chat: AppChat) {
+    init(interactor: ChatRequestInteractorInput, router: ChatRequestRouterInput, context: ChatRequestContext) {
         self.interactor = interactor
         self.router = router
-        self.chat = chat
+        chat = context.chat
+        conversationModule = context.conversationModule
     }
 
 }
 
 // MARK: - ChatRequestViewOutput
 extension ChatRequestPresenter: ChatRequestViewOutput {
+    
+    func didTapDenyButton() {
+        conversationModule?.didTapRemoveWaitingChat(chat)
+    }
 
     func viewDidLoad() {
         view?.showRequestChatData(with: ChatRequestViewModel(with: chat))

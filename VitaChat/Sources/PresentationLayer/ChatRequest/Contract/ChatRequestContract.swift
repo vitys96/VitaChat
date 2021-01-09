@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Builder
 protocol ChatRequestBuilderProtocol: class {
-    static func build(with chat: AppChat) -> ChatRequestViewController
+    static func build(with context: ChatRequestContext) -> ChatRequestViewController
 }
 
 // MARK: - View
@@ -23,6 +23,10 @@ protocol ChatRequestViewOutput {
      Метод сообщающий, что view была загружена
    */
     func viewDidLoad()
+    /**
+      Метод сообщающий, что была нажата кнопка отклонить
+    */
+     func didTapDenyButton()
 }
 
 // MARK: - Interactor
