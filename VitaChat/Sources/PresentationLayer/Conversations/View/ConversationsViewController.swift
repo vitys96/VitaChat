@@ -169,7 +169,7 @@ extension ConversationsViewController {
                                                                                        elementKind: kind,
                                                                                        for: indexPath)
             guard let section = ConversationCellType(rawValue: indexPath.section) else { fatalError("Unknown section kind") }
-            sectionHeader.setup(title: section.description())
+            sectionHeader.setup(title: section.description)
             
             return sectionHeader
         }

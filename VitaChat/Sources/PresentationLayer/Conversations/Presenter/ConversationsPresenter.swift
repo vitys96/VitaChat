@@ -44,14 +44,13 @@ final class ConversationsPresenter {
 
 // MARK: - ConversationsViewOutput
 extension ConversationsPresenter: ConversationsViewOutput {
-
+    
     func didTapWaitingChat(with model: ConversationCellViewModel) {
         guard let chat = waitingChats.first(where: { $0.friendId == model.id }) else {
             return
         }
         navigateToChatRequestScreen(with: chat)
     }
-    
     
     func viewDidLoad() {
         interactor.fetchChats(with: [])
@@ -61,6 +60,10 @@ extension ConversationsPresenter: ConversationsViewOutput {
 
 // MARK: - ConversationsInteractorOutput
 extension ConversationsPresenter: ConversationsInteractorOutput {
+    
+    func performSuccess() {
+        view?.stopLoadingAnimation()
+    }
     
     func chatsDidFetched(chats: [AppChat]) {
         if !waitingChats.isEmpty && waitingChats.count < chats.count {
@@ -78,7 +81,13 @@ extension ConversationsPresenter: ConversationsInteractorOutput {
 // MARK: - ConversationsModuleInput
 extension ConversationsPresenter: ConversationsModuleInput {
 
+    func didTapAddWaitingChat(_ chat: AppChat) {
+        view?.startLoadingAnimation()
+        interactor.addWaitingChat(chat)
+    }
+
     func didTapRemoveWaitingChat(_ chat: AppChat) {
+        view?.startLoadingAnimation()
         interactor.removeWaitingChat(chat)
     }
     

@@ -27,4 +27,7 @@ protocol FirestoreServiceProtocol {
     func createWaitingChats(currentUser: AppUser, message: String, receiver: AppUser) -> Single<Void>
     
     func deleteWaitingChat(currentUserId: String, chat: AppChat) -> Single<Void>
+    
+    func changeToActiveChat(currentUserId: String, chat: AppChat) -> Single<Void>
+
 }

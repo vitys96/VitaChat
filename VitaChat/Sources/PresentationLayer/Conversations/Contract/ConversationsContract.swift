@@ -16,6 +16,10 @@ protocol ConversationsBuilderProtocol: class {
 // MARK: - View
 protocol ConversationsViewInput: class {
     
+    func startLoadingAnimation()
+
+    func stopLoadingAnimation()
+    
     func showDataSource(snapshot: NSDiffableDataSourceSnapshot<ConversationCellType, ConversationCellViewModel>)
     func configureView(navigationTitle: String)
 }
@@ -41,12 +45,20 @@ protocol ConversationsInteractorInput {
      Удалить чат, который ожидает подтверждения
      */
     func removeWaitingChat(_ chat: AppChat)
+    /**
+     Добавить чат, который ожидает подтверждения
+     */
+    func addWaitingChat(_ chat: AppChat)
 }
 protocol ConversationsInteractorOutput: class {
     /**
      Метод сообщающий, что список чатов был получен
      */
     func chatsDidFetched(chats: [AppChat])
+    /**
+     Метод сообщающий, что все получилось)
+     */
+    func performSuccess()
 }
 
 // MARK: - Router
@@ -63,4 +75,8 @@ protocol ConversationsModuleInput: class {
      Удалить чат, который ожидает подтверждения
      */
     func didTapRemoveWaitingChat(_ chat: AppChat)
+    /**
+     Добавить чат, который ожидает подтверждения
+     */
+    func didTapAddWaitingChat(_ chat: AppChat)
 }

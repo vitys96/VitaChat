@@ -67,6 +67,13 @@ final class ChatRequestViewController: BaseViewController {
                             self.output.didTapDenyButton()
                         } })
             .disposed(by: disposeBag)
+        
+        acceptButton.rx.tap
+            .subscribe(onNext: { [unowned self] in
+                        self.dismiss(animated: true) {
+                            self.output.didTapAcceptButton()
+                        } })
+            .disposed(by: disposeBag)
     }
 
     // MARK: Life cycle

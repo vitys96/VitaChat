@@ -17,7 +17,7 @@ enum ConversationCellType: Int, CaseIterable {
 
 extension ConversationCellType {
     
-    func description() -> String {
+    var description: String {
         switch self {
         case .waitingChats:
             return "В ожидании"

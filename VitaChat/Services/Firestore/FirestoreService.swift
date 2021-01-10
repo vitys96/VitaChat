@@ -22,6 +22,8 @@ final class FirestoreService {
         return db.collection("users")
     }
     
+    private let disposeBag = DisposeBag()
+    
     // MARK: - Init
     init(storageService: StorageSeviceProtocol) {
         self.storageService = storageService
@@ -139,10 +141,56 @@ final class FirestoreService {
         }
     }
     
+    private func createActiveChat(currentUserId: String, chat: AppChat, messages: [AppMessage]) -> Single<Void> {
+        let activeChatsRef = db.collection(["users", currentUserId, "activeChats"].joined(separator: "/"))
+        let messageRef = activeChatsRef.document(chat.friendId).collection("messages")
+        return Single<Void>.create { single in
+            activeChatsRef.document(chat.friendId).setData(chat.representation) { (error) in
+                if let error = error {
+                    return single(.error(error))
+                }
+                for message in messages {
+                    messageRef.addDocument(data: message.representation) { (error) in
+                        if let error = error {
+                            return single(.error(error))
+                        }
+                        single(.success(()))
+                    }
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
 }
 
 // MARK: - FirestoreServiceProtocol
 extension FirestoreService: FirestoreServiceProtocol {
+    
+    func changeToActiveChat(currentUserId: String, chat: AppChat) -> Single<Void> {
+        return Single<Void>.create { single in
+            self.getWaitingChatMessages(currentUserId: currentUserId, chat: chat) { result in
+                switch result {
+                case .success(let messages):
+                    self.deleteMessages(currentUserId: currentUserId, chat: chat).asSingle()
+                        .subscribe(
+                            onSuccess: { [unowned self] _ in
+                                createActiveChat(currentUserId: currentUserId, chat: chat, messages: messages)
+                                    .subscribe(
+                                        onSuccess: { [unowned self] _ in
+                                            return single(.success(()))
+                                        },
+                                        onError: { [unowned self] _ in print("lala") })
+                            },
+                            onError: { [unowned self] _ in print("lala") })
+                        .disposed(by: self.disposeBag)
+                case .failure(let error):
+                    single(.error(error))
+                }
+            }
+            return Disposables.create()
+        }
+    }
     
     func deleteWaitingChat(currentUserId: String, chat: AppChat) -> Single<Void> {
         return deleteMessages(currentUserId: currentUserId, chat: chat).asSingle()

@@ -34,12 +34,21 @@ final class ConversationsInteractor {
         waitingChatsListener?.remove()
     }
     
-    // MARK: - Private methods
-    
 }
 
 // MARK: - ConversationsInteractorInput
 extension ConversationsInteractor: ConversationsInteractorInput {
+    
+    func addWaitingChat(_ chat: AppChat) {
+        guard let id = userService.getUser()?.id else {
+            return
+        }
+        firestoreService.changeToActiveChat(currentUserId: id, chat: chat)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.output?.performSuccess() },
+                       onError: { print($0) })
+            .disposed(by: disposeBag)
+    }
     
     func removeWaitingChat(_ chat: AppChat) {
         guard let id = userService.getUser()?.id else {
@@ -47,7 +56,7 @@ extension ConversationsInteractor: ConversationsInteractorInput {
         }
         firestoreService.deleteWaitingChat(currentUserId: id, chat: chat)
             .observeOn(MainScheduler.instance)
-            .subscribe(onSuccess: { print("alala") },
+            .subscribe(onSuccess: { [unowned self] in self.output?.performSuccess() },
                        onError: { print($0) })
             .disposed(by: disposeBag)
     }
@@ -57,10 +66,10 @@ extension ConversationsInteractor: ConversationsInteractorInput {
             guard let self = self else { return }
             self.output?.chatsDidFetched(chats: chats)
         }
-        .observeOn(MainScheduler.instance)
-        .subscribe(onSuccess: { [unowned self] in self.waitingChatsListener = $0 },
-                   onError: { print($0) })
-        .disposed(by: disposeBag)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.waitingChatsListener = $0 },
+                       onError: { print($0) })
+            .disposed(by: disposeBag)
     }
     
 }

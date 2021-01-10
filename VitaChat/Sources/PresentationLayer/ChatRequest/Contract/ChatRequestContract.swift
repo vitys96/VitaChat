@@ -27,6 +27,10 @@ protocol ChatRequestViewOutput {
       Метод сообщающий, что была нажата кнопка отклонить
     */
      func didTapDenyButton()
+    /**
+      Метод сообщающий, что была нажата кнопка принять
+    */
+     func didTapAcceptButton()
 }
 
 // MARK: - Interactor

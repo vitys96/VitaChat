@@ -32,6 +32,10 @@ final class ChatRequestPresenter {
 // MARK: - ChatRequestViewOutput
 extension ChatRequestPresenter: ChatRequestViewOutput {
     
+    func didTapAcceptButton() {
+        conversationModule?.didTapAddWaitingChat(chat)
+    }
+    
     func didTapDenyButton() {
         conversationModule?.didTapRemoveWaitingChat(chat)
     }
