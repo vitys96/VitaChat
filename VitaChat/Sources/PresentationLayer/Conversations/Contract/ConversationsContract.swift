@@ -53,8 +53,9 @@ protocol ConversationsInteractorInput {
 protocol ConversationsInteractorOutput: class {
     /**
      Метод сообщающий, что список чатов был получен
+     - pharams: isWaitingChat - зафечены ли isWaitingChat
      */
-    func chatsDidFetched(chats: [AppChat])
+    func chatsDidFetched(chats: [AppChat], isWaitingChat: Bool)
     /**
      Метод сообщающий, что все получилось)
      */

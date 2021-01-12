@@ -15,9 +15,9 @@ final class PeoplePresenter {
     private var interactor: PeopleInteractorInput
     private let router: PeopleRouterInput
     private let currentUser: AppUser
-    private var users = [AppUser]()
 
     // MARK: - Properties
+    private var users = [AppUser]()
 
     // MARK: - Init
     init(interactor: PeopleInteractorInput, router: PeopleRouterInput, currentUser: AppUser) {

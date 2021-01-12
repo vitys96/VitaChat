@@ -120,7 +120,7 @@ final class FirestoreService {
         }.asObservable()
     }
     
-    func getWaitingChatMessages(currentUserId: String, chat: AppChat,
+    private func getWaitingChatMessages(currentUserId: String, chat: AppChat,
                                  completion: @escaping (Result<[AppMessage], Error>) -> Void) {
         let waitingChatRef = db.collection(["users", currentUserId, "waitingChats"].joined(separator: "/"))
         let reference = waitingChatRef.document(chat.friendId).collection("messages")
@@ -177,12 +177,12 @@ extension FirestoreService: FirestoreServiceProtocol {
                             onSuccess: { [unowned self] _ in
                                 createActiveChat(currentUserId: currentUserId, chat: chat, messages: messages)
                                     .subscribe(
-                                        onSuccess: { [unowned self] _ in
-                                            return single(.success(()))
+                                        onSuccess: { return single(.success(()))
                                         },
-                                        onError: { [unowned self] _ in print("lala") })
+                                        onError: { _ in print("lala") })
+                                    .disposed(by: self.disposeBag)
                             },
-                            onError: { [unowned self] _ in print("lala") })
+                            onError: { _ in print("lala") })
                         .disposed(by: self.disposeBag)
                 case .failure(let error):
                     single(.error(error))

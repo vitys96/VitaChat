@@ -15,4 +15,8 @@ protocol ListenerServiceProtocol {
      Метод для полученя чатов "ожидающих подтверждения"
      */
     func waitingChatsObserve(chats: [AppChat], completion: @escaping ([AppChat]) -> Void) -> Single<ListenerRegistration>
+    /*
+     Метод для полученя активных чатов
+     */
+    func activeChatsObserve(chats: [AppChat], completion: @escaping ([AppChat]) -> Void) -> Single<ListenerRegistration>
 }

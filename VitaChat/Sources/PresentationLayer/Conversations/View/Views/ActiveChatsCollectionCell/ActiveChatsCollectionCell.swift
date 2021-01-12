@@ -91,9 +91,9 @@ class ActiveChatsCollectionCell: UICollectionViewCell {
     // MARK: - Public methods
     func setup(with model: ConversationCellViewModel) {
 
-//        imageView.image = UIImage.withName(model.userImageString)
-//        userNameLabel.attributedText = model.username
-//        lastMessageLabel.attributedText = model.lastMessage
+        imageView.kf.setImage(with: model.userImageUrl, placeholder: UIImage.withName("human3"))
+        userNameLabel.attributedText = model.username
+        lastMessageLabel.attributedText = model.lastMessage
 
         setNeedsLayout()
     }

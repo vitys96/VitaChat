@@ -18,6 +18,7 @@ final class ConversationsPresenter {
     // MARK: - Properties
     private let currentUser: AppUser
     private var waitingChats = [AppChat]()
+    private var activeChats = [AppChat]()
     
     // MARK: - Init
     init(interactor: ConversationsInteractorInput, router: ConversationsRouterInput, currentUser: AppUser) {
@@ -28,9 +29,11 @@ final class ConversationsPresenter {
     
     private func makeViewModels(with waitingChats: [AppChat]) -> NSDiffableDataSourceSnapshot<ConversationCellType, ConversationCellViewModel> {
         let waitingChatsViewModel = waitingChats.map { ConversationCellViewModel(with: $0) }
+        let activeChatsViewModel = activeChats.map { ConversationCellViewModel(with: $0) }
         var snapshot = NSDiffableDataSourceSnapshot<ConversationCellType, ConversationCellViewModel>()
         snapshot.appendSections([.waitingChats, .activeChats])
         snapshot.appendItems(waitingChatsViewModel, toSection: .waitingChats)
+        snapshot.appendItems(activeChatsViewModel, toSection: .activeChats)
         
         return snapshot
     }
@@ -65,14 +68,18 @@ extension ConversationsPresenter: ConversationsInteractorOutput {
         view?.stopLoadingAnimation()
     }
     
-    func chatsDidFetched(chats: [AppChat]) {
-        if !waitingChats.isEmpty && waitingChats.count < chats.count {
-            guard let lastChat = chats.last else {
-                return
+    func chatsDidFetched(chats: [AppChat], isWaitingChat: Bool) {
+        if isWaitingChat {
+            if !waitingChats.isEmpty && waitingChats.count < chats.count {
+                guard let lastChat = chats.last else {
+                    return
+                }
+                navigateToChatRequestScreen(with: lastChat)
             }
-            navigateToChatRequestScreen(with: lastChat)
+            waitingChats = chats
+        } else {
+            activeChats = chats
         }
-        waitingChats = chats
         view?.showDataSource(snapshot: makeViewModels(with: chats))
     }
     

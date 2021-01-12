@@ -14,6 +14,7 @@ final class ConversationsInteractor {
     // MARK: - Protocol properties
     weak var output: ConversationsInteractorOutput?
     private var waitingChatsListener: ListenerRegistration?
+    private var activeChatsListener: ListenerRegistration?
     private let listenerService: ListenerServiceProtocol
     private let userService: UserServiceProtocol
     private let firestoreService: FirestoreServiceProtocol
@@ -32,6 +33,7 @@ final class ConversationsInteractor {
     
     deinit {
         waitingChatsListener?.remove()
+        activeChatsListener?.remove()
     }
     
 }
@@ -64,10 +66,19 @@ extension ConversationsInteractor: ConversationsInteractorInput {
     func fetchChats(with chats: [AppChat]) {
         listenerService.waitingChatsObserve(chats: chats) { [weak self] chats in
             guard let self = self else { return }
-            self.output?.chatsDidFetched(chats: chats)
+            self.output?.chatsDidFetched(chats: chats, isWaitingChat: true)
         }
             .observeOn(MainScheduler.instance)
             .subscribe(onSuccess: { [unowned self] in self.waitingChatsListener = $0 },
+                       onError: { print($0) })
+            .disposed(by: disposeBag)
+        
+        listenerService.activeChatsObserve(chats: chats) { [weak self] chats in
+            guard let self = self else { return }
+            self.output?.chatsDidFetched(chats: chats, isWaitingChat: false)
+        }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onSuccess: { [unowned self] in self.activeChatsListener = $0 },
                        onError: { print($0) })
             .disposed(by: disposeBag)
     }
