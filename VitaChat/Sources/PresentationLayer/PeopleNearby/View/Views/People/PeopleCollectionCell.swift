@@ -35,6 +35,12 @@ class PeopleCollectionCell: UICollectionViewCell {
 
         addSubviews()
     }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            shrink(down: isHighlighted)
+        }
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -86,6 +92,16 @@ class PeopleCollectionCell: UICollectionViewCell {
         ])
 
         contentView.addSubview(containerView)
+    }
+    
+    func shrink(down: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            if down {
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            } else {
+                self.transform = .identity
+            }
+        }
     }
 
 }

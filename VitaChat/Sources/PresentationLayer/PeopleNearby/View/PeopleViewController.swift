@@ -24,6 +24,7 @@ final class PeopleViewController: BaseViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.register(cellType: PeopleCollectionCell.self)
+        collectionView.delaysContentTouches = false
         collectionView.registerView(viewType: SectionHeader.self, elementKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
