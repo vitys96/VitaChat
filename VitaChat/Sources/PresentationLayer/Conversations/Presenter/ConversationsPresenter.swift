@@ -47,6 +47,13 @@ final class ConversationsPresenter {
 
 // MARK: - ConversationsViewOutput
 extension ConversationsPresenter: ConversationsViewOutput {
+
+    func didTapActiveChat(with model: ConversationCellViewModel) {
+//        guard let chat = waitingChats.first(where: { $0.friendId == model.id }) else {
+//            return
+//        }
+        router.navigateToChat(with: currentUser)
+    }
     
     func didTapWaitingChat(with model: ConversationCellViewModel) {
         guard let chat = waitingChats.first(where: { $0.friendId == model.id }) else {

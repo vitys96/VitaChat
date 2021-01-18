@@ -18,4 +18,5 @@ target 'VitaChat' do
   pod 'Firebase/Storage'
   pod 'JGProgressHUD'
   pod 'IQKeyboardManagerSwift'
+  pod 'MessageKit'
 end

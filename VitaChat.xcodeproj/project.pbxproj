@@ -137,6 +137,13 @@
 		71FE9C9B2460B6B8008D7E4A /* AuthUserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */; };
 		71FE9C9F2460BB95008D7E4A /* UIAplication + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */; };
 		A17A495D8259E5E51F29E5AD /* Pods_VitaChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92C19D9A6676F1302964976B /* Pods_VitaChat.framework */; };
+		E92CE3D725AEFA6500FCAAEA /* ChatsContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D025AEFA6500FCAAEA /* ChatsContract.swift */; };
+		E92CE3D825AEFA6500FCAAEA /* ChatsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D125AEFA6500FCAAEA /* ChatsPresenter.swift */; };
+		E92CE3D925AEFA6500FCAAEA /* ChatsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D225AEFA6500FCAAEA /* ChatsRouter.swift */; };
+		E92CE3DA25AEFA6500FCAAEA /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D325AEFA6500FCAAEA /* ChatsViewController.swift */; };
+		E92CE3DB25AEFA6500FCAAEA /* ChatsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D425AEFA6500FCAAEA /* ChatsBuilder.swift */; };
+		E92CE3DC25AEFA6500FCAAEA /* ChatsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3D525AEFA6500FCAAEA /* ChatsInteractor.swift */; };
+		E92CE3F425AEFC6900FCAAEA /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92CE3F325AEFC6900FCAAEA /* ChatViewModel.swift */; };
 		E9A2472625A8F0A6006E757F /* ConversationCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2472525A8F0A6006E757F /* ConversationCellType.swift */; };
 		E9A2472B25A8F9C6006E757F /* ChatRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2472A25A8F9C6006E757F /* ChatRequestViewModel.swift */; };
 		E9DF7B2125A4AEB30010FA9A /* AppChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DF7B2025A4AEB30010FA9A /* AppChat.swift */; };
@@ -195,7 +202,6 @@
 		716F4A1A2475A29600496FC5 /* StackView + Entension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StackView + Entension.swift"; sourceTree = "<group>"; };
 		716F4A1D2475BF9300496FC5 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		71716AA82550455C00A51985 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		71716AAA2550456A00A51985 /* VitaChat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VitaChat.entitlements; sourceTree = "<group>"; };
 		7176376F245CB97900307C51 /* AuthContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContract.swift; sourceTree = "<group>"; };
 		71763770245CB97900307C51 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		71763771245CB97900307C51 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
@@ -283,6 +289,13 @@
 		71FE9C9A2460B6B8008D7E4A /* AuthUserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserError.swift; sourceTree = "<group>"; };
 		71FE9C9E2460BB95008D7E4A /* UIAplication + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAplication + Extension.swift"; sourceTree = "<group>"; };
 		92C19D9A6676F1302964976B /* Pods_VitaChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E92CE3D025AEFA6500FCAAEA /* ChatsContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsContract.swift; sourceTree = "<group>"; };
+		E92CE3D125AEFA6500FCAAEA /* ChatsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsPresenter.swift; sourceTree = "<group>"; };
+		E92CE3D225AEFA6500FCAAEA /* ChatsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsRouter.swift; sourceTree = "<group>"; };
+		E92CE3D325AEFA6500FCAAEA /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		E92CE3D425AEFA6500FCAAEA /* ChatsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsBuilder.swift; sourceTree = "<group>"; };
+		E92CE3D525AEFA6500FCAAEA /* ChatsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsInteractor.swift; sourceTree = "<group>"; };
+		E92CE3F325AEFC6900FCAAEA /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		E9A2472525A8F0A6006E757F /* ConversationCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCellType.swift; sourceTree = "<group>"; };
 		E9A2472A25A8F9C6006E757F /* ChatRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewModel.swift; sourceTree = "<group>"; };
 		E9DF7B2025A4AEB30010FA9A /* AppChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppChat.swift; sourceTree = "<group>"; };
@@ -893,7 +906,6 @@
 		719D8A8A244F682E00319E42 /* VitaChat */ = {
 			isa = PBXGroup;
 			children = (
-				71716AAA2550456A00A51985 /* VitaChat.entitlements */,
 				715889AB244F7A7300178F19 /* Application */,
 				719D8A9F244F710700319E42 /* Sources */,
 				7109EF5E246023BB000AB219 /* Services */,
@@ -915,6 +927,7 @@
 		719D8AA0244F711000319E42 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E92CE3CE25AEFA4F00FCAAEA /* Chats */,
 				71F6A79E24E8687500C74BC3 /* AuthStory */,
 				716F4A0A24759E3A00496FC5 /* ChatRequest */,
 				71B43A2E24746AFB00F18449 /* HumanProfile */,
@@ -1459,6 +1472,68 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E92CE3CE25AEFA4F00FCAAEA /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3DF25AEFA7300FCAAEA /* Contract */,
+				E92CE3E125AEFA7B00FCAAEA /* Builder */,
+				E92CE3E425AEFA8200FCAAEA /* View */,
+				E92CE3EA25AEFA8D00FCAAEA /* Presenter */,
+				E92CE3E725AEFA8600FCAAEA /* Router */,
+				E92CE3ED25AEFA9400FCAAEA /* Interactor */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		E92CE3DF25AEFA7300FCAAEA /* Contract */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D025AEFA6500FCAAEA /* ChatsContract.swift */,
+			);
+			path = Contract;
+			sourceTree = "<group>";
+		};
+		E92CE3E125AEFA7B00FCAAEA /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D425AEFA6500FCAAEA /* ChatsBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		E92CE3E425AEFA8200FCAAEA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D325AEFA6500FCAAEA /* ChatsViewController.swift */,
+				E92CE3F325AEFC6900FCAAEA /* ChatViewModel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E92CE3E725AEFA8600FCAAEA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D225AEFA6500FCAAEA /* ChatsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E92CE3EA25AEFA8D00FCAAEA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D125AEFA6500FCAAEA /* ChatsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E92CE3ED25AEFA9400FCAAEA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E92CE3D525AEFA6500FCAAEA /* ChatsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		E9A2472425A8F086006E757F /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -1661,8 +1736,10 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/InputBarAccessoryView/InputBarAccessoryView.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MessageKit/MessageKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PanModal/PanModal.framework",
 				"${BUILT_PRODUCTS_DIR}/PinLayout/PinLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
@@ -1684,8 +1761,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InputBarAccessoryView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MessageKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PanModal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PinLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
@@ -1734,6 +1813,7 @@
 				71FE9C982460B652008D7E4A /* AppUser.swift in Sources */,
 				71A7173C245EDC4F0008A738 /* SignUpInteractor.swift in Sources */,
 				E9F3B12F25A5C14700C0B13A /* ListenerService.swift in Sources */,
+				E92CE3DA25AEFA6500FCAAEA /* ChatsViewController.swift in Sources */,
 				E9F9078825A25E5C0016FF40 /* HumanProfileViewModel.swift in Sources */,
 				71F1562224693E4300444D06 /* ConversationsRouter.swift in Sources */,
 				716F4A092475440800496FC5 /* InsertableTextField.swift in Sources */,
@@ -1749,6 +1829,7 @@
 				71A53ABB2471CEC800E2923C /* PeopleBuilder.swift in Sources */,
 				71BA9CC2246063E300F704F5 /* ProfileBuilder.swift in Sources */,
 				71B1F60B24615EE90017D83E /* StorageService.swift in Sources */,
+				E92CE3DB25AEFA6500FCAAEA /* ChatsBuilder.swift in Sources */,
 				719C424024E08AE300485113 /* LoginInteractor.swift in Sources */,
 				719D8A8C244F682E00319E42 /* AppDelegate.swift in Sources */,
 				713BBB1B245C3B87008BF210 /* DependencyContainer.swift in Sources */,
@@ -1766,8 +1847,10 @@
 				713BBB10245C3120008BF210 /* ColorManagerProtocol.swift in Sources */,
 				7109EF62246023E9000AB219 /* AuthService.swift in Sources */,
 				71763779245CB97900307C51 /* AuthViewController.swift in Sources */,
+				E92CE3F425AEFC6900FCAAEA /* ChatViewModel.swift in Sources */,
 				719C423F24E08AE300485113 /* LoginBuilder.swift in Sources */,
 				71C946AC24E2955800CFF378 /* SignUpError.swift in Sources */,
+				E92CE3DC25AEFA6500FCAAEA /* ChatsInteractor.swift in Sources */,
 				716F07682467F80700C859B4 /* UIEdgeInsets.swift in Sources */,
 				71A53AC72471D33800E2923C /* PeopleViewModel.swift in Sources */,
 				71A53ABA2471CEC800E2923C /* PeopleViewController.swift in Sources */,
@@ -1784,6 +1867,7 @@
 				71EAA5E1245F552500CF1449 /* OneLineTextField.swift in Sources */,
 				71A71737245EDC4F0008A738 /* SignUpContract.swift in Sources */,
 				71268D1F24E48E6400FE4857 /* UserDefaultsKeys.swift in Sources */,
+				E92CE3D725AEFA6500FCAAEA /* ChatsContract.swift in Sources */,
 				71F1562F2469670C00444D06 /* AppearanceManager.swift in Sources */,
 				71A7173B245EDC4F0008A738 /* SignUpBuilder.swift in Sources */,
 				71A53ABC2471CEC800E2923C /* PeopleInteractor.swift in Sources */,
@@ -1797,6 +1881,7 @@
 				71B1F61C246188FD0017D83E /* FirestoreServiceProtocol.swift in Sources */,
 				71B1F61324616E0D0017D83E /* ValidationService.swift in Sources */,
 				71104782245D955B00D37620 /* FontManagerProtocol.swift in Sources */,
+				E92CE3D925AEFA6500FCAAEA /* ChatsRouter.swift in Sources */,
 				719C424924E08CBC00485113 /* LoginViewModel.swift in Sources */,
 				E9DF7B2125A4AEB30010FA9A /* AppChat.swift in Sources */,
 				71BA9CC0246063E300F704F5 /* ProfileRouter.swift in Sources */,
@@ -1807,6 +1892,7 @@
 				7176377B245CB97900307C51 /* AuthInteractor.swift in Sources */,
 				71A53ABF2471CFE300E2923C /* PeopleModelCell.swift in Sources */,
 				71BA9CC1246063E300F704F5 /* ProfileViewController.swift in Sources */,
+				E92CE3D825AEFA6500FCAAEA /* ChatsPresenter.swift in Sources */,
 				719E12912479671000477F58 /* SignUpViewModel.swift in Sources */,
 				710A9AC5254482E20021B9F4 /* ShadowContainerView.swift in Sources */,
 				71BA9CC6246065AE00F704F5 /* ProfileViewModel.swift in Sources */,

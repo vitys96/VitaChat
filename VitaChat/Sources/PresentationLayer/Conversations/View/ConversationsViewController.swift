@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 final class ConversationsViewController: BaseViewController {
 
     // MARK: - Subviews
@@ -98,6 +96,7 @@ final class ConversationsViewController: BaseViewController {
         searchController.searchBar.delegate = self
 
         collectionView.backgroundColor = backgroundColor
+        extendedLayoutIncludesOpaqueBars = true
     }
 
 }
@@ -132,8 +131,8 @@ extension ConversationsViewController: UICollectionViewDelegate {
         switch section {
         case .waitingChats:
             output.didTapWaitingChat(with: chat)
-        default:
-            break
+        case .activeChats:
+            output.didTapActiveChat(with: chat)
         }
     }
 

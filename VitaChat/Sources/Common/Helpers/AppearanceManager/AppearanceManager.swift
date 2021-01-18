@@ -24,6 +24,7 @@ final class AppearanceManager: NSObject, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().tintColor = colorManager.n1
         UINavigationBar.appearance().barTintColor = colorManager.n13
+        UINavigationBar.appearance().backIndicatorImage = UIImage.withName("BackNavigationImage")
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: colorManager.n1]
     }
 

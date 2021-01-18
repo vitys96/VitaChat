@@ -8,19 +8,26 @@
 
 import UIKit
 import FirebaseFirestore
+import MessageKit
 
-struct AppMessage: Hashable {
-   
+struct AppMessage: Hashable, MessageType {
+
+    var sender: SenderType
     let content: String
-    var senderId: String
-    var senderUsername: String
     var sentDate: Date
     let id: String?
     
+    var kind: MessageKind {
+        return .text(content)
+    }
+    
+    var messageId: String {
+        return id ?? UUID().uuidString
+    }
+    
     init(user: AppUser, content: String) {
         self.content = content
-        senderId = user.id
-        senderUsername = user.username
+        sender = Sender(senderId: user.id, displayName: user.username)
         sentDate = Date()
         id = nil
     }
@@ -32,21 +39,36 @@ struct AppMessage: Hashable {
         guard let senderName = data["senderName"] as? String else { return nil }
         guard let content = data["content"] as? String else { return nil }
         
+        sender = Sender(senderId: senderId, displayName: senderName)
         self.id = document.documentID
         self.sentDate = sentDate.dateValue()
-        self.senderId = senderId
-        self.senderUsername = senderName
         self.content = content
     }
     
     var representation: [String: Any] {
         let rep: [String: Any] = [
             "created": sentDate,
-            "senderID": senderId,
-            "senderName": senderUsername,
+            "senderID": sender.senderId,
+            "senderName": sender.displayName,
             "content": content
         ]
         return rep
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(messageId)
+    }
+    
+    static func == (lhs: AppMessage, rhs: AppMessage) -> Bool {
+        return lhs.messageId == rhs.messageId
+    }
+
+}
+
+extension AppMessage: Comparable {
+
+    static func < (lhs: AppMessage, rhs: AppMessage) -> Bool {
+        return lhs.sentDate < rhs.sentDate
     }
 
 }

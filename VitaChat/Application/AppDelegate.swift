@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupMainWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         let userService = DIContainer.userService
-//
+
         if let user = userService.getUser() {
             let tabBarController = TabBarController()
             tabBarController.configure(screens: [
@@ -76,7 +76,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = AuthBuilder.build()
             window?.rootViewController = viewController
         }
-//        window?.rootViewController = ProfileBuilder.build(with: ProfileContext(user: nil))
         window?.makeKeyAndVisible()
     }
 

@@ -17,6 +17,12 @@ final class ConversationsRouter {
 
 extension ConversationsRouter: ConversationsRouterInput {
 
+    func navigateToChat(with chat: AppUser) {
+        let chatViewController = ChatsBuilder.build(with: chat)
+        chatViewController.hidesBottomBarWhenPushed = true
+        view?.navigationController?.pushViewController(chatViewController, animated: true)
+    }
+
     func navigateToChatRequestScreen(with context: ChatRequestContext) {
         let chatRequestViewController = ChatRequestBuilder.build(with: context)
         view?.present(chatRequestViewController, animated: true)

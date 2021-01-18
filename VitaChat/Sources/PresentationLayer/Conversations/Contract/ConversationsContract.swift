@@ -33,6 +33,10 @@ protocol ConversationsViewOutput {
      Метод сообщающий, что был нажат какой либо ожидающий чат
      */
     func didTapWaitingChat(with model: ConversationCellViewModel)
+    /**
+     Метод сообщающий, что был нажат какой либо активный чат
+     */
+    func didTapActiveChat(with model: ConversationCellViewModel)
 }
 
 // MARK: - Interactor
@@ -68,6 +72,10 @@ protocol ConversationsRouterInput {
      Метод сообщающий, что необходимо показать экран "Запроса чата"
      */
     func navigateToChatRequestScreen(with context: ChatRequestContext)
+    /**
+     Метод сообщающий о переходе на экран чата
+     */
+    func navigateToChat(with chat: AppUser)
 }
 
 // MARK: - Input
